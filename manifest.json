@@ -1,0 +1,7 @@
+{
+  "name": "Portfolio",
+  "short_name": "Portfolio",
+  "description": "Web Development / Design Portolio for Tristan Marshall (author)",
+  "start_url": "/",
+  "display": "standalone"
+}

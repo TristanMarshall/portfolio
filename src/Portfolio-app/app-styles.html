@@ -1,0 +1,176 @@
+<dom-module id="app-styles">
+	<template>
+		<style is="custom-style">
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* MIXINS FOR POLYMER ELEMENTS */
+/*//////////////////////////////////////////////////////////////////////////////*/
+
+    .flex-horizontal {
+      @apply(--layout-horizontal);
+    }
+    .flexchild {
+      @apply(--layout-flex);
+    }
+
+    .self-end {
+      @apply(--layout-self-end);
+    }
+
+    .link {
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+    }
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* POLYMER APP ELEMENT STYLES */
+/*//////////////////////////////////////////////////////////////////////////////*/
+ 
+    app-drawer {
+      --app-drawer-content-container: {
+        box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
+                width: 200px;
+      }
+      --app-drawer-scrim-background: rgba(179, 157, 219, 0.5);
+    }
+
+    app-header {
+      background-color: #efefef;
+      --app-header-background-rear-layer: {
+        background-color: blue;
+      };
+    }
+
+/*    app-toolbar {
+      font-family: 'Roboto', Helvetica, sans-serif;
+      color: white;
+      --app-toolbar-font-size: 10px;
+      z-index: 1;
+    }*/
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* FULL SITE STYLE CLASSES */
+/*//////////////////////////////////////////////////////////////////////////////*/
+
+      a:link, a:visited {
+        text-decoration: none;
+        color: var(--paper-teal-500);
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* COMMANDER GRID CLASSES */
+/*//////////////////////////////////////////////////////////////////////////////*/
+
+      .commander-section {
+        height: auto; 
+        padding: 50px;
+      }
+
+      .commander-section-dark {
+        height: auto; 
+        padding: 50px;
+        background-color: black;
+      }
+
+      .commander-inner-section {
+        max-width: 800px; 
+        width: 100%; 
+        height: auto;
+        margin: 0 auto; 
+        text-align: right;
+      }
+
+      .commander-guide {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .commander-left-large {
+        width: 60%;  
+  /*      display: inline-block;
+        float: left;*/
+      }
+
+      .commander-right-small {
+        float: right;
+        width: 40%; 
+        /*display: inline-block;    */
+      }
+
+       .commander-card {
+        /*padding: 15px;*/
+        box-shadow:0px 3px 5px rgba(0, 0, 0, .4), 0px -1px 3px rgba(0, 0, 0, .4);
+       }
+
+      .commander-left-small {
+        width: 33.5%; 
+        display: inline-block;  
+        float: left;   
+      }
+
+      .commander-right-large {
+        width: 66.5%; 
+        display: inline-block;
+      }
+
+      .commander-triple-one {
+        width: 33.333333%; 
+        display: inline-block;
+        float: left;
+      }
+
+      .commander-triple-two {
+        width: 33.333333%; 
+        display: inline-block;
+        float: left;
+      }
+
+      .commander-triple-three {
+        width: 33.333333%; 
+        display: inline-block; 
+        /*float: right;*/
+      }
+
+      img {
+        width: 75%;
+      }
+
+      @media only screen and (max-width: 760px) {
+        .commander-section, .commander-section-dark {
+          padding: 30px;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .commander-section, .commander-section-dark {
+          padding: 25px;
+        }
+
+        .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
+          float: none;
+          width: 100%;
+          display: block;
+        }
+
+        .commander-triple-one, .commander-triple-two, .commander-triple-three {
+          width: 100%;
+          float: none;
+          margin-bottom: 5px;
+        } 
+
+        .commander-right-small, .commander-left-small {
+          text-align: center;
+        }
+      }
+
+
+		</style>
+	</template>
+</dom-module>

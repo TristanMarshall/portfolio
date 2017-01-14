@@ -1,0 +1,94 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+<dom-module id="home-page">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      hr {
+        border: none;
+        background-color: rgba(255, 255, 255, 0.15);
+        padding-bottom: 1px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .captain-header {
+        font-size: 18px;
+        font-family: Roboto Condensed;
+        color: rgba(255, 255, 255, .7);
+        text-align: left;
+      }
+
+      .captain-subheader {
+        font-size: 14px;
+        font-family: Roboto;
+        font-weight: 200;
+        color: rgba(51, 188, 169, 0.56);
+        text-align: left;
+        padding-bottom: 10px;
+      }
+
+      span {
+        font-style: italic;
+      }
+
+      .captain-content {
+        font-size: 14px;
+        font-family: Roboto;
+        font-weight: 200;
+        color: rgba(255, 255, 255, .6);
+        text-align: left;
+        line-height: 30px;
+      }
+
+      @media only screen and (max-width: 640px) {
+        .captain-content {
+          text-align: justify;
+        }
+      }
+
+    </style>
+
+    <div class="commander-section-dark">
+      <div class="commander-inner-section">
+        <div class="commander-right-small">
+          <div>
+            <img src="/images/profile-photo-TM.png" style="max-width: 250px;">
+          </div>
+        </div> 
+        <div class="commander-left-large">
+          <div class="captain-header">
+            Tristan Marshall
+          </div>
+          <hr>
+          <div class="captain-subheader">
+            <span>front-end developer / </span>design
+          </div>
+          <div class="captain-content">
+            Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'home-page',
+
+      properties: {
+
+      },
+
+    });
+  </script>
+</dom-module>

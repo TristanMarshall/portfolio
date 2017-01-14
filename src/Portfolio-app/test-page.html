@@ -1,0 +1,198 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+<dom-module id="test-page">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      .commander-section {
+        height: auto; 
+        padding: 50px;
+      }
+
+      .commander-section-dark {
+        height: auto; 
+        padding: 50px;
+        background-color: #212121;
+      }
+
+      .commander-inner-section {
+        max-width: 800px; 
+        width: 100%; 
+        height: auto;
+        margin: 0 auto; 
+        text-align: center;
+      }
+
+      .commander-guide {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .commander-left-large {
+        width: 66.5%; 
+        background-color: #ffeded; 
+  /*      display: inline-block;
+        float: left;*/
+      }
+
+      .commander-right-small {
+        float: right;
+        width: 33.5%;
+        background-color: #f9cccc; 
+        /*display: inline-block;    */
+      }
+
+       .commander-card {
+        background-color: white;
+        /*padding: 15px;*/
+        box-shadow:0px 3px 5px rgba(0, 0, 0, .4), 0px -1px 3px rgba(0, 0, 0, .4);
+       }
+
+      .commander-left-small {
+        width: 33.5%; 
+        background-color: #f9cccc; 
+        display: inline-block;  
+        float: left;   
+      }
+
+      .commander-right-large {
+        width: 66.5%; 
+        background-color: #ffeded; 
+        display: inline-block;
+      }
+
+      .commander-triple-one {
+        width: 33.333333%; 
+        display: inline-block;
+        float: left;
+      }
+
+      .commander-triple-two {
+        width: 33.333333%; 
+        display: inline-block;
+        float: left;
+      }
+
+      .commander-triple-three {
+        width: 33.333333%; 
+        display: inline-block; 
+        /*float: right;*/
+      }
+
+      img {
+        width: 75%;
+      }
+
+      @media only screen and (max-width: 760px) {
+        .commander-section, .commander-section-dark {
+          padding: 25px;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .commander-section, .commander-section-dark {
+          padding: 10px;
+        }
+
+        .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
+          float: none;
+          width: 100%;
+          display: block;
+        }
+
+        .commander-triple-one, .commander-triple-two, .commander-triple-three {
+          width: 100%;
+          float: none;
+          margin-bottom: 5px;
+        } 
+      }
+
+    </style>
+
+
+
+    <div class="commander-container">
+<!-- /////////////////////////////////////////// -->
+<!-- RIGHT LEFT / LARGE LEFT SECTIONS -->
+<!-- /////////////////////////////////////////// -->
+      <div class="commander-section-dark">
+        <div class="commander-inner-section">
+          <div class="commander-right-small">
+            <div style="width: 100%; height: 250px; background-color: #65d5cb;"></div>
+          </div> 
+          <div class="commander-left-large">
+            <div style="background-color: #c2f1ed; width: 100%; height: 250px;"></div>
+          </div>
+        </div>
+      </div>
+
+<!-- /////////////////////////////////////////// -->
+<!-- 3 EQUAL SECTIONS -->
+<!-- /////////////////////////////////////////// -->
+      <div class="commander-section">
+        <div class="commander-inner-section">
+          <div class="commander-guide">
+            <div class="commander-triple-one">
+              <div style=" background-color: #c2f1ed; width: 100%; height: 250px;"></div>
+            </div>
+            <div class="commander-triple-two">
+              <div style="background-color: #65d5cb; width: 100%; height: 250px;"></div>
+            </div>
+            <div class="commander-triple-three">
+              <div style=" background-color: #44b6ac; width: 100%; height: 250px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- /////////////////////////////////////////// -->
+<!-- SMALL LEFT / LARGE RIGHT SECTIONS -->
+<!-- /////////////////////////////////////////// -->
+      <div class="commander-section-dark">
+        <div class="commander-inner-section">
+          <div class="commander-guide">
+            <div class="commander-left-small">
+            <div style="width: 100%; height: 250px; background-color: #65d5cb;"></div>
+            </div>
+            <div class="commander-right-large">
+              <div style="background-color: #c2f1ed; width: 100%; height: 250px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- /////////////////////////////////////////// -->
+<!-- FULL WIDTH CONTAINER -->
+<!-- /////////////////////////////////////////// -->
+      <div class="commander-section">
+        <div class="commander-inner-section">
+          <div style="background-color: #44b6ac; width: 100%; height: 250px;"></div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'test-page',
+
+      properties: {
+
+      },
+
+    });
+  </script>
+</dom-module>

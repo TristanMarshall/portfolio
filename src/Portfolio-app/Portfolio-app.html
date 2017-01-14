@@ -1,0 +1,215 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+<dom-module id="Portfolio-app">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      paper-tabs {
+        width: 100%;
+      }
+      paper-tab {
+        width: 100%;
+        height: 35px;
+        color: var(--paper-teal-500);
+        text-align: center;
+        font-weight: 100;
+        font-size: 12px;
+      }
+
+    .self-end {
+      @apply(--layout-self-end);
+    }
+
+      .outer-tab-div {
+        width: 100%;
+      }
+
+      .custom-fab {
+        margin-top: 55px;
+        z-index: 10;
+        padding: 2px;
+        height: 55px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: #252525;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.47);
+
+      }
+
+      .testdiv {
+        background-color: tomato;
+        height: 10000px;
+      }
+
+      img {
+        margin-top: 15px;
+        margin-left: 10px;
+        width: 70%;
+      }
+
+      .bottom-toolbar-content {
+        color: #7e7e7e;
+        font-size: 13px;
+        font-weight: 100;
+        letter-spacing: 0px;
+      }
+
+      .test-div {
+        background-color: white; 
+        width: 100%; max-width: 700px; 
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.67); 
+        height: 600px; 
+        margin: 0 auto;
+      }
+
+
+      @media only screen and (min-width: 640px) {
+         app-drawer {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+        .paper-tab-div {
+          display: none;
+        }
+      }
+
+
+    </style>
+
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:page"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+
+    <app-drawer-layout>
+
+      <app-drawer>
+        <app-toolbar style="">
+          MAIN MENU
+        </app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a class="active-class homeMargin" name="home" href="/home" drawer-toggle>Home</a>
+          <hr class="menu-line">
+          <a class="active-class" name="design" href="/design" drawer-toggle>Design</a>
+          <hr class="menu-line">
+          <a class="active-class" name="development" href="/development" drawer-toggle>Development</a>
+          <hr class="menu-line">
+          <a class="active-class" name="contact" href="/contact" drawer-toggle>Contact</a>
+          <hr class="menu-line">
+          <a class="active-class" name="test" href="/test" drawer-toggle>Test</a>
+          <hr class="menu-line">
+        </iron-selector>
+      </app-drawer>
+      <app-header-layout fullbleed>
+        <app-header condenses reveals fixed effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button>
+          </app-toolbar>
+          <app-toolbar>
+          <div main-title></div>
+            <div class="outer-tab-div">
+              <div class="commander-inner-section">
+                <img style="width: 150px; margin-bottom: 70px;" src="/images/logo-TM-outline.png">
+              </div>
+            </div>
+          </app-toolbar>
+          <app-toolbar style="margin: 0 auto;">
+            <div class="commander-inner-section paper-tab-div">
+              <paper-tabs selected="[[page]]" class="bottom self-end" style="width: 500px; margin: 0 auto;">
+                  <paper-tab link>
+                    <a href="/home" class="link" tab-index="-1">Home</a>
+                  </paper-tab>
+                  <paper-tab link>
+                    <a href="/design" class="link" tab-index="-1">Design</a>
+                  </paper-tab>
+                  <paper-tab link>
+                    <a href="/development" class="link" tab-index="-1">Development</a>
+                  </paper-tab>
+                  <paper-tab link>
+                    <a href="/contact" class="link" tab-index="-1">Contact</a>
+                  </paper-tab>
+                  <paper-tab link>
+                    <a href="/test" class="link" tab-index="-1">Test</a>
+                  </paper-tab>
+              </paper-tabs>
+            </div>
+          </app-toolbar>
+        </app-header>
+
+
+
+
+
+        <iron-pages selected="[[page]]" role="main" attr-for-selected="name">
+          <home-page name="home"></home-page>
+          <design-page name="design"></design-page>
+          <development-page name="development"></development-page>
+          <contact-page name="contact"></contact-page>
+          <test-page name="test"></test-page>
+        </iron-pages>
+
+      </app-header-layout>
+    <app-drawer-layout>
+
+
+        <!-- <paper-fab icon="home"></paper-fab> -->
+
+                <!-- <div class="custom-fab">
+                  <img src="/images/logo-TM-outline.png">
+                </div> -->
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'Portfolio-app',
+
+      properties: {
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged'
+        },
+        prop1: {
+          type: String,
+          value: 'Portfolio-app',
+        },
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+
+      // closeMenu: function() {
+      //   this.$.menu.close();
+      // },
+
+      _routePageChanged: function(page) {
+        this.page = page || 'home';
+      },
+
+      _pageChanged: function(page) {
+        // load page import on demand.
+        this.importHref(
+          this.resolveUrl(page + "-page" + '.html'), null, null, true);
+      },
+
+
+
+    });
+  </script>
+</dom-module>
