@@ -14,6 +14,7 @@
       paper-tabs {
         width: 100%;
       }
+
       paper-tab {
         width: 100%;
         height: 35px;
@@ -23,9 +24,38 @@
         font-size: 12px;
       }
 
-    .self-end {
-      @apply(--layout-self-end);
-    }
+      .bottom-toolbar {
+        /*background-color: white;*/
+        border-top: 1px solid #aeaeae;
+        border-bottom: 1px solid #aeaeae;
+
+      }
+
+      .menu-line {
+        border: none;
+        padding-bottom: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-right: 3px;
+        margin-left: 3px;
+      }
+
+      .menu-item-margin {
+        margin-left: 15px;
+      }
+
+      .menu-link-items {
+        color: var(--paper-teal-500);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        /*margin-left: 15px;*/
+      }
+
+      .self-end {
+        @apply(--layout-self-end);
+      }
 
       .outer-tab-div {
         width: 100%;
@@ -69,9 +99,33 @@
         margin: 0 auto;
       }
 
+      .header-logo-mobile {
+        width: 70px;
+        float: right;
+        margin-bottom: 15px;
+      }
+
+      .paper-tab-div {
+        /*text-align: right;*/
+        /*width: 100%;*/
+      }
+
+      .header-name-mobile {
+        margin-left: 20px;
+        color: rgba(0, 0, 0, .7);
+        font-weight: 200;
+        font-size: 14px;
+      }
 
       @media only screen and (min-width: 640px) {
          app-drawer {
+          display: none;
+        }
+        .header-logo-mobile-div {
+          display: none;
+        } 
+
+        .header-name-mobile {
           display: none;
         }
       }
@@ -80,13 +134,17 @@
         .paper-tab-div {
           display: none;
         }
+        .header-logo-desktop {
+          display: none;
+        }
+
       }
 
 
     </style>
 
-
     <app-location route="{{route}}"></app-location>
+
     <app-route
       route="{{route}}"
       pattern="/:page"
@@ -95,63 +153,72 @@
     </app-route>
 
     <app-drawer-layout>
-
       <app-drawer>
         <app-toolbar style="">
           MAIN MENU
         </app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a class="active-class homeMargin" name="home" href="/home" drawer-toggle>Home</a>
+          <a class="active-class menu-link-items menu-item-margin homeMargin" name="home" href="/home" drawer-toggle>Home</a>
           <hr class="menu-line">
-          <a class="active-class" name="design" href="/design" drawer-toggle>Design</a>
+          <a class="active-class menu-link-items menu-item-margin" name="design" href="/design" drawer-toggle>Design</a>
           <hr class="menu-line">
-          <a class="active-class" name="development" href="/development" drawer-toggle>Development</a>
+          <a class="active-class menu-link-items menu-item-margin" name="development" href="/development" drawer-toggle>Development</a>
           <hr class="menu-line">
-          <a class="active-class" name="contact" href="/contact" drawer-toggle>Contact</a>
+          <a class="active-class menu-link-items menu-item-margin" name="contact" href="/contact" drawer-toggle>Contact</a>
           <hr class="menu-line">
-          <a class="active-class" name="test" href="/test" drawer-toggle>Test</a>
+          <a class="active-class menu-link-items menu-item-margin" name="test" href="/test" drawer-toggle>Test</a>
           <hr class="menu-line">
         </iron-selector>
       </app-drawer>
       <app-header-layout fullbleed>
-        <app-header condenses reveals fixed effects="waterfall">
+        <app-header condenses fixed effects="waterfall">
+
           <app-toolbar>
             <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button>
+            <div class="header-logo-mobile-div" main-title>
+                <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
+            </div>
           </app-toolbar>
+
+
           <app-toolbar>
           <div main-title></div>
-            <div class="outer-tab-div">
-              <div class="commander-inner-section">
-                <img style="width: 150px; margin-bottom: 70px;" src="/images/logo-TM-outline.png">
+            <div class="commander-section width100" style="padding-right: 0px;">
+              <div class="commander-inner-section width100">
+                <div class="header-logo-desktop">
+                 <img style="width: 150px; margin-bottom: 75px;" src="/images/logo-TM-outline.png">
+                </div>
               </div>
             </div>
           </app-toolbar>
-          <app-toolbar style="margin: 0 auto;">
-            <div class="commander-inner-section paper-tab-div">
-              <paper-tabs selected="[[page]]" class="bottom self-end" style="width: 500px; margin: 0 auto;">
-                  <paper-tab link>
-                    <a href="/home" class="link" tab-index="-1">Home</a>
-                  </paper-tab>
-                  <paper-tab link>
-                    <a href="/design" class="link" tab-index="-1">Design</a>
-                  </paper-tab>
-                  <paper-tab link>
-                    <a href="/development" class="link" tab-index="-1">Development</a>
-                  </paper-tab>
-                  <paper-tab link>
-                    <a href="/contact" class="link" tab-index="-1">Contact</a>
-                  </paper-tab>
-                  <paper-tab link>
-                    <a href="/test" class="link" tab-index="-1">Test</a>
-                  </paper-tab>
-              </paper-tabs>
-            </div>
+
+          <app-toolbar class="bottom-toolbar" style="margin: 0 auto;">
+              <div class="commander-section width100">
+            <div class="header-name-mobile captain-header" main-title>Tristan Marshall</div>
+
+                <div class="commander-inner-section paper-tab-div">
+                  <paper-tabs selected="[[page]]" class="bottom self-end">
+                      <paper-tab link>
+                        <a href="/home" class="link menu-link-items" tab-index="-1">Home</a>
+                      </paper-tab>
+                      <paper-tab link>
+                        <a href="/design" class="link menu-link-items" tab-index="-1">Design</a>
+                      </paper-tab>
+                      <paper-tab link>
+                        <a href="/development" class="link menu-link-items" tab-index="-1">Development</a>
+                      </paper-tab>
+                      <paper-tab link>
+                        <a href="/contact" class="link menu-link-items" tab-index="-1">Contact</a>
+                      </paper-tab>
+                      <paper-tab link>
+                        <a href="/test" class="link menu-link-items" tab-index="-1">Test</a>
+                      </paper-tab>
+                  </paper-tabs>
+                </div>
+              </div>
+
           </app-toolbar>
         </app-header>
-
-
-
-
 
         <iron-pages selected="[[page]]" role="main" attr-for-selected="name">
           <home-page name="home"></home-page>
@@ -162,12 +229,10 @@
         </iron-pages>
 
       </app-header-layout>
-    <app-drawer-layout>
-
-
+    </app-drawer-layout>
         <!-- <paper-fab icon="home"></paper-fab> -->
 
-                <!-- <div class="custom-fab">
+      <!--           <div class="custom-fab">
                   <img src="/images/logo-TM-outline.png">
                 </div> -->
 
@@ -194,10 +259,6 @@
         '_routePageChanged(routeData.page)'
       ],
 
-      // closeMenu: function() {
-      //   this.$.menu.close();
-      // },
-
       _routePageChanged: function(page) {
         this.page = page || 'home';
       },
@@ -208,6 +269,9 @@
           this.resolveUrl(page + "-page" + '.html'), null, null, true);
       },
 
+      test: function() {
+        console.log("test");
+      }
 
 
     });

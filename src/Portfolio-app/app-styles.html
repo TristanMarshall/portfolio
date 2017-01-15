@@ -27,7 +27,10 @@
 /*//////////////////////////////////////////////////////////////////////////////*/
  
     app-drawer {
+      --app-drawer-scrim-background: red; 
       --app-drawer-content-container: {
+        background-color: #212121;
+        color: var(--paper-black-900);
         box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
                 width: 200px;
       }
@@ -41,12 +44,12 @@
       };
     }
 
-/*    app-toolbar {
+    app-toolbar {
       font-family: 'Roboto', Helvetica, sans-serif;
       color: white;
       --app-toolbar-font-size: 10px;
       z-index: 1;
-    }*/
+    }
 
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* FULL SITE STYLE CLASSES */
@@ -54,11 +57,18 @@
 
       a:link, a:visited {
         text-decoration: none;
-        color: var(--paper-teal-500);
-        font-size: 14px;
-        font-weight: 400;
       }
 
+      .width100 {
+        width: 100%;
+      }
+
+      .captain-header {
+        font-size: 18px;
+        font-family: Roboto Condensed;
+        color: rgba(255, 255, 255, .7);
+        text-align: left;
+      }
 
 
 
@@ -138,7 +148,7 @@
       }
 
       img {
-        width: 75%;
+        /*width: 75%;*/
       }
 
       @media only screen and (max-width: 760px) {
