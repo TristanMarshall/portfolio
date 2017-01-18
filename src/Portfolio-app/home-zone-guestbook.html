@@ -1,0 +1,281 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+<dom-module id="home-zone-guestbook">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      paper-button {
+        background-color: var(--paper-pink-600);
+        color: white;
+      }
+
+      paper-dialog.guestbook-class {
+        top: 75px;
+        width: 96%;
+        margin: 20px;
+        max-width: 400px;
+        max-height: 400px;
+      }
+
+      #guestbook {
+        margin-top: 150px;
+      }
+
+      .guestbook-page {
+        height: auto;
+        text-align: center; 
+      }
+
+      .guestbook-card {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #000000;
+        border-radius: 3px;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .captain-dialog-header {
+        color: rgba(0, 0, 0, .7);
+        font-family: Roboto;
+        font-style: italic;
+        font-size: 24px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+
+      .paper-textarea {
+        margin-top: 25px;
+        margin-bottom: 50px;
+      }
+
+      paper-input {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+
+      paper-textarea {
+        text-align: left;
+      }
+
+      @media only screen and (max-width: 640px) {
+        #guestbook {
+          margin-top: 0px;
+       }
+      }
+
+    </style>
+
+<!-- /////////////////////////////////////////// -->
+<!-- GUESTBOOK SECTION -->
+<!-- /////////////////////////////////////////// -->
+    <div class="commander-section-dark">
+      <div class="commander-inner-section">
+
+        <div class="captain-header">
+          Site Guestbook
+        </div>
+        <hr class="captain-app-line">
+
+
+
+
+
+
+
+          <paper-dialog class="guestbook-class" id="guestbook">
+            <iron-pages id="guestbookpages" selected="0">
+              
+              <div class="guestbook-page">
+                <div class="captain-dialog-header">
+                  Choose an avatar.
+                </div>
+                <div style="height: auto; padding-top: 10px; padding-bottom: 10px; 400px; margin: 0 auto; background-color: #f7f7f7;">
+
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left; background-color: #aeaeae;"></div>
+
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; background-color: #aeaeae;"></div>
+
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right; background-color: #aeaeae;"></div>
+
+                </div>
+                <br>
+                <br>
+                <paper-button on-tap="next_page">
+                  CONTINUE
+                </paper-button>
+              </div>
+
+              <div class="guestbook-page">
+                <div class="captain-dialog-header">
+                  Enter your name <br><br> &amp; location.
+                </div>
+                <paper-input value="{{person}}" label="name"></paper-input>
+                <paper-input value="{{location}}" label="location"></paper-input>
+                <br>
+                <br>
+                <paper-button style="bottom: 0;" on-tap="next_page">
+                  CONTINUE
+                </paper-button>
+              </div>
+
+              <div class="guestbook-page">
+                <div class="captain-dialog-header">
+                  Leave a message.
+                </div>
+                  <br>
+                  <paper-textarea value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
+                  <br>
+                  <br>
+                  <br>
+                <paper-button on-tap="add_entry">
+                  ADD ENTRY TO GUESTBOOK
+                </paper-button>
+              </div>
+            </iron-pages>
+          </paper-dialog>
+
+
+
+
+
+
+
+        <div class="commander-right-small">
+          <div style="width: 100%; background-color: #65d5cb;">
+            <div class="captain-content">
+              Here, you can make a guest book entry,  this is a Polymer custom element. The guest list data is being saved to Firebase
+            </div>
+            <paper-button onclick="guestbook.open();">OPEN GUESTBOOK</paper-button>
+          </div>
+        </div> 
+
+
+
+
+
+
+        <div class="commander-left-large">
+          <div style="background-color: #c2f1ed;">
+
+            <iron-list style="height: 200px; border: 1px solid pink;" is="iron-list" items="{{guests}}"> 
+              <template>       
+                <div class="guestbook-card">
+                  <div>
+                  </div>
+                  <div>
+                    <div>
+                      {{item.person}}
+                    </div>
+                    <div>
+                      {{item.location}}
+                    </div>
+                    <div>
+                      {{item.message}}
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </iron-list>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'home-zone-guestbook',
+
+      properties: {
+        person: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true
+        },
+        location: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true
+        },
+        message: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true
+        },
+        guests: {
+          type: Array,
+          value: [
+            {
+              person: "Barbara Nuggets",
+              location: "Sacramento, California",
+              message: "This site looks okay! Decent job!"
+            },
+            {
+              person: "Gene Regonal",
+              location: "Tampa Bay, Floriday",
+              message: "Well I'll be! cool computer page!"
+            },
+            {
+              person: "Ross Cravettes",
+              location: "Portland, Maine",
+              message: "Very average of you!"
+            },
+          ],
+          notify: true,
+          reflectToAttribute: true
+        },
+      },
+
+      next_page: function() {
+
+        // change iron-pages
+        this.$.guestbookpages.selectNext();
+      },
+
+      add_entry: function() {
+
+        // create empty guestbook entry object
+        entry = {
+          person: "",
+          location: "",
+          message: ""
+        };
+
+        // set values to entry object
+        entry.person = this.person;
+        entry.location = this.location;
+        entry.message = this.message;
+
+        // push entry object into guests array
+        this.unshift('guests', entry);
+
+        // reset values
+        this.set("person", "");
+        this.set("location", "");
+        this.set("message", "");
+
+        // reset iron-pages
+        this.$.guestbookpages.selected = 0;
+
+        // close guestbook
+        this.$.guestbook.close();
+      },
+    });
+  </script>
+</dom-module>

@@ -11,27 +11,28 @@
         display: block;
       }
 
-      hr {
-        border: none;
-        background-color: rgba(255, 255, 255, 0.15);
-        padding-bottom: 1px;
-        margin-top: 5px;
-        margin-bottom: 5px;
+      .triple-step-header-line {
+        max-width: 175px;
       }
 
+      .triple-button {
+        background-color: var(--paper-teal-600);
+        color: white;
+        margin-top: 20px;
+        width: 150px;
+      }
 
+      .image-container {
+        height: 150px;
+      }
 
       .captain-subheader {
         font-size: 14px;
         font-family: Roboto;
         font-weight: 200;
-        color: rgba(51, 188, 169, 0.56);
+        color: var(--paper-indigo-600);
         text-align: left;
         padding-bottom: 10px;
-      }
-
-      span {
-        font-style: italic;
       }
 
       .captain-content {
@@ -43,14 +44,38 @@
         line-height: 30px;
       }
 
+      .captain-sub-content {
+        font-size: 14px;
+        font-family: Roboto;
+        color: rgba(0, 0, 0, 0.7);
+        text-align: justify;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      span {
+        font-style: italic;
+        /*color: var(--paper-teal-600);*/
+      }
+
       @media only screen and (max-width: 640px) {
         .captain-content {
           text-align: justify;
+        }
+
+        .captain-sub-content {
+          padding-left: ;
         }
       }
 
     </style>
 
+
+<!-- /////////////////////////////////////////// -->
+<!-- BIOGRAPHY SECTION -->
+<!-- /////////////////////////////////////////// -->
     <div class="commander-section-dark">
       <div class="commander-inner-section">
         <div class="commander-right-small">
@@ -62,7 +87,7 @@
           <div class="captain-header">
             Tristan Marshall
           </div>
-          <hr>
+          <hr class="captain-app-line">
           <div class="captain-subheader">
             <span>front-end developer / </span>designer
           </div>
@@ -73,21 +98,70 @@
       </div>
     </div>
 
-      <div class="commander-section">
-        <div class="commander-inner-section">
-          <div class="commander-guide">
-            <div class="commander-triple-one">
-              <img src="/images/large-icon-desktop-code.png" style="width: 100%; max-width: 200px;">
+<!-- /////////////////////////////////////////// -->
+<!-- 3 SECTION NAVIGATION SECTION -->
+<!-- /////////////////////////////////////////// -->
+    <div class="commander-section" style="background-color: #f8f8f8;">
+      <div class="commander-inner-section">
+        <div class="commander-guide">
+          <div class="commander-triple-one">
+            <div class="commander-triple-inner-one">
+              <div class="image-container">
+                <img src="/images/large-icon-desktop-code-circle.png" style="width: 100%; max-width: 150px;">
+              </div>
+              <div class="captain-header-dark">
+                Development
+              </div>
+              <hr class="captain-app-line triple-step-header-line">
+              <div class="captain-sub-content">
+                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+              </div>
+              <a href="/development">
+                <paper-button class="triple-button" raised>DEVELOPMENT</paper-button>
+              </a>
             </div>
-            <div class="commander-triple-two">
-              <img src="/images/profile-photo-TM.png" style="width: 100%; max-width: 250px;">
+          </div>
+          <div class="commander-triple-two">
+            <div class="commander-triple-inner-two">
+              <div class="image-container">
+                <img src="/images/large-icon-desktop-design-circle.png" style="width: 100%; max-width: 150px;">
+              </div>
+              <div class="captain-header-dark">
+                Design
+              </div>
+              <hr class="captain-app-line triple-step-header-line">
+              <div class="captain-sub-content">
+                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+              </div>
+              <a href="/design">
+                <paper-button class="triple-button" raised>DESIGN</paper-button>
+              </a>
             </div>
-            <div class="commander-triple-three">
-              <img src="/images/profile-photo-TM.png" style="width: 100%; max-width: 250px;">
+          </div>
+          <div class="commander-triple-three">
+            <div class="commander-triple-inner-three">
+              <div class="image-container">
+                <img src="/images/profile-photo-TM.png" style="width: 100%; max-width:150px;">
+              </div>
+              <div class="captain-header-dark">
+                Contact
+              </div>
+              <hr class="captain-app-line triple-step-header-line">
+              <div class="captain-sub-content">
+                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+              </div>
+              <a href="/contact">
+                <paper-button class="triple-button" raised>CONTACT</paper-button>
+              </a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+
+    <home-zone-guestbook></home-zone-guestbook>
+
 
   </template>
 

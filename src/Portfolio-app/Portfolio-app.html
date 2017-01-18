@@ -11,6 +11,10 @@
         display: block;
       }
 
+      .header-main-menu {
+        margin: 0 auto;
+      }
+
       paper-tabs {
         width: 100%;
       }
@@ -24,6 +28,10 @@
         font-size: 12px;
       }
 
+      .top-toolbar {
+        height: 125px;
+      }
+
       .bottom-toolbar {
         /*background-color: white;*/
         border-top: 1px solid #aeaeae;
@@ -34,7 +42,8 @@
       .menu-line {
         border: none;
         padding-bottom: 1px;
-        background-color: rgba(255, 255, 255, 0.15);
+        background: linear-gradient(91deg, rgba(29,233,182,1) 0%, rgba(29,233,182,1) 20%, rgba(48,63,159,1) 100%);
+        opacity: .3;
         margin-top: 25px;
         margin-bottom: 25px;
         margin-right: 3px;
@@ -46,11 +55,18 @@
       }
 
       .menu-link-items {
+        color: var(--paper-pink-500);
+        opacity: .8;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .menu-link-items-desktop {
         color: var(--paper-teal-500);
         font-family: Roboto;
         font-size: 14px;
         font-weight: 400;
-        /*margin-left: 15px;*/
       }
 
       .self-end {
@@ -80,7 +96,7 @@
 
       img {
         margin-top: 15px;
-        margin-left: 10px;
+        /*margin-left: 10px;*/
         width: 70%;
       }
 
@@ -131,9 +147,11 @@
       }
 
       @media only screen and (max-width: 640px) {
-        .paper-tab-div {
+
+        .destroy-app-toolbar {
           display: none;
         }
+
         .header-logo-desktop {
           display: none;
         }
@@ -154,10 +172,13 @@
 
     <app-drawer-layout>
       <app-drawer>
-        <app-toolbar style="">
-          MAIN MENU
+        <app-toolbar class="top-toolbar">
+          <div class="header-main-menu">
+            <img style="width: 100px;" src="/images/logo-TM-outline.png">
+          </div>
         </app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <hr class="menu-line">        
           <a class="active-class menu-link-items menu-item-margin homeMargin" name="home" href="/home" drawer-toggle>Home</a>
           <hr class="menu-line">
           <a class="active-class menu-link-items menu-item-margin" name="design" href="/design" drawer-toggle>Design</a>
@@ -181,37 +202,37 @@
           </app-toolbar>
 
 
-          <app-toolbar>
+          <app-toolbar class="destroy-app-toolbar">
           <div main-title></div>
             <div class="commander-section width100" style="padding-right: 0px;">
-              <div class="commander-inner-section width100">
+              <div class="commander-inner-section width100 align-right">
                 <div class="header-logo-desktop">
-                 <img style="width: 150px; margin-bottom: 75px;" src="/images/logo-TM-outline.png">
+                 <img style="width: 150px; margin-bottom: 75px; margin-right: 30px;" src="/images/logo-TM-outline.png">
                 </div>
               </div>
             </div>
           </app-toolbar>
 
-          <app-toolbar class="bottom-toolbar" style="margin: 0 auto;">
+          <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto;">
               <div class="commander-section width100">
-            <div class="header-name-mobile captain-header" main-title>Tristan Marshall</div>
+            <div class="header-name-mobile captain-header" main-title></div>
 
-                <div class="commander-inner-section paper-tab-div">
+                <div class="commander-inner-section">
                   <paper-tabs selected="[[page]]" class="bottom self-end">
                       <paper-tab link>
-                        <a href="/home" class="link menu-link-items" tab-index="-1">Home</a>
+                        <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
                       </paper-tab>
                       <paper-tab link>
-                        <a href="/design" class="link menu-link-items" tab-index="-1">Design</a>
+                        <a href="/design" class="link menu-link-items-desktop" tab-index="-1">Design</a>
                       </paper-tab>
                       <paper-tab link>
-                        <a href="/development" class="link menu-link-items" tab-index="-1">Development</a>
+                        <a href="/development" class="link menu-link-items-desktop" tab-index="-1">Development</a>
                       </paper-tab>
                       <paper-tab link>
-                        <a href="/contact" class="link menu-link-items" tab-index="-1">Contact</a>
+                        <a href="/contact" class="link menu-link-items-desktop" tab-index="-1">Contact</a>
                       </paper-tab>
                       <paper-tab link>
-                        <a href="/test" class="link menu-link-items" tab-index="-1">Test</a>
+                        <a href="/test" class="link menu-link-items-desktop" tab-index="-1">Test</a>
                       </paper-tab>
                   </paper-tabs>
                 </div>

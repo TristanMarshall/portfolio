@@ -2,8 +2,6 @@
 <link rel="import" href="app-styles.html">
 
 
-
-
 <dom-module id="test-page">
   <template>
     <style is="custom-style" include="app-styles">
@@ -11,119 +9,64 @@
         display: block;
       }
 
-      .commander-section {
-        height: auto; 
-        padding: 50px;
+      paper-button {
+        background-color: var(--paper-pink-600);
+        color: white;
       }
 
-      .commander-section-dark {
-        height: auto; 
-        padding: 50px;
-        background-color: #212121;
+
+      paper-dialog.guestbook-class {
+        top: 75px;
+        width: 96%;
+        margin: 20px;
+        max-width: 400px;
+        max-height: 400px;
       }
 
-      .commander-inner-section {
-        max-width: 800px; 
-        width: 100%; 
+      #guestbook {
+        margin-top: 150px;
+      }
+
+      .guestbook-page {
         height: auto;
-        margin: 0 auto; 
-        text-align: center;
+        text-align: center; 
       }
 
-      .commander-guide {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+      .captain-dialog-header {
+        color: rgba(0, 0, 0, .7);
+        font-family: Roboto;
+        font-style: italic;
+        font-size: 24px;
+        padding-top: 25px;
+        padding-bottom: 25px;
       }
 
-      .commander-left-large {
-        width: 66.5%; 
-        background-color: #ffeded; 
-  /*      display: inline-block;
-        float: left;*/
+      .paper-textarea {
+        margin-top: 25px;
+        margin-bottom: 50px;
       }
 
-      .commander-right-small {
-        float: right;
-        width: 33.5%;
-        background-color: #f9cccc; 
-        /*display: inline-block;    */
+      paper-input {
+        margin-bottom: 10px;
+        text-align: left;
       }
 
-       .commander-card {
-        background-color: white;
-        /*padding: 15px;*/
-        box-shadow:0px 3px 5px rgba(0, 0, 0, .4), 0px -1px 3px rgba(0, 0, 0, .4);
-       }
-
-      .commander-left-small {
-        width: 33.5%; 
-        background-color: #f9cccc; 
-        display: inline-block;  
-        float: left;   
-      }
-
-      .commander-right-large {
-        width: 66.5%; 
-        background-color: #ffeded; 
-        display: inline-block;
-      }
-
-      .commander-triple-one {
-        width: 33.333333%; 
-        display: inline-block;
-        float: left;
-      }
-
-      .commander-triple-two {
-        width: 33.333333%; 
-        display: inline-block;
-        float: left;
-      }
-
-      .commander-triple-three {
-        width: 33.333333%; 
-        display: inline-block; 
-        /*float: right;*/
-      }
-
-      img {
-        width: 75%;
-      }
-
-      @media only screen and (max-width: 760px) {
-        .commander-section, .commander-section-dark {
-          padding: 25px;
-        }
+      paper-textarea {
+        text-align: left;
       }
 
       @media only screen and (max-width: 640px) {
-
-        .commander-section, .commander-section-dark {
-          padding: 10px;
-        }
-
-        .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
-          float: none;
-          width: 100%;
-          display: block;
-        }
-
-        .commander-triple-one, .commander-triple-two, .commander-triple-three {
-          width: 100%;
-          float: none;
-          margin-bottom: 5px;
-        } 
+        #guestbook {
+          margin-top: 0px;
+       }
       }
 
     </style>
 
-
-
-    <div class="commander-container">
 <!-- /////////////////////////////////////////// -->
-<!-- RIGHT LEFT / LARGE LEFT SECTIONS -->
+<!-- SMALL RIGHT / LARGE LEFT SECTIONS -->
 <!-- /////////////////////////////////////////// -->
+
       <div class="commander-section-dark">
         <div class="commander-inner-section">
           <div class="commander-right-small">
@@ -190,8 +133,9 @@
       is: 'test-page',
 
       properties: {
-
       },
+
+
 
     });
   </script>
