@@ -22,6 +22,31 @@
       @apply(--layout-center-center);
     }
 
+    .flex-self-align div {
+      @apply(--layout-flex);
+    }
+
+    .child1 {
+      @apply(--layout-self-start);
+    }
+
+    .child2 {
+      @apply(--layout-self-center);
+    }
+
+    .child3 {
+      @apply(--layout-self-end);
+    }
+
+    .child4 {
+      @apply(--layout-self-stretch);
+    }
+
+  .flex-end-justified {
+    @apply(--layout-horizontal);
+    @apply(--layout-end-justified);
+  }
+
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* POLYMER APP ELEMENT STYLES */
 /*//////////////////////////////////////////////////////////////////////////////*/
@@ -55,9 +80,28 @@
 /* FULL SITE STYLE CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/
 
+      .mobile-hide {
+        display: block;
+      }
+
+      .mobile-show {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--paper-blue-500);
+        font-weight: 500;
+      }
+
       a:link, a:visited {
         text-decoration: none;
         outline: none;
+      }
+
+      .captain-subheader-span {
+        font-style: italic;
+        font-weight: 500;
       }
 
       .width100 {
@@ -72,20 +116,90 @@
         text-align: left;
       }
 
+      .padding-right-20px {
+        padding-right: 20px;
+      }
+
+      .padding-left-20px {
+        padding-left: 20px;
+      }
+
+      .margin-right-20px {
+        margin-right: 20px;
+      }
+
+      .margin-left-20px {
+        margin-left: 20px;
+      }
+
+      .cursor-pointer {
+        cursor: pointer;
+      }
+
+      .captain-image {
+        width: 100%;
+        max-width: 250px;
+      }
+
       .captain-header {
-        font-size: 18px;
-        font-family: Roboto Condensed;
+        font-size: 24px;
+        font-family: 'Roboto Condensed', sans-serif;
         color: rgba(255, 255, 255, .7);
         text-align: left;
       }
 
-      .captain-header-dark {
-        font-size: 18px;
-        font-family: Roboto Condensed;
+      .captain-header-dark-center {
+        font-size: 24px;
+        font-family: 'Roboto Condensed', sans-serif;
         color: rgba(0, 0, 0, .7);
         text-align: center;
         padding-top: 10px;
         padding-bottom: 5px;
+      }
+
+      .captain-header-dark-left {
+        font-size: 24px;
+        font-family: 'Roboto Condensed', sans-serif;
+        color: rgba(0, 0, 0, .7);
+        text-align: left;
+      }
+
+      .captain-subheader {
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: var(--paper-indigo-600);
+        text-align: left;
+        padding-bottom: 10px;
+      }
+
+      .captain-content-dark {
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .6);
+        text-align: left;
+        line-height: 30px;
+      }
+
+      .captain-content-light {
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: rgba(255, 255, 255, .6);
+        text-align: left;
+        line-height: 30px;
+      }
+
+      .captain-sub-content {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        color: rgba(0, 0, 0, 0.7);
+        text-align: justify;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        max-width: 200px;
+        margin: 0 auto;
       }
 
       .captain-app-line {
@@ -97,6 +211,11 @@
         opacity: 0.8;
       }
 
+      .captain-app-button {
+        width: 100%;
+        max-width: 200px;
+      }
+
 
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* COMMANDER GRID CLASSES */
@@ -104,12 +223,12 @@
 
       .commander-section {
         height: auto; 
-        padding: 50px;
+        padding: 75px 50px;
       }
 
       .commander-section-dark {
         height: auto; 
-        padding: 50px;
+        padding: 75px 50px;
         background-color: #111111;
       }
 
@@ -118,7 +237,6 @@
         width: 100%; 
         height: auto;
         margin: 0 auto; 
-        /*text-align: right;*/
       }
 
       .commander-guide {
@@ -129,19 +247,17 @@
 
       .commander-left-large {
         width: 60%;  
-  /*      display: inline-block;
-        float: left;*/
+        padding-right: 20px;
       }
 
       .commander-right-small {
         float: right;
+        text-align: right;
         width: 40%; 
-        /*display: inline-block;    */
       }
 
        .commander-card {
-        /*padding: 15px;*/
-        box-shadow:0px 3px 5px rgba(0, 0, 0, .4), 0px -1px 3px rgba(0, 0, 0, .4);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, .4), 0px -1px 3px rgba(0, 0, 0, .4);
        }
 
       .commander-left-small {
@@ -190,23 +306,58 @@
         float: right;
       }
 
-      img {
-        /*width: 75%;*/
-      }
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* MEDIA QUERIES */
+/*//////////////////////////////////////////////////////////////////////////////*/
 
-      @media only screen and (max-width: 760px) {
+      @media only screen and (max-width: 750px) {
         .commander-section, .commander-section-dark {
-          padding: 30px;
+          padding: 75px 30px;
+        }
+
+  /*      .captain-header, .captain-header-dark-left {
+          font-size: 18px;
+        }*/
+
+        .captain-sub-content {
+          max-width: 150px;
         }
       }
 
       @media only screen and (max-width: 640px) {
 
-        .commander-section, .commander-section-dark {
-          padding: 25px;
+        .mobile-show {
+          display: block;
         }
 
-        .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
+        .mobile-hide {
+          display: none;
+        }
+
+        .captain-content-dark, .captain-content-light {
+          text-align: justify;
+        }
+
+        .captain-content {
+          text-align: justify;
+        }
+
+        .captain-sub-content {
+          max-width: 200px;
+        }
+
+        .padding-right-20px, .padding-left-20px, .margin-right-20px, .margin-left-20px {
+          padding-right: 0px;
+          padding-left: 0px;
+          margin-right: 0px;
+          margin-left: 0px;
+        }
+
+        .commander-section, .commander-section-dark {
+          padding: 50px 25px;
+        }
+
+        .commander-inner-section, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
           float: none;
           width: 100%;
           display: block;
@@ -214,13 +365,30 @@
           margin: 0 auto;
         }
 
-        .commander-triple-one, .commander-triple-two, .commander-triple-three {
+
+        .commander-triple-one {
+          width: 100%;
+          height: auto;
+          float: none;
+          padding-top: 0px;
+          padding-bottom: 50px;
+        }
+
+        .commander-triple-two {
           width: 100%;
           height: auto;
           float: none;
           padding-top: 50px;
           padding-bottom: 50px;
         } 
+
+        .commander-triple-three {
+          width: 100%;
+          height: auto;
+          float: none;
+          padding-top: 50px;
+          padding-bottom: 0px;     
+        }
 
         .commander-triple-inner-one, .commander-triple-inner-two, .commander-triple-inner-three {
           width: 100%;
@@ -234,6 +402,12 @@
 
         .commander-right-small, .commander-left-small {
           text-align: center;
+        }
+      }
+
+      @media only screen and (max-width: 321px) {
+        .commander-section, .commander-section-dark {
+          padding: 35px 15px 50px;
         }
       }
 

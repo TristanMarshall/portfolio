@@ -33,7 +33,7 @@
       }
 
       .bottom-toolbar {
-        /*background-color: white;*/
+        background-color: white;
         border-top: 1px solid #aeaeae;
         border-bottom: 1px solid #aeaeae;
 
@@ -174,7 +174,7 @@
       <app-drawer>
         <app-toolbar class="top-toolbar">
           <div class="header-main-menu">
-            <img style="width: 100px;" src="/images/logo-TM-outline.png">
+            <img style="width: 100px;" src="/images/logo-TM-outline-white.png">
           </div>
         </app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
@@ -249,13 +249,18 @@
           <test-page name="test"></test-page>
         </iron-pages>
 
+
+
+
+     <div style="      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: white;
+      font-size: 14px;"></div>
+
+
       </app-header-layout>
     </app-drawer-layout>
-        <!-- <paper-fab icon="home"></paper-fab> -->
-
-      <!--           <div class="custom-fab">
-                  <img src="/images/logo-TM-outline.png">
-                </div> -->
 
   </template>
 

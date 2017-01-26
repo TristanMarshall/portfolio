@@ -9,21 +9,36 @@
         display: block;
       }
 
+      paper-material {
+        @apply(--layout-horizontal);
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        margin: 0 auto 10px auto;
+      }
+
       paper-button {
         background-color: var(--paper-pink-600);
         color: white;
+        margin-top: 20px;
+        margin-left: 0px;
       }
 
       paper-dialog.guestbook-class {
-        top: 75px;
+        top: 150px;
         width: 96%;
         margin: 20px;
         max-width: 400px;
-        max-height: 400px;
+        max-height: 350px;
+        min-height: 350px;
       }
 
-      #guestbook {
-        margin-top: 150px;
+      iron-pages {
+        margin-top: 15px;
+      }
+
+      .paper-textarea {
+        /*padding-top: 25px;*/
       }
 
       .guestbook-page {
@@ -31,31 +46,59 @@
         text-align: center; 
       }
 
+      .guestbook-page-inner {
+        min-height: 175px;
+      }
+
+      .validation-error-div {
+        height: 10px; 
+        text-align: center; 
+        font-family: 'Roboto', sans-serif;
+        color: var(--paper-red-500);
+      }
+
       .guestbook-card {
-        padding: 10px;
+        @apply(--layout-horizontal);
+        margin: 16px 16px 0 16px;
+        padding: 10px 15px 15px 15px;
         background-color: white;
-        border: 1px solid #000000;
-        border-radius: 3px;
-        width: 95%;
+        border: 1px solid #ddd;
+      }
+
+      .guestbook-inner-card {
+        width: 100%;
+      }
+
+      .guestbook-avatar-div {
+        height: auto;
+        width: 43px;
+        display: inline-block;
         margin: 0 auto;
+        float: right;
+        padding-right: 10px;
+      }
+
+      .guestbook-avatar-catelog {
+        height: auto; 
+        margin: 0 auto;
+        padding-top: 30px;
+        padding-bottom: 0px;
       }
 
       .captain-dialog-header {
         color: rgba(0, 0, 0, .7);
-        font-family: Roboto;
+        font-family: 'Roboto', sans-serif;
         font-style: italic;
         font-size: 24px;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-bottom: 20px;
       }
 
       .paper-textarea {
-        margin-top: 25px;
-        margin-bottom: 50px;
+        padding-top: 25px;
       }
 
       paper-input {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         text-align: left;
       }
 
@@ -63,9 +106,76 @@
         text-align: left;
       }
 
+      iron-list {
+        height: 400px; 
+        border: 1px solid #adadad;
+        padding: 10px;
+        background-color: #f6f6f6;
+        margin-top: 15px;
+      }
+
+      .guest-name {
+        font-family: 'Roboto', sans-serif;
+        font-size: 17px;
+        padding-bottom: 5px;
+      }
+
+      .guest-location {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 12px;
+        font-style: italic;
+        color: var(--paper-teal-700);
+      }
+
+      .guestbook-line {
+        border: none;
+        padding-bottom: 1px;
+        background: linear-gradient(90deg, rgba(216,27,96,1) 0%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .guest-message {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+      }
+
+      .guestbook-entry-count {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        color: var(--paper-teal-400);
+      }
+
+      .guestbook-entry-length {
+        font-size: 16px;
+        color: var(--paper-indigo-500);
+      }
+
+      .guest-likes-count {
+        font-size: 12px;
+        font-family: 'Roboto Condensed', sans-serif;
+        padding: 0;
+        margin: 0;
+        color: rgb(170, 170, 170);
+      }
+
+      .iron-list-gradient {
+        margin-top: -115px;
+        height: 118px;
+        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255,255,255,.5) 85%, rgba(255,255,255,0) 100%);
+        z-index: 10000;
+        position: relative;
+      }
+
       @media only screen and (max-width: 640px) {
         #guestbook {
           margin-top: 0px;
+       }
+
+       .captain-dialog-header {
+          font-size: 20px;
+          padding-bottom: 10px;
        }
       }
 
@@ -74,120 +184,142 @@
 <!-- /////////////////////////////////////////// -->
 <!-- GUESTBOOK SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section-dark">
+    <div class="commander-section">
       <div class="commander-inner-section">
 
-        <div class="captain-header">
-          Site Guestbook
+        <div class="container flex-horizontal" style="max-width: 480px;">
+          <div class="captain-header-dark-left flexchild">
+            Site Guestbook
+          </div>
+          <div class="guestbook-entry-count child3">
+            guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span>
+          </div>
         </div>
+
+
         <hr class="captain-app-line">
 
-
-
-
-
-
-
-          <paper-dialog class="guestbook-class" id="guestbook">
-            <iron-pages id="guestbookpages" selected="0">
-              
-              <div class="guestbook-page">
+        <paper-dialog no-cancel-on-outside-click class="guestbook-class" id="guestbook">
+        <div class="container flex-end-justified">
+          <div on-tap="close_reset_dialog">
+            <img style="width: 15px;" src="/images/small-icon-x.png">
+          </div>
+        </div>
+          <iron-pages id="guestbookpages" selected="0">
+            
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">
                 <div class="captain-dialog-header">
                   Choose an avatar.
                 </div>
-                <div style="height: auto; padding-top: 10px; padding-bottom: 10px; 400px; margin: 0 auto; background-color: #f7f7f7;">
+                <div class="guestbook-avatar-catelog">
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left;">
+                    <img id="avatar1" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-1.png">
+                  </div>
 
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left; background-color: #aeaeae;"></div>
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto;">
+                    <img id="avatar2" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-2.png">
 
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; background-color: #aeaeae;"></div>
+                  </div>
 
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right; background-color: #aeaeae;"></div>
-
+                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right;">
+                    <img id="avatar3" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-3.png">
+                  </div>
                 </div>
-                <br>
-                <br>
-                <paper-button on-tap="next_page">
-                  CONTINUE
-                </paper-button>
+<!--                 <br> -->
               </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" on-tap="next_page">
+                CONTINUE
+              </paper-button>
+            </div>
 
-              <div class="guestbook-page">
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
                 <div class="captain-dialog-header">
-                  Enter your name <br><br> &amp; location.
+                  Enter your name &amp; location.
                 </div>
-                <paper-input value="{{person}}" label="name"></paper-input>
+                <paper-input value="{{name}}" label="name"></paper-input>
                 <paper-input value="{{location}}" label="location"></paper-input>
-                <br>
-                <br>
-                <paper-button style="bottom: 0;" on-tap="next_page">
-                  CONTINUE
-                </paper-button>
               </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" style="bottom: 0;" on-tap="next_page">
+                CONTINUE
+              </paper-button>
+            </div>
 
-              <div class="guestbook-page">
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
                 <div class="captain-dialog-header">
                   Leave a message.
                 </div>
-                  <br>
-                  <paper-textarea value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
-                  <br>
-                  <br>
-                  <br>
-                <paper-button on-tap="add_entry">
-                  ADD ENTRY TO GUESTBOOK
-                </paper-button>
+                  <!-- <br> -->
+                  <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
+                  <!-- <br> -->
               </div>
-            </iron-pages>
-          </paper-dialog>
-
-
-
-
-
-
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" on-tap="add_entry">
+                ADD ENTRY TO GUESTBOOK
+              </paper-button>
+            </div>
+          </iron-pages>
+        </paper-dialog>
 
         <div class="commander-right-small">
-          <div style="width: 100%; background-color: #65d5cb;">
-            <div class="captain-content">
-              Here, you can make a guest book entry,  this is a Polymer custom element. The guest list data is being saved to Firebase
+          <div style="width: 100%; text-align: left; padding-bottom: 20px;">
+            <div class="captain-content-dark padding-left-20px">
+                Here, you can make a guest book entry, this is a custom <a href="https://www.polymer-project.org/1.0/"> Polymer </a>element. The guest list data is being saved to Firebase
             </div>
-            <paper-button onclick="guestbook.open();">OPEN GUESTBOOK</paper-button>
+            <paper-button class="margin-left-20px captain-app-button" onclick="guestbook.open();" raised>OPEN GUESTBOOK</paper-button>
           </div>
         </div> 
 
-
-
-
-
-
         <div class="commander-left-large">
-          <div style="background-color: #c2f1ed;">
+          <iron-list is="iron-list" items="{{guests}}"> 
+            <template class="testing">       
+              <div>
+                <paper-material elevation="2">
+                    <div class="guestbook-inner-card">
 
-            <iron-list style="height: 200px; border: 1px solid pink;" is="iron-list" items="{{guests}}"> 
-              <template>       
-                <div class="guestbook-card">
-                  <div>
-                  </div>
-                  <div>
-                    <div>
-                      {{item.person}}
-                    </div>
-                    <div>
-                      {{item.location}}
-                    </div>
-                    <div>
-                      {{item.message}}
-                    </div>
-                  </div>
-                </div>
-              </template>
-            </iron-list>
+                      <div class="container flex-horizontal">
+                        <div>
+                        <div class="guestbook-avatar-div">
+                          <img style="width: 100%;" src="{{item.avatar}}">
+                        </div>
+                        </div>
+                        <div class="flexchild">
+                          <div class="guest-name">
+                            {{item.name}}
+                          </div>
+                          <div class="guest-location">
+                            {{item.location}}
+                          </div>
+                        </div>
+                        <div class="align-right cursor-pointer" on-tap="like_entry">
+                          <img style="width: 20px;" src="{{item.heart}}">
+                          <div class="guest-likes-count">
+                            {{item.likes}} likes
+                          </div>
+                        </div>
+                      </div>
 
-          </div>
+                      <hr class="guestbook-line">
+                      <div class="guest-message">
+                        {{item.message}}
+                      </div>
+                    </div>
+                </paper-material>
+              </div>
+            </template>
+          </iron-list>
+          <div class="iron-list-gradient"></div>
         </div>
-
-
-
       </div>
     </div>
 
@@ -200,7 +332,13 @@
       is: 'home-zone-guestbook',
 
       properties: {
-        person: {
+        error: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true          
+        },
+        name: {
           type: String,
           value: "",
           notify: true,
@@ -218,23 +356,62 @@
           notify: true,
           reflectToAttribute: true
         },
+        avatar: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true
+        },
         guests: {
           type: Array,
           value: [
             {
-              person: "Barbara Nuggets",
+              name: "Barbara M.",
               location: "Sacramento, California",
-              message: "This site looks okay! Decent job!"
+              message: "This is a test message to see how many characters!",
+              likes: 15,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-1.png"
             },
             {
-              person: "Gene Regonal",
-              location: "Tampa Bay, Floriday",
-              message: "Well I'll be! cool computer page!"
+              name: "Gene Regonal",
+              location: "Tampa Bay, Florida",
+              message: "This is a test message to see how many characters!",
+              likes: 11,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-3.png"
             },
             {
-              person: "Ross Cravettes",
+              name: "Ross Cravettes",
               location: "Portland, Maine",
-              message: "Very average of you!"
+              message: "This is a test message to see how many characters!",
+              likes: 58,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-2.png"
+            },
+            {
+              name: "Mike Douglas",
+              location: "Cleveland, Ohio",
+              message: "This is a test message to see how many characters!",
+              likes: 45,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-1.png"
+            },
+            {
+              name: "Tamara Williamson",
+              location: "Santa Fe, New Mexico",
+              message: "This is a test message to see how many characters!",
+              likes: 14,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-2.png"
+            },
+            {
+              name: "Christopher McDonald",
+              location: "Seattle, Washington",
+              message: "This is a test message to see how many characters!",
+              likes: 153,
+              heart: "/images/small-icon-heart-outline.png",
+              avatar: "/images/avatar-3.png"
             },
           ],
           notify: true,
@@ -242,39 +419,119 @@
         },
       },
 
+      close_reset_dialog: function() {
+        this.$.guestbook.toggle();
+        this.$.guestbookpages.selected = 0;
+
+        // reset values
+        this.set("name", "");
+        this.set("location", "");
+        this.set("message", "");
+        this.set("avatar", "");
+      },
+
+      set_avatar: function(e) {
+
+        // get avatar ID
+        var avatar = e.currentTarget;
+        var id = avatar.id;
+        console.log(id);
+
+        // set avatar property value
+        if (id === "avatar1") {
+          this.set("avatar", "/images/avatar-1.png");
+        } else if (id === "avatar2") {
+          this.set("avatar", "/images/avatar-2.png");
+        } else if (id === "avatar3") {
+          this.set("avatar", "/images/avatar-3.png");
+        }
+      },
+
       next_page: function() {
+
+        // check for avatar
+        this.set("error", "");
+
+        // check for avatar
+        if (this.$.guestbookpages.selected === 0 && this.avatar === "") {
+          this.set("error", "Please select an avatar!");
+          return;
+        // check for name & location
+         } else if (this.$.guestbookpages.selected === 1 && this.name === "" && this.location === "") {
+          this.set("error", "Please enter a name & location!");
+          return;
+        // check for name
+        } else if (this.$.guestbookpages.selected === 1 && this.name === "") {
+          this.set("error", "Please enter a name!");
+          return;
+        // check for location
+        } else if (this.$.guestbookpages.selected === 1 && this.location === "") {
+          this.set("error", "Please enter a location!");
+          return;
+        }
 
         // change iron-pages
         this.$.guestbookpages.selectNext();
       },
 
+      like_entry: function(e) {
+        var model = e.model;
+        
+        console.log(model.item.heart);
+
+
+        if (model.item.heart === "/images/small-icon-heart-outline.png") {
+          model.set('item.heart', "/images/small-icon-heart.png");
+          model.set('item.likes', model.item.likes+1);
+          console.log(model.item.heart);
+
+        } else if (model.item.heart === "/images/small-icon-heart.png") {
+          model.set('item.heart', "/images/small-icon-heart-outline.png");
+          model.set('item.likes', model.item.likes-1);
+        }
+      },
+
+
       add_entry: function() {
+
+        // check for message 
+        if (this.$.guestbookpages.selected === 2 && this.message === "") {
+          this.set("error", "Please enter a message!");
+          return;
+        } 
 
         // create empty guestbook entry object
         entry = {
-          person: "",
+          name: "",
           location: "",
-          message: ""
+          message: "",
+          likes: 0,
+          heart: "/images/small-icon-heart-outline.png",
+          avatar: ""
         };
 
         // set values to entry object
-        entry.person = this.person;
+        entry.name = this.name;
         entry.location = this.location;
         entry.message = this.message;
+        entry.avatar = this.avatar;
 
         // push entry object into guests array
         this.unshift('guests', entry);
 
         // reset values
-        this.set("person", "");
+        this.set("name", "");
         this.set("location", "");
         this.set("message", "");
+        this.set("avatar", "");
 
         // reset iron-pages
         this.$.guestbookpages.selected = 0;
 
         // close guestbook
         this.$.guestbook.close();
+
+        console.log(entry);
       },
     });
   </script>

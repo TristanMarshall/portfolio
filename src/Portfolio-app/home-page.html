@@ -26,47 +26,15 @@
         height: 150px;
       }
 
-      .captain-subheader {
-        font-size: 14px;
-        font-family: Roboto;
-        font-weight: 200;
-        color: var(--paper-indigo-600);
-        text-align: left;
-        padding-bottom: 10px;
-      }
-
-      .captain-content {
-        font-size: 14px;
-        font-family: Roboto;
-        font-weight: 200;
-        color: rgba(255, 255, 255, .6);
-        text-align: left;
-        line-height: 30px;
-      }
-
-      .captain-sub-content {
-        font-size: 14px;
-        font-family: Roboto;
-        color: rgba(0, 0, 0, 0.7);
-        text-align: justify;
-        padding-top: 10px;
-        padding-bottom: 5px;
-        max-width: 200px;
-        margin: 0 auto;
-      }
-
-      span {
-        font-style: italic;
-        /*color: var(--paper-teal-600);*/
+      @media only screen and (max-width: 750px) {
+        .triple-step-header-line {
+          max-width: 150px;
+        }
       }
 
       @media only screen and (max-width: 640px) {
-        .captain-content {
-          text-align: justify;
-        }
-
-        .captain-sub-content {
-          padding-left: ;
+        .triple-step-header-line {
+          max-width: 200px;
         }
       }
 
@@ -89,9 +57,9 @@
           </div>
           <hr class="captain-app-line">
           <div class="captain-subheader">
-            <span>front-end developer / </span>designer
+            <span class="captain-subheader-span">front-end developer / </span>designer
           </div>
-          <div class="captain-content">
+          <div class="captain-content-light padding-right-20px">
             Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
           </div>
         </div>
@@ -109,7 +77,7 @@
               <div class="image-container">
                 <img src="/images/large-icon-desktop-code-circle.png" style="width: 100%; max-width: 150px;">
               </div>
-              <div class="captain-header-dark">
+              <div class="captain-header-dark-center">
                 Development
               </div>
               <hr class="captain-app-line triple-step-header-line">
@@ -126,7 +94,7 @@
               <div class="image-container">
                 <img src="/images/large-icon-desktop-design-circle.png" style="width: 100%; max-width: 150px;">
               </div>
-              <div class="captain-header-dark">
+              <div class="captain-header-dark-center">
                 Design
               </div>
               <hr class="captain-app-line triple-step-header-line">
@@ -143,7 +111,7 @@
               <div class="image-container">
                 <img src="/images/profile-photo-TM.png" style="width: 100%; max-width:150px;">
               </div>
-              <div class="captain-header-dark">
+              <div class="captain-header-dark-center">
                 Contact
               </div>
               <hr class="captain-app-line triple-step-header-line">
