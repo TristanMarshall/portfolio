@@ -47,6 +47,11 @@
     @apply(--layout-end-justified);
   }
 
+  .flex-equal-justified {
+      @apply(--layout-horizontal);
+      @apply(--layout-justified);
+    }
+
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* POLYMER APP ELEMENT STYLES */
 /*//////////////////////////////////////////////////////////////////////////////*/
@@ -79,6 +84,10 @@
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* FULL SITE STYLE CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/
+
+      .light-grey {
+        background-color: #f8f8f8;
+      }
 
       .mobile-hide {
         display: block;
@@ -139,6 +148,10 @@
       .captain-image {
         width: 100%;
         max-width: 250px;
+      }
+
+      .image-position {
+        margin-top: -25px;
       }
 
       .captain-header {
@@ -332,6 +345,11 @@
 
         .mobile-hide {
           display: none;
+        }
+
+        .image-position {
+          margin-top: 0px;
+          margin-bottom: 25px;
         }
 
         .captain-content-dark, .captain-content-light {

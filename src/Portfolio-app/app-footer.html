@@ -1,0 +1,98 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+<dom-module id="app-footer">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      .footer-wrapper {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+      }
+
+      .footer-gradient {
+        width: 100%;
+        height: 15px;
+        background: linear-gradient(91deg, rgba(0,77,64,1) 0%, rgba(77,182,172,1) 24%,  rgba(0,77,64,1) 99%, rgba(0,77,64,1) 100%);
+      }
+
+      .background {
+        background-color: #212121;
+      }
+
+      .footer-bottom-line {
+        width: 100%;
+        height: 1px;
+        background-color: var(--paper-pink-500);
+      }
+
+      .footer-bottom-wrapper {
+        background-color: #eceff1;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .footer-bottom-section {
+        width: 100%;
+        padding: 15px 0;
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+        color: rgba(0, 0, 0, .6);
+        /*line-height: 29px;*/
+        /*background-color: #eceff1;*/
+      }
+
+      .rights-reserved {
+        padding-top: 8px;
+      }
+
+      img {
+        width: 50px;
+      }
+
+
+    </style>
+
+<div class="footer-wrapper">
+  <div class="footer-gradient">
+  </div>
+  <div class="commander-section background">
+    <div class="commander-inner-section">
+
+    </div>
+  </div>
+  <div class="footer-bottom-line">
+  </div>
+  <div class="footer-bottom-wrapper">
+    <div class="footer-bottom-section container flex-horizontal">
+      <div class="rights-reserved flexchild">
+        &reg; All rights are not reserved - Tristan Marshall 2017
+      </div>
+      <div>
+        <img src="/images/logo-TM-outline.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'app-footer',
+
+      properties: {
+
+      },
+
+    });
+  </script>
+</dom-module>
