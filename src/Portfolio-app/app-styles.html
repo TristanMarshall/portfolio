@@ -53,18 +53,54 @@
     }
 
 /*//////////////////////////////////////////////////////////////////////////////*/
+/* MIXINS CUSTOM */
+/*//////////////////////////////////////////////////////////////////////////////*/
+
+  /*font declarations*/
+  --captain-font-roboto: {
+    font-family: 'Roboto', sans-serif;
+  };  
+
+  --captain-font-roboto-condensed: {
+    font-family: 'Roboto Condensed', sans-serif;
+  };  
+
+  --captain-font-yantramanav: {
+    font-family: 'Yantramanav', sans-serif;
+  };  
+
+  --captain-font-roboto: {
+    font-family: 'Lobster', cursive;
+  };  
+
+
+
+
+
+
+
+
+/*font-family: 'Yantramanav', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Lobster', cursive;
+*/
+/*//////////////////////////////////////////////////////////////////////////////*/
 /* POLYMER APP ELEMENT STYLES */
 /*//////////////////////////////////////////////////////////////////////////////*/
  
     app-drawer {
       --app-drawer-scrim-background: red; 
       --app-drawer-content-container: {
-        background-color: #212121;
+        background-color: #161616;
         color: var(--paper-black-900);
         box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
-                width: 200px;
+        width: 80%;
+        margin-left: 10%;
+        border-left: 1px solid #303030;
+        border-right: 1px solid #303030;
       }
-      --app-drawer-scrim-background: rgba(0, 0, 0, .4);
+      --app-drawer-scrim-background: rgba(0, 0, 0, .9);
     }
 
     app-header {
@@ -85,6 +121,10 @@
 /* FULL SITE STYLE CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/
 
+      .white {
+        background-color: white;
+      }
+
       .light-grey {
         background-color: #f8f8f8;
       }
@@ -95,6 +135,10 @@
 
       .mobile-show {
         display: none;
+      }
+
+      .inline {
+        display: inline;
       }
 
       a {
@@ -125,6 +169,10 @@
         text-align: left;
       }
 
+      .align-center {
+        text-align: center;
+      }
+
       .padding-right-20px {
         padding-right: 20px;
       }
@@ -139,6 +187,10 @@
 
       .margin-left-20px {
         margin-left: 20px;
+      }
+
+      .bold-weight {
+        font-weight: 500;
       }
 
       .cursor-pointer {
@@ -156,14 +208,16 @@
 
       .captain-header {
         font-size: 24px;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: 'Yantramanav', sans-serif;
+        font-weight: 100;
         color: rgba(255, 255, 255, .7);
         text-align: left;
       }
 
       .captain-header-dark-center {
         font-size: 24px;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 100;
+        font-family: 'Yantramanav', sans-serif;
         color: rgba(0, 0, 0, .7);
         text-align: center;
         padding-top: 10px;
@@ -172,7 +226,8 @@
 
       .captain-header-dark-left {
         font-size: 24px;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 100;
+        font-family: 'Yantramanav', sans-serif;
         color: rgba(0, 0, 0, .7);
         text-align: left;
       }
@@ -229,7 +284,33 @@
         max-width: 200px;
       }
 
+      .grid-dark {
+        position: relative;
+        background-image: url('/images/background-grid-dark.png');
+        background-position: 0% 0%;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
 
+      .grid-light {
+        position: relative;
+        background-image: url('/images/background-grid-light.png');
+        background-position: 0% 0%;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+
+      .grid-drop {
+        position: relative;
+        background-image: url('/images/background-grid-light-drop.png');
+        background-position: 0% 0%;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* COMMANDER GRID CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/
@@ -237,12 +318,18 @@
       .commander-section {
         height: auto; 
         padding: 75px 50px;
+        /*background-color: white;*/
       }
 
       .commander-section-dark {
         height: auto; 
         padding: 75px 50px;
         background-color: #111111;
+      }
+
+      .commander-section-translucent {
+        height: auto; 
+        padding: 75px 50px;       
       }
 
       .commander-inner-section {
@@ -372,7 +459,11 @@
         }
 
         .commander-section, .commander-section-dark {
-          padding: 50px 25px;
+          padding: 100px 25px;
+        }
+
+        .first-section-top {
+          padding-top: 50px;
         }
 
         .commander-inner-section, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {

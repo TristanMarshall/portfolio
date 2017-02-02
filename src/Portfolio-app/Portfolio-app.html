@@ -13,23 +13,52 @@
 
       .header-main-menu {
         margin: 0 auto;
-      }
-
-      paper-tabs {
         width: 100%;
       }
+
+
+
+/*--paper-tabs-selection-bar-color  Color for the selection bar --paper-yellow-a100
+--paper-tabs-selection-bar  Mixin applied to the selection bar  {}
+--paper-tabs  Mixin applied to the tabs {}
+--paper-tabs-content  Mixin applied to the content container of tabs  {}
+--paper-tabs-container  Mixin applied to the layout container of tabs {}*/
+
+
+
+
+      paper-tabs {
+        max-width: 800px; 
+        width: 100%; 
+        height: auto;
+        margin: 0 auto; 
+        height: 63px;
+      }
+
+
 
       paper-tab {
         width: 100%;
         height: 35px;
-        color: var(--paper-teal-500);
+        color: yellow;
         text-align: center;
         font-weight: 100;
         font-size: 12px;
       }
 
+
+        paper-tabs[no-bar] paper-tab.iron-selected {
+          color: red;
+        }
+
+
+      paper-tab[link] a {
+        color: var(--paper-indigo-800);
+        text-decoration: none;
+      }
+
       .top-toolbar {
-        height: 125px;
+        margin-bottom: 50px;
       }
 
       .bottom-toolbar {
@@ -39,27 +68,39 @@
 
       }
 
+      .close-menu-icon {
+        width: 10px;
+        opacity: 0.5;
+        padding-right: 7px;
+      }
+
       .menu-line {
         border: none;
         padding-bottom: 1px;
-        background: linear-gradient(91deg, rgba(29,233,182,1) 0%, rgba(29,233,182,1) 20%, rgba(48,63,159,1) 100%);
+        background: linear-gradient(91deg, rgba(0,150,136,0) 0%, rgba(0,150,136,1) 18%, rgba(63,81,181,1) 81%, rgba(63,81,181,0) 100%);
         opacity: .3;
         margin-top: 25px;
         margin-bottom: 25px;
-        margin-right: 3px;
-        margin-left: 3px;
+        margin-right: 25px;
+        margin-left: 25px;
       }
 
-      .menu-item-margin {
-        margin-left: 15px;
+      .menu-line-half {
+        width: 50%;
+        margin-left: 25%;
+      }
+
+      .menu-item-container {
+        width: 100%;
+        text-align: center;
       }
 
       .menu-link-items {
-        color: var(--paper-pink-500);
+        color: var(--paper-grey-500);
         opacity: .8;
-        font-family: Roboto;
-        font-size: 14px;
-        font-weight: 400;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 22px;
+        font-weight: 100;
       }
 
       .menu-link-items-desktop {
@@ -95,7 +136,7 @@
       }
 
       img {
-        margin-top: 15px;
+        /*margin-top: 15px;*/
         /*margin-left: 10px;*/
         width: 70%;
       }
@@ -118,7 +159,7 @@
       .header-logo-mobile {
         width: 70px;
         float: right;
-        margin-bottom: 15px;
+        /*margin-bottom: 15px;*/
       }
 
       .paper-tab-div {
@@ -171,31 +212,48 @@
     </app-route>
 
     <app-drawer-layout>
-      <app-drawer>
+      <app-drawer id="drawertoggle">
         <app-toolbar class="top-toolbar">
-          <div class="header-main-menu">
-            <img style="width: 100px;" src="/images/logo-TM-outline-white.png">
+          <div  on-click="change_icon" class="header-main-menu container flex-horizontal">
+            <div class="flexchild">
+            </div>
+            <div>
+              <img class="close-menu-icon" src="/images/small-icon-x.png">
+            </div>
           </div>
         </app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <hr class="menu-line">        
-          <a class="active-class menu-link-items menu-item-margin homeMargin" name="home" href="/home" drawer-toggle>Home</a>
+          <div class="menu-item-container">       
+            <a class="active-class menu-link-items menu-item-margin homeMargin" name="home" href="/home" drawer-toggle>Home</a>
+          </div>
+          <hr class="menu-line menu-line-half">
+          <div class="menu-item-container">       
+            <a class="active-class menu-link-items menu-item-margin" name="design" href="/design" drawer-toggle>Design</a>
+          </div>
           <hr class="menu-line">
-          <a class="active-class menu-link-items menu-item-margin" name="design" href="/design" drawer-toggle>Design</a>
+          <div class="menu-item-container">       
+            <a class="active-class menu-link-items menu-item-margin" name="development" href="/development" drawer-toggle>Development</a>
+          </div>
           <hr class="menu-line">
-          <a class="active-class menu-link-items menu-item-margin" name="development" href="/development" drawer-toggle>Development</a>
-          <hr class="menu-line">
-          <a class="active-class menu-link-items menu-item-margin" name="contact" href="/contact" drawer-toggle>Contact</a>
-          <hr class="menu-line">
-          <a class="active-class menu-link-items menu-item-margin" name="test" href="/test" drawer-toggle>Test</a>
-          <hr class="menu-line">
+          <div class="menu-item-container">       
+            <a class="active-class menu-link-items menu-item-margin" name="contact" href="/contact" drawer-toggle>Contact</a>
+          </div>
+          <hr class="menu-line menu-line-half">
+<!--           <a class="active-class menu-link-items menu-item-margin" name="test" href="/test" drawer-toggle>Test</a>
+          <hr class="menu-line"> -->
+          <div class="menu-item-container">
+            <img style="width: 50px;" src="/images/logo-TM-outline-white.png">
+          </div>
         </iron-selector>
       </app-drawer>
       <app-header-layout fullbleed>
         <app-header condenses fixed effects="waterfall">
 
           <app-toolbar>
-            <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button>
+            <!-- <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button> -->
+            <div on-click="change_icon">
+              <img style="width: 22px; padding-left: 6px;" src="{{menucommand}}">
+            </div>
             <div class="header-logo-mobile-div" main-title>
                 <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
             </div>
@@ -204,7 +262,7 @@
 
           <app-toolbar class="destroy-app-toolbar">
           <div main-title></div>
-            <div class="commander-section width100" style="padding-right: 0px;">
+            <div class="commander-section-translucent width100" style="padding-right: 0px;">
               <div class="commander-inner-section width100 align-right">
                 <div class="header-logo-desktop">
                  <img style="width: 150px; margin-bottom: 75px; margin-right: 30px;" src="/images/logo-TM-outline.png">
@@ -214,29 +272,41 @@
           </app-toolbar>
 
           <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto;">
-              <div class="commander-section width100">
+
             <div class="header-name-mobile captain-header" main-title></div>
 
-                <div class="commander-inner-section">
-                  <paper-tabs selected="[[page]]" class="bottom self-end">
-                      <paper-tab link>
-                        <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
-                      </paper-tab>
-                      <paper-tab link>
-                        <a href="/design" class="link menu-link-items-desktop" tab-index="-1">Design</a>
-                      </paper-tab>
-                      <paper-tab link>
-                        <a href="/development" class="link menu-link-items-desktop" tab-index="-1">Development</a>
-                      </paper-tab>
-                      <paper-tab link>
-                        <a href="/contact" class="link menu-link-items-desktop" tab-index="-1">Contact</a>
-                      </paper-tab>
-                      <paper-tab link>
-                        <a href="/test" class="link menu-link-items-desktop" tab-index="-1">Test</a>
-                      </paper-tab>
-                  </paper-tabs>
-                </div>
-              </div>
+
+              <paper-tabs selected="[[page]]">
+                <paper-tab link>
+                  <a href="/home" class="link" tabindex="-1">Home</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="/design" class="link" tabindex="-1">Design</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="/development" class="link" tabindex="-1">Development</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="/contact" class="link" tabindex="-1">Contact</a>
+                </paper-tab>
+              </paper-tabs>
+
+
+<!--               <paper-tabs selected="[[page]]" no-bar>
+                <paper-tab link>
+                  <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="/design" class="link" tabindex="-1">TAB ONE</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="#link2" class="link" tabindex="-1">TAB TWO</a>
+                </paper-tab>
+                <paper-tab link>
+                  <a href="#link3" class="link" tabindex="-1">TAB THREE</a>
+                </paper-tab>
+              </paper-tabs> -->
+
 
           </app-toolbar>
         </app-header>
@@ -267,6 +337,11 @@
           reflectToAttribute: true,
           observer: '_pageChanged'
         },
+        menucommand: {
+          type: String,
+          value: "/images/hamburger-icon.png",
+          reflectToAttribute: true
+        },
         prop1: {
           type: String,
           value: 'Portfolio-app',
@@ -276,6 +351,22 @@
       observers: [
         '_routePageChanged(routeData.page)'
       ],
+
+      change_icon: function() {
+        var drawerid = this.$.drawertoggle;
+        // if (this.menucommand === "/images/hamburger-icon.png") {
+        //   this.set("menucommand", "/images/avatar-1.png");
+          // drawerid.closed === false;
+          // return;
+
+        // } else if (this.menucommand === "/images/avatar-1.png") {
+        //   this.set("menucommand", "/images/hamburger-icon.png");
+          // drawerid.closed === true;
+        // }
+
+        drawerid.toggle();
+        
+      },
 
       _routePageChanged: function(page) {
         this.page = page || 'home';

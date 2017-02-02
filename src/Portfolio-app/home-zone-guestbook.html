@@ -17,6 +17,10 @@
         margin: 0 auto 10px auto;
       }
 
+      paper-material:hover {
+       /*border: 1px solid var(--paper-pink-600);*/
+      }
+
       paper-button {
         background-color: var(--paper-pink-600);
         color: white;
@@ -163,8 +167,7 @@
       .iron-list-gradient {
         margin-top: -115px;
         height: 118px;
-        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255,255,255,.5) 85%, rgba(255,255,255,0) 100%);
-        z-index: 10000;
+        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255,255,255,.5) 85%, rgba(255,255,255,0) 100%); 
         position: relative;
       }
 
@@ -184,136 +187,126 @@
 <!-- /////////////////////////////////////////// -->
 <!-- GUESTBOOK SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section">
+    <div class="commander-section white">
       <div class="commander-inner-section">
-
-        <div class="container flex-horizontal" style="max-width: 480px;">
+        <div class="container flex-horizontal">
           <div class="captain-header-dark-left flexchild">
             Site Guestbook
           </div>
           <div class="guestbook-entry-count child3">
-            guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span>
+            <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
+            <div class="align-right cursor-pointer" on-tap="like_guestbook">
+              <div class="guest-likes-count inline">
+                {{guestbooklikes.likes}} likes
+              </div>
+              <img style="width: 20px;" src="{{guestbooklikes.heart}}">
+            </div>
           </div>
         </div>
-
-
         <hr class="captain-app-line">
-
         <paper-dialog no-cancel-on-outside-click class="guestbook-class" id="guestbook">
         <div class="container flex-end-justified">
           <div on-tap="close_reset_dialog">
             <img style="width: 15px;" src="/images/small-icon-x.png">
           </div>
         </div>
-          <iron-pages id="guestbookpages" selected="0">
-            
-            <div class="guestbook-page">
-              <div class="guestbook-page-inner">
-                <div class="captain-dialog-header">
-                  Choose an avatar.
-                </div>
-                <div class="guestbook-avatar-catelog">
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left;">
-                    <img id="avatar1" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-1.png">
-                  </div>
-
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto;">
-                    <img id="avatar2" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-2.png">
-
-                  </div>
-
-                  <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right;">
-                    <img id="avatar3" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-3.png">
-                  </div>
-                </div>
-<!--                 <br> -->
+        <iron-pages id="guestbookpages" selected="0">
+          <div class="guestbook-page">
+            <div class="guestbook-page-inner">
+              <div class="captain-dialog-header">
+                Choose an avatar.
               </div>
-              <div class="validation-error-div">
-                {{error}}
+              <div class="guestbook-avatar-catelog">
+                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left;">
+                  <img id="avatar1" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-1.png">
+                </div>
+                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto;">
+                  <img id="avatar2" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-2.png">
+                </div>
+                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right;">
+                  <img id="avatar3" style="width: 100%;" on-tap="set_avatar" src="/images/avatar-3.png">
+                </div>
               </div>
-              <paper-button class="captain-app-button" on-tap="next_page">
-                CONTINUE
-              </paper-button>
             </div>
-
-            <div class="guestbook-page">
-              <div class="guestbook-page-inner">            
-                <div class="captain-dialog-header">
-                  Enter your name &amp; location.
-                </div>
-                <paper-input value="{{name}}" label="name"></paper-input>
-                <paper-input value="{{location}}" label="location"></paper-input>
-              </div>
-              <div class="validation-error-div">
-                {{error}}
-              </div>
-              <paper-button class="captain-app-button" style="bottom: 0;" on-tap="next_page">
-                CONTINUE
-              </paper-button>
+            <div class="validation-error-div">
+              {{error}}
             </div>
-
-            <div class="guestbook-page">
-              <div class="guestbook-page-inner">            
-                <div class="captain-dialog-header">
-                  Leave a message.
-                </div>
-                  <!-- <br> -->
-                  <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
-                  <!-- <br> -->
+            <paper-button class="captain-app-button" on-tap="next_page">
+              CONTINUE
+            </paper-button>
+          </div>
+          <div class="guestbook-page">
+            <div class="guestbook-page-inner">            
+              <div class="captain-dialog-header">
+                Enter your name &amp; location.
               </div>
-              <div class="validation-error-div">
-                {{error}}
-              </div>
-              <paper-button class="captain-app-button" on-tap="add_entry">
-                ADD ENTRY TO GUESTBOOK
-              </paper-button>
+              <paper-input value="{{name}}" label="name"></paper-input>
+              <paper-input value="{{location}}" label="location"></paper-input>
             </div>
-          </iron-pages>
+            <div class="validation-error-div">
+              {{error}}
+            </div>
+            <paper-button class="captain-app-button" style="bottom: 0;" on-tap="next_page">
+              CONTINUE
+            </paper-button>
+          </div>
+          <div class="guestbook-page">
+            <div class="guestbook-page-inner">            
+              <div class="captain-dialog-header">
+                Leave a message.
+              </div>
+                <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
+            </div>
+            <div class="validation-error-div">
+              {{error}}
+            </div>
+            <paper-button class="captain-app-button" on-tap="add_entry">
+              ADD ENTRY TO GUESTBOOK
+            </paper-button>
+          </div>
+        </iron-pages>
         </paper-dialog>
-
         <div class="commander-right-small">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
                 Here, you can make a guest book entry, this is a custom <a href="https://www.polymer-project.org/1.0/"> Polymer </a>element. The guest list data is being saved to Firebase
             </div>
-            <paper-button class="margin-left-20px captain-app-button" onclick="guestbook.open();" raised>OPEN GUESTBOOK</paper-button>
+            <paper-button class="margin-left-20px captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
           </div>
         </div> 
-
         <div class="commander-left-large">
           <iron-list is="iron-list" items="{{guests}}"> 
             <template class="testing">       
               <div>
                 <paper-material elevation="2">
-                    <div class="guestbook-inner-card">
-
-                      <div class="container flex-horizontal">
-                        <div>
-                        <div class="guestbook-avatar-div">
-                          <img style="width: 100%;" src="{{item.avatar}}">
+                  <div class="guestbook-inner-card">
+                    <div class="container flex-horizontal">
+                      <div>
+                      <div class="guestbook-avatar-div">
+                        <img style="width: 100%;" src="{{item.avatar}}">
+                      </div>
+                      </div>
+                      <div class="flexchild">
+                        <div class="guest-name">
+                          {{item.name}}
                         </div>
-                        </div>
-                        <div class="flexchild">
-                          <div class="guest-name">
-                            {{item.name}}
-                          </div>
-                          <div class="guest-location">
-                            {{item.location}}
-                          </div>
-                        </div>
-                        <div class="align-right cursor-pointer" on-tap="like_entry">
-                          <img style="width: 20px;" src="{{item.heart}}">
-                          <div class="guest-likes-count">
-                            {{item.likes}} likes
-                          </div>
+                        <div class="guest-location">
+                          {{item.location}}
                         </div>
                       </div>
-
-                      <hr class="guestbook-line">
-                      <div class="guest-message">
-                        {{item.message}}
+                      <div class="align-right cursor-pointer" on-tap="like_entry">
+                        <img style="width: 20px;" src="{{item.heart}}">
+                        <div class="guest-likes-count">
+                          {{item.likes}} likes
+                        </div>
                       </div>
                     </div>
+
+                    <hr class="guestbook-line">
+                    <div class="guest-message">
+                      {{item.message}}
+                    </div>
+                  </div>
                 </paper-material>
               </div>
             </template>
@@ -322,8 +315,6 @@
         </div>
       </div>
     </div>
-
-
   </template>
 
   <script>
@@ -338,30 +329,45 @@
           notify: true,
           reflectToAttribute: true          
         },
+
         name: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         location: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         message: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         avatar: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
+        guestbooklikes: {
+          type: Object,
+          value: {
+            likes: 0,
+            heart: "/images/small-icon-heart-outline.png"
+          },
+          notify: true,
+          reflectToAttribute: true
+        },
+
         guests: {
           type: Array,
           value: [
@@ -418,6 +424,19 @@
           reflectToAttribute: true
         },
       },
+
+      like_guestbook: function() {
+
+        if (this.guestbooklikes.heart === "/images/small-icon-heart-outline.png") {
+          this.set('guestbooklikes.heart', "/images/small-icon-heart.png");
+          this.set('guestbooklikes.likes', this.guestbooklikes.likes+1);
+
+        } else if (this.guestbooklikes.heart === "/images/small-icon-heart.png") {
+          this.set('guestbooklikes.heart', "/images/small-icon-heart-outline.png");
+          this.set('guestbooklikes.likes', this.guestbooklikes.likes-1);
+        }
+      },
+
 
       close_reset_dialog: function() {
         this.$.guestbook.toggle();
@@ -490,7 +509,6 @@
           model.set('item.likes', model.item.likes-1);
         }
       },
-
 
       add_entry: function() {
 

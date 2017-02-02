@@ -15,18 +15,75 @@
         margin-top: -25px;
       }
 
+      .toggle-project-div {
+        cursor: pointer;
+      }
+
+      .project-collapse-line {
+        border: none;
+        background-color: rgba(0, 0, 0, .25);
+        padding-bottom: 1px;
+      }
+
+      .project-collapse-header {
+        font-weight: 100;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 16px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: rgba(0, 0, 0, .65);
+      }
+
+      .guest-likes-count {
+        font-size: 12px;
+        font-family: 'Roboto Condensed', sans-serif;
+        padding: 0;
+        margin: 0;
+        color: rgb(170, 170, 170);
+      }
+
+      .thank-you-content {
+        padding-top: 50px;
+        font-family: roboto;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .thank-you-image {
+        width: 45px;
+        margin-top: 25px;
+      }
+
+      .toggle-icon-container {
+        padding-top: 17px;
+        padding-left: 17px;
+        padding-right: 17px;
+      }
+
+      .toggleopen {
+        width: 13px;
+        transform: rotate(45deg);
+
+      }
+
+      .toggleclose {
+        width: 13px;
+        transform: rotate(0deg);
+      }
+
       @media only screen and (max-width: 640px) {
         .image-position {
           margin-top: 0px;
           margin-bottom: 25px;
         }
       }
+
     </style>
 
 <!-- /////////////////////////////////////////// -->
 <!-- DEVELOPMENT INTRO SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section-dark">
+    <div class="commander-section grid-dark">
       <div class="commander-inner-section">
           <div class="mobile-hide">
             <div class="captain-header">
@@ -34,12 +91,12 @@
             </div>
             <hr class="captain-app-line">
             <div class="captain-subheader">
-              <span class="captain-subheader-span">front-end developer</span>
+              <span class="captain-subheader-span">front-end </span>developer
             </div>
           </div>
         <div class="commander-right-small">
           <div>
-            <img class="captain-image image-position" src="/images/large-icon-desktop-code-circle.png">
+            <img class="captain-image image-position" src="/images/icon-space-filler.png">
           </div>
         </div>
         <div class="commander-left-large">
@@ -49,7 +106,7 @@
             </div>
             <hr class="captain-app-line">
             <div class="captain-subheader">
-              <span class="captain-subheader-span">front-end developer</span>
+              <span class="captain-subheader-span">front-end </span>developer
             </div>
           </div>
           <div class="captain-content-light padding-right-20px">
@@ -58,7 +115,97 @@
         </div>
       </div>
     </div>
+
+  <div class="commander-section white">
+    <div class="commander-inner-section">
+        <div class="container flex-horizontal">
+          <div class="captain-header-dark-left flexchild">
+            Web Projects
+          </div>
+          <div class="guestbook-entry-count child3">
+            <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
+            <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
+              <div class="guest-likes-count inline">
+                {{likes}} likes
+              </div>
+              <img style="width: 20px;" src="{{heart}}">
+            </div>
+          </div>
+        </div>
+      <hr class="captain-app-line">
+<!--       <div class="captain-subheader">
+        <span class="captain-subheader-span">Published Polymer Web Components</span>
+      </div> -->
+      <div class="captain-content-dark padding-right-20px">
+        Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother.
+      </div>
+      <br>
+      <br>
+      <br>
+      <hr class="project-collapse-line captain-app-line">
+      <div class="toggle-project-div" id="project1" on-click="project_toggle">
+        <div class="container flex-horizontal">
+          <div class="toggle-icon-container">
+            <div>
+              <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
+            </div>
+          </div>
+          <div class="project-collapse-header">
+            Website guestbook
+          </div>
+        </div>
+       <iron-collapse id="collapse">
+          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
+        </iron-collapse>
+        <hr class="project-collapse-line captain-app-line">
+      </div>
+
+      <div class="toggle-project-div" id="project2" on-click="project_toggle">
+        <div class="container flex-horizontal">
+          <div class="toggle-icon-container">
+            <div>
+              <img class$="{{toggleicon2}}" src="/images/small-icon-x.png">
+            </div>
+          </div>
+          <div class="project-collapse-header">
+            Credit card validation
+          </div>
+        </div>
+       <iron-collapse id="collapse2">
+          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
+        </iron-collapse>
+        <hr class="project-collapse-line captain-app-line">
+      </div>
+
+      <div class="toggle-project-div" id="project3" on-click="project_toggle">
+        <div class="container flex-horizontal">
+          <div class="toggle-icon-container">
+            <div>
+              <img class$="{{toggleicon3}}" src="/images/small-icon-x.png">
+            </div>
+          </div>
+          <div class="project-collapse-header">
+            Three day weather app
+          </div>
+        </div>
+       <iron-collapse id="collapse3">
+          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
+        </iron-collapse>
+        <hr class="project-collapse-line captain-app-line">
+      </div>
+
+      <div class="thank-you-content align-center">
+        Thanks for looking!
+        <br>
+      <img class="thank-you-image" src="/images/logo-TM-outline-grey.png">
+      </div>
+    </div>
+  </div>
+
+
+
   </template>
+
 
   <script>
     Polymer({
@@ -66,8 +213,96 @@
       is: 'development-page',
 
       properties: {
+        heart: {
+          type: String,
+          value: "/images/small-icon-heart-outline.png",
+          notify: true,
+          reflectToAttribute: true
+        },
 
+        likes: {
+          type: Number,
+          value: 0,
+          notify: true,
+          reflectToAttribute: true
+        },
+
+        toggleicon: {
+          type: String,
+          value: "toggleopen",
+          notify: true,
+          reflectToAttribute: true
+        },
+        toggleicon2: {
+          type: String,
+          value: "toggleopen",
+          notify: true,
+          reflectToAttribute: true
+        },
+        toggleicon3: {
+          type: String,
+          value: "toggleopen",
+          notify: true,
+          reflectToAttribute: true
+        }
       },
+
+
+      like_webproject: function() {
+
+        if (this.heart === "/images/small-icon-heart-outline.png") {
+          this.set('heart', "/images/small-icon-heart.png");
+          this.set('likes', this.likes+1);
+
+        } else if (this.heart === "/images/small-icon-heart.png") {
+          this.set('heart', "/images/small-icon-heart-outline.png");
+          this.set('likes', this.likes-1);
+        }
+      },
+      
+      project_toggle: function(e) {
+
+        // get project-collapse ID
+        var project = e.currentTarget;
+        var id = project.id;
+        console.log(id);
+
+        if (id === "project1") {
+          this.$.collapse.toggle();
+          this.$.collapse2.opened = false;
+          this.$.collapse3.opened = false;
+
+          if (this.toggleicon === "toggleopen") {
+            this.set("toggleicon", "toggleclose");
+          } else if (this.toggleicon === "toggleclose") {
+            this.set("toggleicon", "toggleopen");
+          }
+
+        } else if (id === "project2") {
+          this.$.collapse2.toggle();
+          this.$.collapse.opened = false;
+          this.$.collapse3.opened = false;
+
+          if (this.toggleicon2 === "toggleopen") {
+            this.set("toggleicon2", "toggleclose");
+          } else if (this.toggleicon2 === "toggleclose") {
+            this.set("toggleicon2", "toggleopen");
+          }
+
+        } else if (id === "project3") {
+          this.$.collapse3.toggle();
+          this.$.collapse.opened = false;
+          this.$.collapse2.opened = false;
+
+          if (this.toggleicon3 === "toggleopen") {
+            this.set("toggleicon3", "toggleclose");
+          } else if (this.toggleicon3 === "toggleclose") {
+            this.set("toggleicon3", "toggleopen");
+          }
+        }
+      }
+        // this.$.collapse.toggle();
+
 
     });
   </script>

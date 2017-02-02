@@ -1,9 +1,6 @@
 <link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
-
-
 <dom-module id="home-page">
   <template>
     <style is="custom-style" include="app-styles">
@@ -13,23 +10,32 @@
 
       .triple-step-header-line {
         max-width: 175px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding-bottom: 1px;
+        border: none;
       }
 
       .triple-button {
-        background-color: var(--paper-teal-600);
+        background-color: var(--paper-pink-600);
         color: white;
         margin-top: 20px;
         width: 150px;
+        border-radius: 2px;
       }
 
       .image-container {
         height: 150px;
       }
 
-      .grid-dark {
-        background-image: url('/images/background-design-grid.png');
-        background-size: 100%;
-        background-repeat: repeat;
+      .responsive-site-image-container {
+        margin: 0 auto; 
+        width: 100%;
+        height: auto;
+      }
+
+      .responsive-site-image {
+        width: 100%;
+        max-width: 450px;
       }
 
       @media only screen and (max-width: 750px) {
@@ -41,6 +47,10 @@
       @media only screen and (max-width: 640px) {
         .triple-step-header-line {
           max-width: 200px;
+        }
+
+        .responsive-site-image-container {
+          padding-top: 25px;
         }
       }
 
@@ -54,7 +64,7 @@
       <div class="commander-inner-section">
         <div class="commander-right-small">
           <div>
-            <img src="/images/profile-photo-TM.png" style="max-width: 250px;">
+            <img src="/images/icon-space-filler.png" style="max-width: 250px;">
           </div>
         </div> 
         <div class="commander-left-large">
@@ -81,12 +91,12 @@
           <div class="commander-triple-one">
             <div class="commander-triple-inner-one">
               <div class="image-container">
-                <img src="/images/icon-space-filler.png" style="width: 100%; max-width: 150px;">
+                <img src="/images/medium-icon-development.png" style="width: 100%; max-width: 150px;">
               </div>
               <div class="captain-header-dark-center">
                 Development
               </div>
-              <hr class="captain-app-line triple-step-header-line">
+              <hr class="triple-step-header-line">
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -98,12 +108,12 @@
           <div class="commander-triple-two">
             <div class="commander-triple-inner-two">
               <div class="image-container">
-                <img src="/images/icon-space-filler.png" style="width: 100%; max-width: 150px;">
+                <img src="/images/medium-icon-design.png" style="width: 100%; max-width: 150px;">
               </div>
               <div class="captain-header-dark-center">
                 Design
               </div>
-              <hr class="captain-app-line triple-step-header-line">
+              <hr class="triple-step-header-line">
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -115,12 +125,12 @@
           <div class="commander-triple-three">
             <div class="commander-triple-inner-three">
               <div class="image-container">
-                <img src="/images/icon-space-filler.png" style="width: 100%; max-width:150px;">
+                <img src="/images/medium-icon-contact.png" style="width: 100%; max-width:150px;">
               </div>
               <div class="captain-header-dark-center">
                 Contact
               </div>
-              <hr class="captain-app-line triple-step-header-line">
+              <hr class="triple-step-header-line">
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -141,12 +151,27 @@
 <!-- /////////////////////////////////////////// -->
 <!-- ABOUT THIS SITE SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section light-grey">
+    <div class="commander-section grid-light">
       <div class="commander-inner-section">
         <div class="captain-header-dark-left">
           About this site
         </div>
         <hr class="captain-app-line">
+        <div class="captain-subheader">
+          <span class="captain-subheader-span">Technologies used / </span>process
+        </div>
+        <div class="commander-right-small">
+          <div>
+            <div class="captain-content-dark padding-left-20px">
+              Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+            </div>
+          </div>
+        </div> 
+        <div class="commander-left-large">
+          <div class="responsive-site-image-container">
+            <img class="responsive-site-image" src="/images/responsive-site-design.png" style="width: 100%; max-width: 450px;">
+          </div>
+        </div>
       </div>
     </div>
 
