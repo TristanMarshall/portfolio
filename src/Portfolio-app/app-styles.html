@@ -73,13 +73,6 @@
     font-family: 'Lobster', cursive;
   };  
 
-
-
-
-
-
-
-
 /*font-family: 'Yantramanav', sans-serif;
 font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Condensed', sans-serif;
@@ -199,11 +192,11 @@ font-family: 'Lobster', cursive;
 
       .captain-image {
         width: 100%;
-        max-width: 250px;
+        max-width: 350px;
       }
 
       .image-position {
-        margin-top: -25px;
+        margin-top: -10px;
       }
 
       .captain-header {
@@ -247,7 +240,7 @@ font-family: 'Lobster', cursive;
         font-weight: 300;
         color: rgba(0, 0, 0, .6);
         text-align: left;
-        line-height: 30px;
+        line-height: 1.8;
       }
 
       .captain-content-light {
@@ -256,18 +249,19 @@ font-family: 'Lobster', cursive;
         font-weight: 300;
         color: rgba(255, 255, 255, .6);
         text-align: left;
-        line-height: 30px;
+        line-height: 1.8;
       }
 
       .captain-sub-content {
-        font-size: 14px;
+        font-size: 16px;
         font-family: 'Roboto', sans-serif;
-        color: rgba(0, 0, 0, 0.7);
-        text-align: justify;
+        color: rgba(0, 0, 0, 0.64);
         padding-top: 10px;
+        line-height: 1.5;
         padding-bottom: 5px;
         max-width: 200px;
         margin: 0 auto;
+        font-weight: 300;
       }
 
       .captain-app-line {
@@ -279,6 +273,22 @@ font-family: 'Lobster', cursive;
         opacity: 0.8;
       }
 
+      .captain-app-line-plain {
+        border: none;
+        background: rgba(0, 0, 0, .2);
+        padding-bottom: 1px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .captain-app-line-plain-light {
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        padding-bottom: 1px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
       .captain-app-button {
         width: 100%;
         max-width: 200px;
@@ -286,7 +296,7 @@ font-family: 'Lobster', cursive;
 
       .grid-dark {
         position: relative;
-        background-image: url('/images/background-grid-dark.png');
+        background-image: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 100%), url('/images/background-grid-dark.png');
         background-position: 0% 0%;
         overflow: hidden;
         background-repeat: no-repeat;
@@ -315,9 +325,11 @@ font-family: 'Lobster', cursive;
 /* COMMANDER GRID CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/
 
+
+
       .commander-section {
         height: auto; 
-        padding: 75px 50px;
+        padding: 150px 50px;
         /*background-color: white;*/
       }
 
@@ -325,6 +337,11 @@ font-family: 'Lobster', cursive;
         height: auto; 
         padding: 75px 50px;
         background-color: #111111;
+      }
+
+      .top-section {
+        height: auto; 
+        padding: 75px 50px 150px 50px;
       }
 
       .commander-section-translucent {
@@ -354,6 +371,18 @@ font-family: 'Lobster', cursive;
         float: right;
         text-align: right;
         width: 40%; 
+      }
+
+
+      .commander-left-half {
+        width: 50%;  
+        padding-right: 20px;
+      }
+
+      .commander-right-half {
+        float: right;
+        text-align: right;
+        width: 50%; 
       }
 
        .commander-card {
@@ -415,6 +444,10 @@ font-family: 'Lobster', cursive;
           padding: 75px 30px;
         }
 
+        .top-section {
+          padding: 75px 30px;
+        }
+
   /*      .captain-header, .captain-header-dark-left {
           font-size: 18px;
         }*/
@@ -436,7 +469,11 @@ font-family: 'Lobster', cursive;
 
         .image-position {
           margin-top: 0px;
-          margin-bottom: 25px;
+          margin-bottom: 10px;
+        }
+
+        .captain-image {
+          max-width: 250px;
         }
 
         .captain-content-dark, .captain-content-light {
@@ -462,18 +499,26 @@ font-family: 'Lobster', cursive;
           padding: 100px 25px;
         }
 
+        .top-section {
+          padding: 50px 25px 100px 25px;
+        }
+
         .first-section-top {
           padding-top: 50px;
         }
 
-        .commander-inner-section, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
+        .commander-inner-section, .commander-right-half, .commander-left-half, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
           float: none;
           width: 100%;
           display: block;
           max-width: 400px;
           margin: 0 auto;
+          text-align: center;
         }
 
+        .commander-right-half {
+          margin-bottom: 20px;
+        }
 
         .commander-triple-one {
           width: 100%;

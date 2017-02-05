@@ -35,8 +35,6 @@
         height: 63px;
       }
 
-
-
       paper-tab {
         width: 100%;
         height: 35px;
@@ -47,13 +45,11 @@
       }
 
 
-        paper-tabs[no-bar] paper-tab.iron-selected {
-          color: red;
-        }
-
 
       paper-tab[link] a {
-        color: var(--paper-indigo-800);
+        color: var(--paper-teal-800);
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 14px;
         text-decoration: none;
       }
 
@@ -66,6 +62,10 @@
         border-top: 1px solid #aeaeae;
         border-bottom: 1px solid #aeaeae;
 
+      }
+
+      .destroy-app-hamburger  {
+        display: none;
       }
 
       .close-menu-icon {
@@ -130,11 +130,6 @@
 
       }
 
-      .testdiv {
-        background-color: tomato;
-        height: 10000px;
-      }
-
       img {
         /*margin-top: 15px;*/
         /*margin-left: 10px;*/
@@ -148,23 +143,22 @@
         letter-spacing: 0px;
       }
 
-      .test-div {
-        background-color: white; 
-        width: 100%; max-width: 700px; 
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.67); 
-        height: 600px; 
-        margin: 0 auto;
-      }
-
       .header-logo-mobile {
         width: 70px;
         float: right;
-        /*margin-bottom: 15px;*/
       }
 
-      .paper-tab-div {
-        /*text-align: right;*/
-        /*width: 100%;*/
+      .last-tab {
+        width: 475px;
+      }
+
+      .toolbar-button {
+        background-color: var(--paper-pink-700);
+        font-size: 12px;
+        padding-left: 10px;
+        color: white;
+        font-weight: 500;
+        padding-right: 10px;
       }
 
       .header-name-mobile {
@@ -189,6 +183,10 @@
 
       @media only screen and (max-width: 640px) {
 
+        .destroy-app-hamburger {
+          display: block;
+        }
+
         .destroy-app-toolbar {
           display: none;
         }
@@ -210,6 +208,8 @@
       data="{{routeData}}"
       tail="{{subroute}}">
     </app-route>
+
+    <app-scrollpos-control selected="{{page}}"></app-scrollpos-control>
 
     <app-drawer-layout>
       <app-drawer id="drawertoggle">
@@ -251,7 +251,7 @@
 
           <app-toolbar>
             <!-- <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button> -->
-            <div on-click="change_icon">
+            <div class="destroy-app-hamburger" on-click="change_icon">
               <img style="width: 22px; padding-left: 6px;" src="{{menucommand}}">
             </div>
             <div class="header-logo-mobile-div" main-title>
@@ -276,7 +276,7 @@
             <div class="header-name-mobile captain-header" main-title></div>
 
 
-              <paper-tabs selected="[[page]]">
+<!--               <paper-tabs selected="{{page}}">
                 <paper-tab link>
                   <a href="/home" class="link" tabindex="-1">Home</a>
                 </paper-tab>
@@ -289,29 +289,36 @@
                 <paper-tab link>
                   <a href="/contact" class="link" tabindex="-1">Contact</a>
                 </paper-tab>
-              </paper-tabs>
+              </paper-tabs> -->
 
 
-<!--               <paper-tabs selected="[[page]]" no-bar>
+              <paper-tabs selected="[[page]]" no-bar>
                 <paper-tab link>
                   <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
                 </paper-tab>
                 <paper-tab link>
-                  <a href="/design" class="link" tabindex="-1">TAB ONE</a>
+                  <a href="/design" class="link" tabindex="-1">Design</a>
                 </paper-tab>
                 <paper-tab link>
-                  <a href="#link2" class="link" tabindex="-1">TAB TWO</a>
+                  <a href="/development" class="link" tabindex="-1">Development</a>
                 </paper-tab>
                 <paper-tab link>
-                  <a href="#link3" class="link" tabindex="-1">TAB THREE</a>
+                  <a href="/contact" class="link" tabindex="-1">Contact</a>
                 </paper-tab>
-              </paper-tabs> -->
-
+                <paper-tab class="last-tab">
+                  <!-- <a href="/#testjump"> -->
+                    <paper-button class="toolbar-button">sign guestbook</paper-button>
+                  <!-- </a> -->
+                </paper-tab>
+              </paper-tabs>
+<!--               <div>
+                <paper-button>sign guestbook</paper-button>
+              </div> -->
 
           </app-toolbar>
         </app-header>
 
-        <iron-pages selected="[[page]]" role="main" attr-for-selected="name">
+        <iron-pages selected="{{page}}" role="main" attr-for-selected="name">
           <home-page name="home"></home-page>
           <design-page name="design"></design-page>
           <development-page name="development"></development-page>
@@ -354,16 +361,6 @@
 
       change_icon: function() {
         var drawerid = this.$.drawertoggle;
-        // if (this.menucommand === "/images/hamburger-icon.png") {
-        //   this.set("menucommand", "/images/avatar-1.png");
-          // drawerid.closed === false;
-          // return;
-
-        // } else if (this.menucommand === "/images/avatar-1.png") {
-        //   this.set("menucommand", "/images/hamburger-icon.png");
-          // drawerid.closed === true;
-        // }
-
         drawerid.toggle();
         
       },

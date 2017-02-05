@@ -11,10 +11,6 @@
         display: block;
       }
 
-      .image-position {
-        margin-top: -25px;
-      }
-
       .toggle-project-div {
         cursor: pointer;
       }
@@ -55,9 +51,9 @@
       }
 
       .toggle-icon-container {
-        padding-top: 17px;
-        padding-left: 17px;
+        padding-top: 18px;
         padding-right: 17px;
+        padding-left: 1px;      
       }
 
       .toggleopen {
@@ -83,7 +79,7 @@
 <!-- /////////////////////////////////////////// -->
 <!-- DEVELOPMENT INTRO SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section grid-dark">
+    <div class="top-section grid-dark">
       <div class="commander-inner-section">
           <div class="mobile-hide">
             <div class="captain-header">
@@ -96,7 +92,7 @@
           </div>
         <div class="commander-right-small">
           <div>
-            <img class="captain-image image-position" src="/images/icon-space-filler.png">
+            <img class="captain-image image-position" src="/images/large-icon-desktop-code.png">
           </div>
         </div>
         <div class="commander-left-large">
@@ -110,11 +106,12 @@
             </div>
           </div>
           <div class="captain-content-light padding-right-20px">
-            Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+            <b>Twain's father was a lawyer by profession but was only mildly successful.</b> He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
           </div>
         </div>
       </div>
     </div>
+
 
   <div class="commander-section white">
     <div class="commander-inner-section">
@@ -132,17 +129,14 @@
             </div>
           </div>
         </div>
-      <hr class="captain-app-line">
-<!--       <div class="captain-subheader">
-        <span class="captain-subheader-span">Published Polymer Web Components</span>
-      </div> -->
+      <hr class="captain-app-line-plain">
       <div class="captain-content-dark padding-right-20px">
         Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother.
       </div>
       <br>
       <br>
       <br>
-      <hr class="project-collapse-line captain-app-line">
+      <hr class="project-collapse-line captain-app-line-plain">
       <div class="toggle-project-div" id="project1" on-click="project_toggle">
         <div class="container flex-horizontal">
           <div class="toggle-icon-container">
@@ -157,7 +151,7 @@
        <iron-collapse id="collapse">
           <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
         </iron-collapse>
-        <hr class="project-collapse-line captain-app-line">
+        <hr class="project-collapse-line captain-app-line-plain">
       </div>
 
       <div class="toggle-project-div" id="project2" on-click="project_toggle">
@@ -174,7 +168,7 @@
        <iron-collapse id="collapse2">
           <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
         </iron-collapse>
-        <hr class="project-collapse-line captain-app-line">
+        <hr class="project-collapse-line captain-app-line-plain">
       </div>
 
       <div class="toggle-project-div" id="project3" on-click="project_toggle">
@@ -191,17 +185,36 @@
        <iron-collapse id="collapse3">
           <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
         </iron-collapse>
-        <hr class="project-collapse-line captain-app-line">
+        <hr class="project-collapse-line captain-app-line-plain">
       </div>
 
       <div class="thank-you-content align-center">
         Thanks for looking!
         <br>
-      <img class="thank-you-image" src="/images/logo-TM-outline-grey.png">
+      <img class="thank-you-image" src="/images/logo-TM-outline.png">
       </div>
     </div>
   </div>
 
+  <div class="commander-section-dark">
+    <div class="commander-inner-section">
+        <div class="container flex-horizontal">
+          <div class="captain-header flexchild">
+            Freelance projects
+          </div>
+          <div class="guestbook-entry-count child3">
+            <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
+              <div class="guest-likes-count inline">
+                {{likes}} likes
+              </div>
+              <img style="width: 20px;" src="{{heart}}">
+            </div>
+          </div>
+        </div>
+      <hr class="captain-app-line-plain-light">
+      </div>
+    </div>
+  </div>
 
 
   </template>
