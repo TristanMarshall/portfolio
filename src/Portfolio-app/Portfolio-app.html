@@ -28,7 +28,7 @@
 
 
       paper-tabs {
-        max-width: 800px; 
+        max-width: 960px; 
         width: 100%; 
         height: auto;
         margin: 0 auto; 
@@ -168,6 +168,46 @@
         font-size: 14px;
       }
 
+      .fixed-side-bar {
+        height: auto;
+        width: auto;
+        position: fixed;
+        top: 202px;
+        right: 5px;
+      }
+
+      .social-box {
+        width: 40px; 
+        height: 40px;
+      }
+
+      .twitter {
+        background-image: url('/images/social-icons/twitter-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        margin-bottom: 5px;
+      }
+
+      .linkedin {
+        background-image: url('/images/social-icons/linkedin-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat; 
+      }
+
+      .instagram {
+        background-image: url('/images/social-icons/instagram-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        margin-bottom: 5px;
+        
+      }
+
+      @media only screen and (max-width: 750px) {
+        .fixed-side-bar {
+          display: none;
+        }
+      }
+
       @media only screen and (min-width: 640px) {
          app-drawer {
           display: none;
@@ -179,6 +219,8 @@
         .header-name-mobile {
           display: none;
         }
+
+
       }
 
       @media only screen and (max-width: 640px) {
@@ -194,7 +236,6 @@
         .header-logo-desktop {
           display: none;
         }
-
       }
 
 
@@ -242,7 +283,9 @@
 <!--           <a class="active-class menu-link-items menu-item-margin" name="test" href="/test" drawer-toggle>Test</a>
           <hr class="menu-line"> -->
           <div class="menu-item-container">
-            <img style="width: 50px;" src="/images/logo-TM-outline-white.png">
+            <a href="/home">
+              <img style="width: 50px;" src="/images/logo-TM-outline-white.png">
+            </a>
           </div>
         </iron-selector>
       </app-drawer>
@@ -254,9 +297,9 @@
             <div class="destroy-app-hamburger" on-click="change_icon">
               <img style="width: 22px; padding-left: 6px;" src="{{menucommand}}">
             </div>
-            <div class="header-logo-mobile-div" main-title>
+              <div class="header-logo-mobile-div" on-click="change_home" main-title>
                 <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
-            </div>
+              </div>
           </app-toolbar>
 
 
@@ -264,34 +307,16 @@
           <div main-title></div>
             <div class="commander-section-translucent width100" style="padding-right: 0px;">
               <div class="commander-inner-section width100 align-right">
-                <div class="header-logo-desktop">
-                 <img style="width: 150px; margin-bottom: 75px; margin-right: 30px;" src="/images/logo-TM-outline.png">
-                </div>
+                <a href="/home">
+                  <div class="header-logo-desktop">
+                   <img style="width: 150px; margin-bottom: 75px; margin-right: 30px;" src="/images/logo-TM-outline.png">
+                  </div>
+                </a>
               </div>
             </div>
           </app-toolbar>
-
           <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto;">
-
             <div class="header-name-mobile captain-header" main-title></div>
-
-
-<!--               <paper-tabs selected="{{page}}">
-                <paper-tab link>
-                  <a href="/home" class="link" tabindex="-1">Home</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/design" class="link" tabindex="-1">Design</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/development" class="link" tabindex="-1">Development</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/contact" class="link" tabindex="-1">Contact</a>
-                </paper-tab>
-              </paper-tabs> -->
-
-
               <paper-tabs selected="[[page]]" no-bar>
                 <paper-tab link>
                   <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
@@ -311,13 +336,8 @@
                   <!-- </a> -->
                 </paper-tab>
               </paper-tabs>
-<!--               <div>
-                <paper-button>sign guestbook</paper-button>
-              </div> -->
-
           </app-toolbar>
         </app-header>
-
         <iron-pages selected="{{page}}" role="main" attr-for-selected="name">
           <home-page name="home"></home-page>
           <design-page name="design"></design-page>
@@ -325,6 +345,17 @@
           <contact-page name="contact"></contact-page>
           <test-page name="test"></test-page>
         </iron-pages>
+        <div class="fixed-side-bar">
+          <a href="https://twitter.com/TristanMarshall" target="_blank">
+            <div class="social-box twitter"></div>
+          </a>
+          <a href="https://www.instagram.com/fullmarshallstack/" target="_blank">
+            <div class="social-box instagram"></div>
+          </a>
+          <a href="" target="_blank">
+            <div class="social-box linkedin"></div>
+          </a>
+        </div>
 
         <app-footer></app-footer>
 
@@ -360,9 +391,14 @@
       ],
 
       change_icon: function() {
+        console.log(this.page);
         var drawerid = this.$.drawertoggle;
         drawerid.toggle();
-        
+      },
+
+
+      change_home: function() {
+        console.log( "HELLOOO" + this.page);
       },
 
       _routePageChanged: function(page) {
