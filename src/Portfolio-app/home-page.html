@@ -13,6 +13,7 @@
         background-color: rgba(0, 0, 0, 0.2);
         padding-bottom: 1px;
         border: none;
+        margin-bottom: 5px;
       }
 
       .triple-button {
@@ -38,6 +39,50 @@
         max-width: 450px;
       }
 
+      .landing-image {
+        max-width: 175px;
+      }
+
+      .landing-name {
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 18px;
+        font-family: Roboto Condensed;
+        font-weight: 200;
+        font-size: 35px;
+      }
+
+      .m-span {
+        font-size: 40px;
+      }
+
+      .landing-title {
+        color: var(--paper-teal-500);
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 300;
+        margin-top: 10px;
+        letter-spacing: 1px;
+      }
+
+      .landing-title-span {
+        font-weight: 100;
+      }
+
+      .landing-line {
+        width: 30%;
+        margin-top: 20px;
+      }
+
+      .line-dot {
+        width: 3px;
+        background-color: #3f3f3f;
+        height: 3px;
+        margin: 0 auto;
+        margin-top: -8px;
+        border: 1px solid #3f3f3f;
+        border-radius: 50%;
+      }
+
       @media only screen and (max-width: 750px) {
         .triple-step-header-line {
           max-width: 150px;
@@ -45,6 +90,32 @@
       }
 
       @media only screen and (max-width: 640px) {
+
+        .min-height {
+          min-height: 455px;
+        }
+
+        .landing-image {
+          max-width: 175px;
+        }
+
+        .landing-name {
+          font-size: 24px;
+          letter-spacing: 3px;
+        }
+
+        .m-span {
+          font-size: 32px;
+        }
+
+        .landing-title {
+          font-size: 18px;
+        }
+
+        .landing-line {
+          width: 66%;
+        }
+
         .triple-step-header-line {
           max-width: 200px;
         }
@@ -58,32 +129,19 @@
 
 
 <!-- /////////////////////////////////////////// -->
-<!-- BIOGRAPHY SECTION -->
+<!-- LANDING SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section top-section grid-dark">
-      <div class="commander-inner-section">
-        <div class="commander-right-half">
-          <div>
-            <img src="/images/profile-photo-TM.png" class="captain-image">
-          </div>
-        </div> 
-        <div class="commander-left-half">
-          <div class="captain-header">
-            Tristan Marshall
-          </div>
-          <hr class="captain-app-line">
-          <div class="captain-subheader">
-            <span class="captain-subheader-span">front-end developer / </span>designer
-          </div>
-          <div class="captain-content-light padding-right-20px">
-            Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
-          </div>
-          <div class="captain-subheader">
-            <span class="captain-subheader-span font12">chicago, </span>illinois
-          </div>
+    
+      <div class="commander-section top-section grid-dark min-height">
+        <div class="commander-inner-section align-center">
+          <img class="landing-image" src="/images/diver-helmet-logo.svg">
+          <div class="landing-name">TRISTAN <span class="m-span">M</span>ARSHALL</div>
+          <div class="landing-title">front end developer  <span class="landing-title-span">/  designer</span></div>
+          <hr class="landing-line captain-app-line-plain-light">
+          <div class="line-dot"></div>
+          <paper-button class="captain-app-button triple-button">VIEW PORTFOLIO</paper-button>
         </div>
       </div>
-    </div>
 
 <!-- /////////////////////////////////////////// -->
 <!-- 3 SECTION NAVIGATION SECTION -->
@@ -100,6 +158,7 @@
                 Development
               </div>
               <hr class="triple-step-header-line">
+              <div class="line-dot"></div>
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -117,6 +176,7 @@
                 Design
               </div>
               <hr class="triple-step-header-line">
+              <div class="line-dot"></div>
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -134,6 +194,7 @@
                 Contact
               </div>
               <hr class="triple-step-header-line">
+              <div class="line-dot"></div>
               <div class="captain-sub-content">
                 Although the family was not wealthy, Twain apparently had a happy and secure childhood.
               </div>
@@ -145,36 +206,17 @@
         </div>
       </div>
     </div>
-
-<!-- /////////////////////////////////////////// -->
-<!-- GUESTBOOK SECTION -->
-<!-- /////////////////////////////////////////// -->
-<div id="testjump"></div>
-    <home-zone-guestbook></home-zone-guestbook>
-
 <!-- /////////////////////////////////////////// -->
 <!-- ABOUT THIS SITE SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section grid-light">
+    <div class="commander-section-dark">
       <div class="commander-inner-section">
-        <div class="captain-header-dark-left">
+        <div class="captain-header">
           About this site
         </div>
-        <hr class="captain-app-line-plain">
+        <hr class="captain-app-line-plain-light">
         <div class="captain-subheader">
           <span class="captain-subheader-span">Technologies used / </span>process
-        </div>
-        <div class="commander-right-small">
-          <div>
-            <div class="captain-content-dark padding-left-20px">
-              Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
-            </div>
-          </div>
-        </div> 
-        <div class="commander-left-large">
-          <div class="responsive-site-image-container">
-            <img class="responsive-site-image" src="/images/responsive-site-design.png" style="width: 100%; max-width: 450px;">
-          </div>
         </div>
       </div>
     </div>

@@ -11,6 +11,11 @@
         display: block;
       }
 
+      iron-collapse {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
       .toggle-project-div {
         cursor: pointer;
       }
@@ -92,7 +97,7 @@
           </div>
         <div class="commander-right-small">
           <div>
-            <img class="captain-image image-position" src="/images/large-desktop-code.png">
+            <img class="captain-image image-position" src="/images/large-desktop-code-white.png">
           </div>
         </div>
         <div class="commander-left-large">
@@ -120,7 +125,6 @@
             Web Projects
           </div>
           <div class="guestbook-entry-count child3">
-            <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
             <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
               <div class="guest-likes-count inline">
                 {{likes}} likes
@@ -131,29 +135,38 @@
         </div>
       <hr class="captain-app-line-plain">
       <div class="captain-content-dark padding-right-20px">
-        Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother.
+        Below are some projects I've made just for fun, please take a moment and try them out! Included is a Credit Card Validation that checks to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!
       </div>
       <br>
       <br>
       <br>
-      <hr class="project-collapse-line captain-app-line-plain">
-      <div class="toggle-project-div" id="project1" on-click="project_toggle">
-        <div class="container flex-horizontal">
-          <div class="toggle-icon-container">
-            <div>
-              <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
+
+
+      <template is="dom-repeat">
+        <hr class="project-collapse-line captain-app-line-plain">
+        <div class="toggle-project-div">
+          <div class="container flex-horizontal"  id="project1"  on-click="project_toggle">
+            <div class="toggle-icon-container">
+              <div>
+                <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
+              </div>
+            </div>
+            <div class="project-collapse-header">
+              Website guestbook
             </div>
           </div>
-          <div class="project-collapse-header">
-            Website guestbook
-          </div>
-        </div>
-       <iron-collapse id="collapse">
-          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
-        </iron-collapse>
-        <hr class="project-collapse-line captain-app-line-plain">
-      </div>
+         <iron-collapse id="collapse">
 
+          <div id="testjump"></div>
+          <home-zone-guestbook></home-zone-guestbook>
+
+          </iron-collapse>
+          <hr class="project-collapse-line captain-app-line-plain">
+        </div>
+      </template>
+
+
+<!-- 
       <div class="toggle-project-div" id="project2" on-click="project_toggle">
         <div class="container flex-horizontal">
           <div class="toggle-icon-container">
@@ -186,7 +199,7 @@
           <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
         </iron-collapse>
         <hr class="project-collapse-line captain-app-line-plain">
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -291,8 +304,8 @@
 
         if (id === "project1") {
           this.$.collapse.toggle();
-          this.$.collapse2.opened = false;
-          this.$.collapse3.opened = false;
+          // this.$.collapse2.opened = false;
+          // this.$.collapse3.opened = false;
 
           if (this.toggleicon === "toggleopen") {
             this.set("toggleicon", "toggleclose");
@@ -300,29 +313,30 @@
             this.set("toggleicon", "toggleopen");
           }
 
-        } else if (id === "project2") {
-          this.$.collapse2.toggle();
-          this.$.collapse.opened = false;
-          this.$.collapse3.opened = false;
+        // } else if (id === "project2") {
+        //   this.$.collapse2.toggle();
+        //   this.$.collapse.opened = false;
+        //   this.$.collapse3.opened = false;
 
-          if (this.toggleicon2 === "toggleopen") {
-            this.set("toggleicon2", "toggleclose");
-          } else if (this.toggleicon2 === "toggleclose") {
-            this.set("toggleicon2", "toggleopen");
-          }
+        //   if (this.toggleicon2 === "toggleopen") {
+        //     this.set("toggleicon2", "toggleclose");
+        //   } else if (this.toggleicon2 === "toggleclose") {
+        //     this.set("toggleicon2", "toggleopen");
+        //   }
 
-        } else if (id === "project3") {
-          this.$.collapse3.toggle();
-          this.$.collapse.opened = false;
-          this.$.collapse2.opened = false;
+        // } else if (id === "project3") {
+        //   this.$.collapse3.toggle();
+        //   this.$.collapse.opened = false;
+        //   this.$.collapse2.opened = false;
 
-          if (this.toggleicon3 === "toggleopen") {
-            this.set("toggleicon3", "toggleclose");
-          } else if (this.toggleicon3 === "toggleclose") {
-            this.set("toggleicon3", "toggleopen");
-          }
-        }
+        //   if (this.toggleicon3 === "toggleopen") {
+        //     this.set("toggleicon3", "toggleclose");
+        //   } else if (this.toggleicon3 === "toggleclose") {
+        //     this.set("toggleicon3", "toggleopen");
+        //   }
+        // }
       }
+    },
         // this.$.collapse.toggle();
 
 

@@ -1,0 +1,160 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+<dom-module id="zone-process">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      .gradient-side {
+        float: left;
+        height: 525px;
+        width: 5px;
+        margin-right: 15px;
+      }
+
+      .image-div {
+      }
+
+      .image-image {
+        float: left;
+        margin-bottom: 10px;
+      }
+
+      .width-control {
+        width: 80%;
+      }
+
+      .gradient-1 {
+        background: linear-gradient(180deg, rgba(229,57,53,1) 0%, rgba(255,179,0,1) 100%);
+      }
+
+      .gradient-2 {
+        background: linear-gradient(180deg, rgba(251,192,45,1) 0%, rgba(251,192,45,1) 12%, rgba(0,200,83,1) 100%);
+      }
+
+      .gradient-3 {
+        background: linear-gradient(180deg, rgba(0,150,136,1) 0%, rgba(0,150,136,1) 18%, rgba(63,81,181,1) 100%);
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .no-bottom {
+          padding-bottom: 0px;
+          border-bottom: none;
+        }
+
+        .gradient-side {
+          height: 600px;
+        }
+
+        .width-control {
+          width: 90%;
+        }
+
+        .image-div {
+          text-align: left;
+        }
+        .image-image {
+          float: none;
+        }
+      }
+
+    </style>
+
+<!-- /////////////////////////////////////////// -->
+<!-- PROCESS SECTION -->
+<!-- /////////////////////////////////////////// -->
+
+      <div class="commander-section-dark">
+        <div class="commander-inner-section">
+        <div class="captain-header flexchild">
+              Design to Development Process
+            </div>
+          <hr class="captain-app-line-plain-light">
+          <div class="captain-subheader">
+            Below is a simple example of how an idea / web element gets built.
+          </div>
+          <br>
+          <br>
+          <div class="commander-guide">
+            <div class="commander-triple-one no-bottom">
+              <div>
+                <div class="gradient-side gradient-1"></div>
+                <div class="image-div">
+                  <img class="image-image width-control" src="/images/wireframe.jpg">
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Identify idea:
+                    <span> wireframe</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                    Wireframing allows design layout &amp; element states to be identified without the distraction of colors / fonts.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="commander-triple-two no-bottom">
+              <div>
+                <div class="gradient-side gradient-2"></div>
+                <div class="image-div">
+                  <img class="image-image width-control" src="/images/wireframe-digital.png">
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Detail layout:
+                    <span> illustrator</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                      Creating a detailed layout of exactly what the element will look like once handed off to development.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="commander-triple-three no-bottom">
+              <div>
+                <div class="gradient-side gradient-3"></div>
+                <div class="image-div">
+                  <img class="image-image width-control" src="/images/wireframe-digital.jpg">
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Build concept:
+                    <span> code</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                    Detailed layout is then structured in HTML, styled with CSS / SCSS, and given functionality with JavaScript.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+  <script>
+    Polymer({
+
+      is: 'zone-process',
+
+      properties: {
+
+      },
+
+    });
+  </script>
+</dom-module>
