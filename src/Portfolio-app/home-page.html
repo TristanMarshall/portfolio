@@ -83,6 +83,11 @@
         border-radius: 50%;
       }
 
+      .dot-triple {
+        background-color: #c6c6c6;
+        border-color: #c6c6c6;
+      }
+
       @media only screen and (max-width: 750px) {
         .triple-step-header-line {
           max-width: 150px;
@@ -139,14 +144,14 @@
           <div class="landing-title">front end developer  <span class="landing-title-span">/  designer</span></div>
           <hr class="landing-line captain-app-line-plain-light">
           <div class="line-dot"></div>
-          <paper-button class="captain-app-button triple-button">VIEW PORTFOLIO</paper-button>
+          <paper-button class="captain-app-button triple-button" on-tap="scroll_to_nav">VIEW PORTFOLIO</paper-button>
         </div>
       </div>
 
 <!-- /////////////////////////////////////////// -->
 <!-- 3 SECTION NAVIGATION SECTION -->
 <!-- /////////////////////////////////////////// -->
-    <div class="commander-section light-grey">
+    <div class="commander-section light-grey" id="target">
       <div class="commander-inner-section">
         <div class="commander-guide">
           <div class="commander-triple-one">
@@ -158,9 +163,9 @@
                 Development
               </div>
               <hr class="triple-step-header-line">
-              <div class="line-dot"></div>
+              <div class="line-dot dot-triple"></div>
               <div class="captain-sub-content">
-                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+                Web projects, freelance work &amp; professional websites.
               </div>
               <a href="/development">
                 <paper-button class="triple-button" raised>DEVELOPMENT</paper-button>
@@ -176,9 +181,10 @@
                 Design
               </div>
               <hr class="triple-step-header-line">
-              <div class="line-dot"></div>
+              <div class="line-dot dot-triple"></div>
               <div class="captain-sub-content">
-                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+                <!-- Although the family was not wealthy, Twain apparently had a happy and secure childhood. -->
+                Wireframes, UI design, original icons, &amp; illustrations.
               </div>
               <a href="/design">
                 <paper-button class="triple-button" raised>DESIGN</paper-button>
@@ -194,9 +200,9 @@
                 Contact
               </div>
               <hr class="triple-step-header-line">
-              <div class="line-dot"></div>
+              <div class="line-dot dot-triple"></div>
               <div class="captain-sub-content">
-                Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+                Social handles, contact information. Get in touch!
               </div>
               <a href="/contact">
                 <paper-button class="triple-button" raised>CONTACT</paper-button>
@@ -216,7 +222,21 @@
         </div>
         <hr class="captain-app-line-plain-light">
         <div class="captain-subheader">
-          <span class="captain-subheader-span">Technologies used / </span>process
+
+          <span class="captain-subheader-span">
+        </div>
+        <div class="captain-content-light">
+This site was built using the <a target="_blank" href="https://www.polymer-project.org/1.0/"> Polymer Project</a> by Google. Polymer is a JavaScript library for building web components; these web components can then be used to build web apps, like this portfolio! 
+<br>
+<br>
+Utilizing <a target="_blank" href="https://material.io/guidelines/">Material Design</a> as guidelines – the over all design of this portfolio offers one clean, rich idea of how websites / web apps can look &amp; flow. Adobe Illustrator was used to develop all of the icons, background designs, logos, &amp; illustrations that you will see throughout this site. 
+<br>
+<br>
+If you would like to see the code for this site, view the <a target="_blank" href="https://github.com/TristanMarshall/portfolio">Github repository here.</a> The .readme file has further information pertaining to this portfolios code. 
+<br>
+<br>
+Thanks for looking! 
+
         </div>
       </div>
     </div>
@@ -230,6 +250,11 @@
 
       properties: {
 
+      },
+
+      scroll_to_nav: function() {
+        var target = document.getElementById("target");
+        target.scrollIntoView({behavior: "smooth"});
       },
 
     });

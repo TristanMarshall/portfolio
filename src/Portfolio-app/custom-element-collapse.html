@@ -1,0 +1,141 @@
+<link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+<dom-module id="custom-element-collapse">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      iron-collapse {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+      
+      .toggle-project-div {
+        cursor: pointer;
+      }
+
+      .project-collapse-line {
+        border: none;
+        background-color: rgba(0, 0, 0, .25);
+        padding-bottom: 1px;
+      }
+
+      .project-collapse-header {
+        font-weight: 100;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 16px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: rgba(0, 0, 0, .65);
+      }
+
+      .project-collapse-header-open {
+        
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 22px;
+        padding-top: 12px;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      .toggle-icon-container {
+        padding-top: 18px;
+        padding-right: 17px;
+        padding-left: 1px;      
+      }
+
+      .toggleopen {
+        width: 13px;
+        transform: rotate(45deg);
+
+      }
+
+      .toggleclose {
+        width: 13px;
+        transform: rotate(0deg);
+      }
+
+    </style>
+<!-- /////////////////////////////////////////// -->
+<!-- CUSTOM ELEMENT COLLAPSE -->
+<!-- /////////////////////////////////////////// -->
+        <hr class="project-collapse-line captain-app-line-plain">
+        <div class="toggle-project-div">
+          <div class="container flex-horizontal"  id="project1"  on-click="project_toggle">
+            <div class="toggle-icon-container">
+              <div>
+                <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
+              </div>
+            </div>
+            <div class$="{{titleClass}}">
+              {{title}}
+            </div>
+          </div>
+         <iron-collapse id="collapse">
+
+          <div id="testjump"></div>
+          <content>
+            <!-- CONTENT OF ELEMENT HERE -->
+          </content>
+          </iron-collapse>
+          <!-- <hr class="project-collapse-line captain-app-line-plain"> -->
+        </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'custom-element-collapse',
+
+      properties: {
+        title: {
+          type: String,
+          value: "",
+          notify: true,
+          reflectToAttribute: true
+        },
+        toggleicon: {
+          type: String,
+          value: "toggleopen",
+          notify: true,
+          reflectToAttribute: true
+        },
+        titleClass: {
+          type: String,
+          value: "project-collapse-header",
+          notify: true,
+          reflectToAttribute: true
+        }
+      },
+
+      project_toggle: function(e) {
+
+        // get project-collapse ID
+        var project = e.currentTarget;
+        var id = project.id;
+        console.log(id);
+
+        if (id === "project1") {
+          this.$.collapse.toggle();
+
+          if (this.toggleicon === "toggleopen") {
+            this.set("toggleicon", "toggleclose");
+            this.set("titleClass", "project-collapse-header-open");
+
+          } else if (this.toggleicon === "toggleclose") {
+            this.set("toggleicon", "toggleopen");
+            this.set("titleClass", "project-collapse-header");
+
+          }
+      }
+    },
+
+
+    });
+  </script>
+</dom-module>

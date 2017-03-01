@@ -142,64 +142,25 @@
       <br>
 
 
-      <template is="dom-repeat">
-        <hr class="project-collapse-line captain-app-line-plain">
-        <div class="toggle-project-div">
-          <div class="container flex-horizontal"  id="project1"  on-click="project_toggle">
-            <div class="toggle-icon-container">
-              <div>
-                <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
-              </div>
-            </div>
-            <div class="project-collapse-header">
-              Website guestbook
-            </div>
-          </div>
-         <iron-collapse id="collapse">
+      <!-- <template is="dom-repeat"> -->
 
-          <div id="testjump"></div>
+
+
+      <!-- </template> -->
+
+      <custom-element-collapse title="Website Guestbook">
+        <content>
           <home-zone-guestbook></home-zone-guestbook>
+        </content>
+      </custom-element-collapse>
+      <custom-element-collapse title="Credit Card Validation">
+        <content>
+          <zone-validation></zone-validation>
+        </content>
+      </custom-element-collapse>
+      <hr class="project-collapse-line captain-app-line-plain">
 
-          </iron-collapse>
-          <hr class="project-collapse-line captain-app-line-plain">
-        </div>
-      </template>
 
-
-<!-- 
-      <div class="toggle-project-div" id="project2" on-click="project_toggle">
-        <div class="container flex-horizontal">
-          <div class="toggle-icon-container">
-            <div>
-              <img class$="{{toggleicon2}}" src="/images/small-icon-x.png">
-            </div>
-          </div>
-          <div class="project-collapse-header">
-            Credit card validation
-          </div>
-        </div>
-       <iron-collapse id="collapse2">
-          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
-        </iron-collapse>
-        <hr class="project-collapse-line captain-app-line-plain">
-      </div>
-
-      <div class="toggle-project-div" id="project3" on-click="project_toggle">
-        <div class="container flex-horizontal">
-          <div class="toggle-icon-container">
-            <div>
-              <img class$="{{toggleicon3}}" src="/images/small-icon-x.png">
-            </div>
-          </div>
-          <div class="project-collapse-header">
-            Three day weather app
-          </div>
-        </div>
-       <iron-collapse id="collapse3">
-          <div style="width: 100%; background-color: #f7f7f7; height: 200px; border: 1px solid #aeaeae;"></div>
-        </iron-collapse>
-        <hr class="project-collapse-line captain-app-line-plain">
-      </div> -->
     </div>
   </div>
 
@@ -210,7 +171,7 @@
             Freelance projects
           </div>
           <div class="guestbook-entry-count child3">
-            <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
+            <div class="align-right padding-left" on-tap="like_webproject">
               <div class="guest-likes-count inline">
                 {{likes}} likes
               </div>
@@ -261,25 +222,6 @@
           notify: true,
           reflectToAttribute: true
         },
-
-        toggleicon: {
-          type: String,
-          value: "toggleopen",
-          notify: true,
-          reflectToAttribute: true
-        },
-        toggleicon2: {
-          type: String,
-          value: "toggleopen",
-          notify: true,
-          reflectToAttribute: true
-        },
-        toggleicon3: {
-          type: String,
-          value: "toggleopen",
-          notify: true,
-          reflectToAttribute: true
-        }
       },
 
 
@@ -295,50 +237,6 @@
         }
       },
       
-      project_toggle: function(e) {
-
-        // get project-collapse ID
-        var project = e.currentTarget;
-        var id = project.id;
-        console.log(id);
-
-        if (id === "project1") {
-          this.$.collapse.toggle();
-          // this.$.collapse2.opened = false;
-          // this.$.collapse3.opened = false;
-
-          if (this.toggleicon === "toggleopen") {
-            this.set("toggleicon", "toggleclose");
-          } else if (this.toggleicon === "toggleclose") {
-            this.set("toggleicon", "toggleopen");
-          }
-
-        // } else if (id === "project2") {
-        //   this.$.collapse2.toggle();
-        //   this.$.collapse.opened = false;
-        //   this.$.collapse3.opened = false;
-
-        //   if (this.toggleicon2 === "toggleopen") {
-        //     this.set("toggleicon2", "toggleclose");
-        //   } else if (this.toggleicon2 === "toggleclose") {
-        //     this.set("toggleicon2", "toggleopen");
-        //   }
-
-        // } else if (id === "project3") {
-        //   this.$.collapse3.toggle();
-        //   this.$.collapse.opened = false;
-        //   this.$.collapse2.opened = false;
-
-        //   if (this.toggleicon3 === "toggleopen") {
-        //     this.set("toggleicon3", "toggleclose");
-        //   } else if (this.toggleicon3 === "toggleclose") {
-        //     this.set("toggleicon3", "toggleopen");
-        //   }
-        // }
-      }
-    },
-        // this.$.collapse.toggle();
-
 
     });
   </script>

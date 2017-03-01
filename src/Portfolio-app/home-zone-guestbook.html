@@ -192,13 +192,13 @@
 <!-- /////////////////////////////////////////// -->
 <!--     <div class="commander-section white">
       <div class="commander-inner-section"> -->
-        <div class="container flex-horizontal">
+<!--         <div class="container flex-horizontal">
           <div class="captain-header-dark-left flexchild">
             Site Guestbook
           </div>
-          <div class="guestbook-entry-count child3">
+          <div class="guestbook-entry-count child3"> -->
             <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
-            <div class="align-right cursor-pointer" on-tap="like_guestbook">
+<!--             <div class="align-right cursor-pointer" on-tap="like_guestbook">
               <div class="guest-likes-count inline">
                 {{guestbooklikes.likes}} likes
               </div>
@@ -206,7 +206,7 @@
             </div>
           </div>
         </div>
-        <hr class="captain-app-line-plain">
+        <hr class="captain-app-line-plain"> -->
         <paper-dialog no-cancel-on-outside-click class="guestbook-class" id="guestbook">
         <div class="container flex-end-justified">
           <div on-tap="close_reset_dialog">
@@ -273,8 +273,12 @@
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
                 Here, you can make a guest book entry, this is a custom <a href="https://www.polymer-project.org/1.0/"> Polymer </a>element. The guest list data is being saved to Firebase
+                <br>
+                <paper-button class="captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
+                <br>
+                <br>
+            <a target="_blank" href="https://www.github.com">VIEW CODE ON GITHUB</a>
             </div>
-            <paper-button class="margin-left-20px captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
           </div>
         </div> 
         <div class="commander-left-large">
