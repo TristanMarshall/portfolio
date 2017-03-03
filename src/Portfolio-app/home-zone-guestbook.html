@@ -17,10 +17,6 @@
         margin: 0 auto 10px auto;
       }
 
-      paper-material:hover {
-       /*border: 1px solid var(--paper-pink-600);*/
-      }
-
       paper-button {
         background-color: var(--paper-pink-600);
         color: white;
@@ -41,8 +37,21 @@
         margin-top: 15px;
       }
 
-      .paper-textarea {
-        /*padding-top: 25px;*/
+      paper-input {
+        margin-bottom: 5px;
+        text-align: left;
+      }
+
+      paper-textarea {
+        text-align: left;
+      }
+
+      iron-list {
+        height: 400px; 
+        border: 1px solid #adadad;
+        padding: 10px;
+        background-color: #f6f6f6;
+        margin-top: 15px;
       }
 
       .guestbook-page {
@@ -89,6 +98,30 @@
         padding-bottom: 0px;
       }
 
+      .avatar-div {
+        height: auto;
+        width: 20%;
+        display: inline-block;
+        margin: 0 auto;
+        border: 3px solid #f7f7f7;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 50%;
+      }
+
+      .avatar-div-select {
+        height: auto;
+        width: 20%;
+        display: inline-block;
+        margin: 0 auto;
+        border: 3px solid green;
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 50%;
+      }
+
       .captain-dialog-header {
         color: rgba(0, 0, 0, .7);
         font-family: 'Roboto', sans-serif;
@@ -99,23 +132,6 @@
 
       .paper-textarea {
         padding-top: 25px;
-      }
-
-      paper-input {
-        margin-bottom: 5px;
-        text-align: left;
-      }
-
-      paper-textarea {
-        text-align: left;
-      }
-
-      iron-list {
-        height: 400px; 
-        border: 1px solid #adadad;
-        padding: 10px;
-        background-color: #f6f6f6;
-        margin-top: 15px;
       }
 
       .guest-name {
@@ -219,16 +235,17 @@
               <div class="captain-dialog-header">
                 Choose an avatar.
               </div>
-              <div class="guestbook-avatar-catelog">
-                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: left;">
-                  <img id="avatar1" style="width: 100%;" on-tap="set_avatar" src="/images/avatars/avatar-1.png">
-                </div>
-                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto;">
-                  <img id="avatar2" style="width: 100%;" on-tap="set_avatar" src="/images/avatars/avatar-2.png">
-                </div>
-                <div style="height: 80px; width: 80px; display: inline-block; margin: 0 auto; float: right;">
-                  <img id="avatar3" style="width: 100%;" on-tap="set_avatar" src="/images/avatars/avatar-3.png">
-                </div>
+              <div class="guestbook-avatar-catelog container flex-horizontal">
+
+
+                <template is="dom-repeat" items="{{avatars}}">
+                  <div class$="{{item.test}}" on-tap="set_avatar">
+                    <img style="width: 100%;" src="{{item.img}}">
+                  </div>
+                </template>
+
+
+
               </div>
             </div>
             <div class="validation-error-div">
@@ -365,12 +382,45 @@
           reflectToAttribute: true
         },
 
+
+
+        avatarselect: {
+          type: String,
+          value: "avatar-div",
+          notify: true,
+          reflectToAttribute: true
+        },
+
         guestbooklikes: {
           type: Object,
           value: {
             likes: 0,
             heart: "/images/small-icon-heart-outline.png"
           },
+          notify: true,
+          reflectToAttribute: true
+        },
+
+        avatars: {
+          type: Array,
+          value: [
+            {
+              img: "/images/avatars/avatar-1.png",
+              test: 'avatar-div'
+            },
+            {
+              img: "/images/avatars/avatar-2.png",
+              test: 'avatar-div'
+            },
+            {
+              img: "/images/avatars/avatar-3.png",
+              test: 'avatar-div'
+            },
+            {
+              img: "/images/avatars/avatar-4.png",
+              test: 'avatar-div'
+            }
+          ],
           notify: true,
           reflectToAttribute: true
         },
@@ -444,7 +494,6 @@
         }
       },
 
-
       close_reset_dialog: function() {
         this.$.guestbook.toggle();
         this.$.guestbookpages.selected = 0;
@@ -456,22 +505,19 @@
         this.set("avatar", "");
       },
 
+
+
+
       set_avatar: function(e) {
-
-        // get avatar ID
-        var avatar = e.currentTarget;
-        var id = avatar.id;
-        console.log(id);
-
-        // set avatar property value
-        if (id === "avatar1") {
-          this.set("avatar", "/images/avatars/avatar-1.png");
-        } else if (id === "avatar2") {
-          this.set("avatar", "/images/avatars/avatar-2.png");
-        } else if (id === "avatar3") {
-          this.set("avatar", "/images/avatars/avatar-3.png");
-        }
+        var index = e.model.index;
+        var model = e.model;
+        this.set("avatar", this.avatars[index].img);
+        this.set("avatars.test", "avatar-div");
+        model.set("item.test", "avatar-div-select");
       },
+
+
+
 
       next_page: function() {
 
@@ -558,6 +604,27 @@
 
         console.log(entry);
       },
-    });
+
+      // ready: function(){
+      //     this.avatars = [
+      //       {
+      //         img: "/images/avatars/avatar-1.png",
+      //         test: 'avatar-div'
+      //       },
+      //       {
+      //         img: "/images/avatars/avatar-2.png",
+      //         test: 'avatar-div'
+      //       },
+      //       {
+      //         img: "/images/avatars/avatar-3.png",
+      //         test: 'avatar-div'
+      //       },
+      //       {
+      //         img: "/images/avatars/avatar-4.png",
+      //         test: 'avatar-div'
+      //       }
+      //     ];
+      // } 
+  });
   </script>
 </dom-module>
