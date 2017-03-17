@@ -206,23 +206,6 @@
 <!-- /////////////////////////////////////////// -->
 <!-- GUESTBOOK SECTION -->
 <!-- /////////////////////////////////////////// -->
-<!--     <div class="commander-section white">
-      <div class="commander-inner-section"> -->
-<!--         <div class="container flex-horizontal">
-          <div class="captain-header-dark-left flexchild">
-            Site Guestbook
-          </div>
-          <div class="guestbook-entry-count child3"> -->
-            <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
-<!--             <div class="align-right cursor-pointer" on-tap="like_guestbook">
-              <div class="guest-likes-count inline">
-                {{guestbooklikes.likes}} likes
-              </div>
-              <img style="width: 20px;" src="{{guestbooklikes.heart}}">
-            </div>
-          </div>
-        </div>
-        <hr class="captain-app-line-plain"> -->
         <paper-dialog no-cancel-on-outside-click class="guestbook-class" id="guestbook">
         <div class="container flex-end-justified">
           <div on-tap="close_reset_dialog">
@@ -237,14 +220,11 @@
               </div>
               <div class="guestbook-avatar-catelog container flex-horizontal">
 
-
                 <template is="dom-repeat" items="{{avatars}}">
                   <div class$="{{item.test}}" on-tap="set_avatar">
                     <img style="width: 100%;" src="{{item.img}}">
                   </div>
                 </template>
-
-
 
               </div>
             </div>
@@ -289,7 +269,7 @@
         <div class="commander-right-small">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
-                Here, you can make a guest book entry, this is a custom <a href="https://www.polymer-project.org/1.0/"> Polymer </a>element. The guest list data is being saved to Firebase
+                Here, you can make a guest book entry. The guest list data is being saved to a Firebase database
                 <br>
                 <paper-button class="captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
                 <br>
@@ -336,9 +316,16 @@
             </template>
           </iron-list>
           <div class="iron-list-gradient"></div>
+          <paper-button on-tap="firebase_test">test button</paper-button>
         </div>
-<!--       </div>
-    </div> -->
+
+    <firebase-document
+      path="/guests"
+      data="{{guests}}">
+    </firebase-document>
+
+
+    
   </template>
 
   <script>
@@ -382,13 +369,17 @@
           reflectToAttribute: true
         },
 
-
-
         avatarselect: {
           type: String,
           value: "avatar-div",
           notify: true,
           reflectToAttribute: true
+        },
+
+        guesttest : {
+          type: String,
+          notify: true,
+          reflectToAttribute: true 
         },
 
         guestbooklikes: {
@@ -406,19 +397,23 @@
           value: [
             {
               img: "/images/avatars/avatar-1.png",
-              test: 'avatar-div'
+              test: 'avatar-div',
+              ind: 0
             },
             {
               img: "/images/avatars/avatar-2.png",
-              test: 'avatar-div'
+              test: 'avatar-div',
+              ind: 1
             },
             {
               img: "/images/avatars/avatar-3.png",
-              test: 'avatar-div'
+              test: 'avatar-div',
+              ind: 2
             },
             {
               img: "/images/avatars/avatar-4.png",
-              test: 'avatar-div'
+              test: 'avatar-div',
+              ind: 3
             }
           ],
           notify: true,
@@ -427,59 +422,15 @@
 
         guests: {
           type: Array,
-          value: [
-            {
-              name: "Barbara M.",
-              location: "Sacramento, California",
-              message: "This is a test message to see how many characters!",
-              likes: 15,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-1.png"
-            },
-            {
-              name: "Gene Regonal",
-              location: "Tampa Bay, Florida",
-              message: "This is a test message to see how many characters!",
-              likes: 11,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-3.png"
-            },
-            {
-              name: "Ross Cravettes",
-              location: "Portland, Maine",
-              message: "This is a test message to see how many characters!",
-              likes: 58,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-2.png"
-            },
-            {
-              name: "Mike Douglas",
-              location: "Cleveland, Ohio",
-              message: "This is a test message to see how many characters!",
-              likes: 45,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-1.png"
-            },
-            {
-              name: "Tamara Williamson",
-              location: "Santa Fe, New Mexico",
-              message: "This is a test message to see how many characters!",
-              likes: 14,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-2.png"
-            },
-            {
-              name: "Christopher McDonald",
-              location: "Seattle, Washington",
-              message: "This is a test message to see how many characters!",
-              likes: 153,
-              heart: "/images/small-icon-heart-outline.png",
-              avatar: "/images/avatars/avatar-3.png"
-            },
-          ],
+          value: [],
           notify: true,
           reflectToAttribute: true
         },
+      },
+
+      firebase_test: function() {
+          console.log(this.guests);
+          this.ready_go();
       },
 
       like_guestbook: function() {
@@ -506,17 +457,23 @@
       },
 
 
-
-
       set_avatar: function(e) {
-        var index = e.model.index;
+        var position = e.model.index;
         var model = e.model;
-        this.set("avatar", this.avatars[index].img);
-        this.set("avatars.test", "avatar-div");
-        model.set("item.test", "avatar-div-select");
+        console.log(position);
+        for (var i = 0; i < this.avatars.length; i++) {
+
+          if (position === i) {
+            console.log('match');
+            console.log(this.avatars[i].test);
+            this.set("avatars." + i + ".test", "avatar-div-select");
+            console.log(this.avatars[i].test);
+          } else {
+            this.set("avatars." + i + ".test", "avatar-div");
+          }
+        }
+        this.set("avatar", this.avatars[position].img);
       },
-
-
 
 
       next_page: function() {
@@ -563,6 +520,19 @@
         }
       },
 
+
+      like_webproject: function() {
+
+        if (this.webprojectheart === "/images/small-icon-heart-outline.png") {
+          this.set('webprojectheart', "/images/small-icon-heart.png");
+          this.set('webprojectlikes', this.webprojectlikes+1);
+
+        } else if (this.webprojectheart === "/images/small-icon-heart.png") {
+          this.set('webprojectheart', "/images/small-icon-heart-outline.png");
+          this.set('webprojectlikes', this.webprojectlikes-1);
+        }
+      },
+
       add_entry: function() {
 
         // check for message 
@@ -606,25 +576,13 @@
       },
 
       // ready: function(){
-      //     this.avatars = [
-      //       {
-      //         img: "/images/avatars/avatar-1.png",
-      //         test: 'avatar-div'
-      //       },
-      //       {
-      //         img: "/images/avatars/avatar-2.png",
-      //         test: 'avatar-div'
-      //       },
-      //       {
-      //         img: "/images/avatars/avatar-3.png",
-      //         test: 'avatar-div'
-      //       },
-      //       {
-      //         img: "/images/avatars/avatar-4.png",
-      //         test: 'avatar-div'
-      //       }
-      //     ];
-      // } 
+      //   setTimeout(function(){ 
+      //     this.readygo();
+      //   }, 4000);
+      // },
+      // readygo: function() {
+      //   console.log(this.guests);
+      // }
   });
   </script>
 </dom-module>

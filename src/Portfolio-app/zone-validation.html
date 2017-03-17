@@ -31,74 +31,17 @@
         @apply(--layout-justified);
       }
 
-      paper-input {
-        @apply(--input-theme);
-        background-color: white !important;
-        font-size: 200;
-        margin-top: 10px;
-        --paper-input-container-label: {
-           @apply(--input-theme);
-        };
-
-        --paper-input-container: {
-          background-color: white !important;
-        };
-        --paper-input-container-color: #d7dbd7;
-        --paper-input-container-focus-color: #99a499;
-        --paper-input-container-input: {
-          /*background-color: white !important;*/
-          color: #555550;
-          font-family: 'Roboto Condensed', sans-serif;
-        };
-      }
-
-      gold-cc-input {
-        --paper-input-container-label: {
-           @apply(--input-theme);
-        };
-        --paper-input-container-color: #d7dbd7;
-        --paper-input-container-focus-color: #99a499;
-        --paper-input-container-input: {
-          color: #555550;
-          font-family: 'Roboto Condensed', sans-serif;
-        };
-        --paper-input-container-invalid-color: #e08486;
-        
-      }
-
-      gold-cc-expiration-input {
-        --paper-input-container-label: {
-           @apply(--input-theme);
-        };
-        --paper-input-container-color: #d7dbd7;
-        --paper-input-container-focus-color: #99a499;
-        --paper-input-container-input: {
-          color: #555550;
-          font-family: 'Roboto Condensed', sans-serif;
-        };
-        --paper-input-container-invalid-color: #e08486;
-      }
-
-      gold-cc-cvc-input {
-        --paper-input-container-label: {
-           @apply(--input-theme);
-        };
-        --paper-input-container-color: #d7dbd7;
-        --paper-input-container-focus-color: #99a499;
-        --paper-input-container-input: {
-          color: #555550;
-          font-family: 'Roboto Condensed', sans-serif;
-        };
-        --paper-input-container-invalid-color: #e08486;
+      paper-dialog.sizeAndPosition {
+        top: 150px;
+        width: 96%;
+        margin: 20px;
+        max-width: 400px;
       }
 
       paper-button {
         text-align: center;
-        background-color: var(--paper-teal-500);
+        background-color: var(--paper-pink-600);
         color: white;
-        border-radius: 2px;
-        padding-left: 40px;
-        padding-right: 40px;
       }
 
       .validate {
@@ -109,11 +52,10 @@
         width: 100%;
         max-width: 472px;
         background-color: white;
-        /*padding-top: 28px;*/
-        /*padding-bottom: 22px;*/
       }
 
       .appWrapper {
+        text-align: left;
         padding: 18px;
         padding-top: 0px;
         max-width: 433px;
@@ -143,7 +85,6 @@
         height: auto;
         min-height: 135px;
         background: linear-gradient(90deg, #105ea6 0%, #01396e 100%); 
-        /*#ffa200*/
         border: 1px solid rgba(169, 167, 197, 0.6);
         padding: 9%;
         padding-top: 3%;
@@ -280,6 +221,7 @@
 
       .expiresDiv {
         padding-right: 20px;
+        max-width: 100px;
       }
 
       .cardType {
@@ -292,6 +234,7 @@
       }
 
       .cv2Div {
+        max-width: 75px;
       }
 
       .dialogHr {
@@ -354,13 +297,13 @@
         font-size: 22px;
       }
 
-      paper-dialog.sizeAndPosition {
+/*      paper-dialog.sizeAndPosition {
         position: fixed;
         top: 45px;
         width: 394px;
         max-height: 500px;
       }
-
+*/
       .cardLogo {
         width: 37px;
       }
@@ -431,7 +374,12 @@
         <div class="commander-right-small">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
-              Credit Card Validation check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!
+              <B>Credit Card Validation</b> check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!  <br>
+                <br>
+                <span class="captain-subheader">Try with these Test Credit Card Numbers:</span> <br>
+                <b>mastercard:</b> 5555 5555 5555 4444 <br>
+                <b>visa:</b> 2424 2424 2424 2424
+
                 <br>
                 <br>
             <a target="_blank" href="https://www.github.com">VIEW CODE ON GITHUB</a>
@@ -507,7 +455,7 @@
         </div>
       </div>
 
-      <paper-dialog class="sizeAndPosition" id="validationDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <paper-dialog class="sizeAndPosition" id="validationDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
         <iron-pages class="validationIronPages" selected="{{pages}}">
           <div class="invalidCardDiv">
             <div class="xDiv">
@@ -663,6 +611,10 @@
           fieldsArray.push("cv2");
         }
         if (this.expires === "") {
+          // if (this.$.expirecheck.invalid = true) {
+
+          // }
+
           fieldsArray.push("Expiration Date");
         }
 

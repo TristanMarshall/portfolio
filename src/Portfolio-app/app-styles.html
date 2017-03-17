@@ -81,7 +81,9 @@ font-family: 'Lobster', cursive;
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* POLYMER APP ELEMENT STYLES */
 /*//////////////////////////////////////////////////////////////////////////////*/
- 
+
+
+
     app-drawer {
       --app-drawer-content-container: {
         background-color: #161616;
@@ -109,6 +111,86 @@ font-family: 'Lobster', cursive;
       z-index: 1;
     }
 
+
+    gold-cc-input {
+      --paper-input-container-label: {
+         @apply(--input-theme);
+      };
+      --paper-input-container-color: var(--paper-indigo-200);
+      --paper-input-container-focus-color: var(--paper-teal-500);
+      --paper-input-container-input: {
+        color: var(--paper-blue-grey-700);
+        font-family: 'Roboto Condensed', sans-serif;
+      };
+      --paper-input-container-invalid-color: var(--paper-red-200);
+      
+    }
+
+    gold-cc-expiration-input {
+      --paper-input-container-label: {
+         @apply(--input-theme);
+      };
+      --paper-input-container-color: var(--paper-indigo-200);
+      --paper-input-container-focus-color: var(--paper-teal-500);
+      --paper-input-container-input: {
+        color: var(--paper-blue-grey-700);
+        font-family: 'Roboto Condensed', sans-serif;
+      };
+      --paper-input-container-invalid-color: var(--paper-red-200);
+    }
+
+    gold-cc-cvc-input {
+      --paper-input-container-label: {
+         @apply(--input-theme);
+      };
+      --paper-input-container-color: var(--paper-indigo-200);
+      --paper-input-container-focus-color: var(--paper-teal-500);
+      --paper-input-container-input: {
+        color: var(--paper-blue-grey-700);
+        font-family: 'Roboto Condensed', sans-serif;
+      };
+      --paper-input-container-invalid-color: var(--paper-red-200);
+    }
+
+     paper-input {
+      @apply(--input-theme);
+      background-color: white !important;
+      font-size: 200;
+      margin-top: 10px;
+      --paper-input-container-label: {
+         @apply(--input-theme);
+      };
+
+      --paper-input-container: {
+        background-color: white !important;
+      };
+      --paper-input-container-color: var(--paper-indigo-200);
+      --paper-input-container-focus-color:var(--paper-teal-500);
+      --paper-input-container-input: {
+        color: var(--paper-blue-grey-700);
+        font-family: 'Roboto Condensed', sans-serif;
+      };
+    }
+
+     paper-textarea {
+      @apply(--input-theme);
+      background-color: white !important;
+      font-size: 200;
+      margin-top: 10px;
+      --paper-input-container-label: {
+         @apply(--input-theme);
+      };
+
+      --paper-input-container: {
+        background-color: white !important;
+      };
+      --paper-input-container-color: var(--paper-indigo-200);
+      --paper-input-container-focus-color:var(--paper-teal-500);
+      --paper-input-container-input: {
+        color: var(--paper-blue-grey-700);
+        font-family: 'Roboto Condensed', sans-serif;
+      };
+    }
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* FULL SITE STYLE CLASSES */
 /*//////////////////////////////////////////////////////////////////////////////*/

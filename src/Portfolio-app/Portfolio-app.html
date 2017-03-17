@@ -332,7 +332,7 @@
                 </paper-tab>
                 <paper-tab class="last-tab">
                   <!-- <a href="/#testjump"> -->
-                    <paper-button class="toolbar-button">sign guestbook</paper-button>
+                    <paper-button on-click="testready" class="toolbar-button">sign guestbook</paper-button>
                   <!-- </a> -->
                 </paper-tab>
               </paper-tabs>
@@ -362,6 +362,18 @@
       </app-header-layout>
     </app-drawer-layout>
 
+
+    <firebase-app auth-domain="commander-portfolio.firebaseapp.com"
+      database-url="https://commander-portfolio.firebaseio.com"
+      api-key="AIzaSyA1iZIOBpF18KgN6finP9k04DdwM6qMWRA">
+    </firebase-app>
+
+    <firebase-document
+      path="/likes/guestbook"
+      data="{{likes}}">
+    </firebase-document>
+
+
   </template>
 
   <script>
@@ -370,6 +382,13 @@
       is: 'Portfolio-app',
 
       properties: {
+
+        likes: {
+          type: Object,
+          reflectToAttribute: true,  
+          notify: true
+        },
+
         page: {
           type: String,
           reflectToAttribute: true,
@@ -413,7 +432,12 @@
 
       test: function() {
         console.log("test");
-      }
+      },
+
+      // testready: function() {
+      //   this.set("likes", this.likes + 1);
+      //   console.log(this.likes);
+      // }
 
 
     });
