@@ -297,13 +297,6 @@
         font-size: 22px;
       }
 
-/*      paper-dialog.sizeAndPosition {
-        position: fixed;
-        top: 45px;
-        width: 394px;
-        max-height: 500px;
-      }
-*/
       .cardLogo {
         width: 37px;
       }
@@ -317,6 +310,11 @@
         font-size: 13px;
       }
 
+      @media only screen and (max-width: 640px) {
+        .appWrapper {
+          padding: 0;
+        }
+      }
 
     @media (max-width: 388px) {
 
@@ -367,10 +365,6 @@
     }
 
     </style>
-<!--       <div class="captain-header-dark-left flexchild">
-        Credit Card Validation
-      </div>
-      <hr class="captain-app-line-plain"> -->
         <div class="commander-right-small">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
@@ -391,20 +385,7 @@
       <div class="commander-left-large">
         <div class="appContainer">
           <div class="appWrapper">
-          <div class="container flex-horizontal">
-
-            <!-- <div class="guestbook-entry-count child3"> -->
-              <!-- guestbook entries:<span class="guestbook-entry-length"> {{guests.length}}</span> -->
-  <!--             <div class="align-right cursor-pointer" on-tap="like_guestbook">
-                <div class="guest-likes-count inline">
-                  {{guestbooklikes.likes}} likes
-                </div>
-                <img style="width: 20px;" src="{{guestbooklikes.heart}}">
-              </div>
-            </div> -->
-          </div>
-
-
+          <div class="container flex-horizontal"></div>
             <div class="outerCardDiv">
               <div class$="{{creditCardDiv}}">
                 <div class="your">Your<span class="card">Card</span></div>

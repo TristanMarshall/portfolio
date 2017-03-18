@@ -88,6 +88,17 @@
         border-color: #c6c6c6;
       }
 
+      .responsive-span {
+        float: left;
+        padding-right: 25px;
+      }
+
+      .responsive-img {
+        width: 100%;
+        max-width: 400px;
+        margin-left: -15px;
+      }
+
       @media only screen and (max-width: 750px) {
         .triple-step-header-line {
           max-width: 150px;
@@ -128,6 +139,18 @@
         .responsive-site-image-container {
           padding-top: 25px;
         }
+
+      .responsive-span {
+        max-width: 400px;
+        float: none;
+        padding-right: 0px;
+        padding-bottom: 20px;
+      }
+
+      .responsive-img {
+        margin-left: 0px;
+      }
+
       }
 
     </style>
@@ -165,7 +188,7 @@
               <hr class="triple-step-header-line">
               <div class="line-dot dot-triple"></div>
               <div class="captain-sub-content">
-                Web projects, freelance work &amp; professional websites.
+                Web projects &amp; professional websites.
               </div>
               <a href="/development">
                 <paper-button class="triple-button" raised>DEVELOPMENT</paper-button>
@@ -226,17 +249,22 @@
           <span class="captain-subheader-span">
         </div>
         <div class="captain-content-light">
-This site was built using the <a target="_blank" href="https://www.polymer-project.org/1.0/"> Polymer Project</a> by Google. Polymer is a JavaScript library for building web components; these web components can then be used to build web apps, like this portfolio! 
-<br>
-<br>
-Utilizing <a target="_blank" href="https://material.io/guidelines/">Material Design</a> as guidelines – the over all design of this portfolio offers one clean, rich idea of how websites / web apps can look &amp; flow. Adobe Illustrator was used to develop all of the icons, background designs, logos, &amp; illustrations that you will see throughout this site. 
-<br>
-<br>
-If you would like to see the code for this site, view the <a target="_blank" href="https://github.com/TristanMarshall/portfolio">Github repository here.</a> The .readme file has further information pertaining to this portfolios code. 
-<br>
-<br>
-Thanks for looking! 
-
+          <span class="responsive-span">
+            <img class="responsive-img" src="/images/responsive-site-design.png">
+          </span>
+          This site was built using the <a target="_blank" href="https://www.polymer-project.org/1.0/"> Polymer Project</a> by Google. Polymer is a JavaScript library for building web components; these web components can then be used to build web apps, like this portfolio! 
+          <br>
+          <br>
+          Utilizing <a target="_blank" href="https://material.io/guidelines/">Material Design</a> as guidelines – the over all design of this portfolio offers one clean, rich idea of how websites / web apps can look &amp; flow. Adobe Illustrator was used to develop all of the icons, background designs, logos, &amp; illustrations that you will see throughout this site. 
+          <br>
+          <br>
+          <br>
+          If you would like to see the code for this site, view the <a target="_blank" href="https://github.com/TristanMarshall/portfolio">Github repository here.</a> The .readme file has further information pertaining to this portfolios code. 
+          <br>
+          <br>
+          <span class="captain-subheader">
+            Thanks for looking! 
+          </span>
         </div>
       </div>
     </div>
