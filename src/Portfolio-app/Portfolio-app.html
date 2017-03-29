@@ -103,7 +103,7 @@
       }
       
       .drawer-list .menu-item-container.iron-selected .menu-link-items{
-        color: var(--paper-teal-500);
+        color: rgb(234, 250, 255);
       }
 
       .menu-link-items-desktop {
@@ -301,15 +301,11 @@
             </div>
           </div>
         </app-toolbar>
-
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-         
           <div class="menu-item-container" name="home">  
             <a class="menu-link-items menu-item-margin" href="/home" drawer-toggle>Home</a>
           </div>
-
           <hr class="menu-line menu-line-half">
-
           <div class="menu-item-container" name="design">       
             <a class="menu-link-items menu-item-margin" href="/design" drawer-toggle>Design</a>
           </div>
@@ -327,14 +323,10 @@
               <img class="app-drawer-logo" src="/images/logo-TM-outline-white.png">
             </a>
           </div>
-
-
         </iron-selector>
-
       </app-drawer>
       <app-header-layout fullbleed>
         <app-header condenses fixed effects="waterfall">
-
           <app-toolbar>
             <div class="destroy-app-hamburger" on-click="change_icon">
               <img style="width: 22px; padding-left: 6px;" src="{{menucommand}}">
@@ -343,7 +335,6 @@
               <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
             </div>
           </app-toolbar>
-
           <app-toolbar class="destroy-app-toolbar">
           <div main-title></div>
             <div class="commander-section-translucent width100" style="padding-right: 0px;">
@@ -386,7 +377,7 @@
           <test-page name="test"></test-page>
         </iron-pages> -->
 
-      <neon-animated-pages id="pages" attr-for-selected="name" class="flex" selected="{{page}}" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+      <neon-animated-pages id="pages" attr-for-selected="name" class="flex" selected="{{page}}" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
         <neon-animatable name="home">
           <home-page></home-page>
         </neon-animatable>
@@ -401,26 +392,22 @@
         </neon-animatable>
       </neon-animated-pages>
 
-
-
-        <div class="fixed-side-bar">
-          <a href="https://twitter.com/TristanMarshall" target="_blank">
-            <div class="social-box twitter"></div>
-          </a>
-          <a href="https://www.instagram.com/fullmarshallstack/" target="_blank">
-            <div class="social-box instagram"></div>
-          </a>
-          <a href="" target="_blank">
-            <div class="social-box linkedin"></div>
-          </a>
-        </div>
-
-        <!-- <app-footer></app-footer> -->
+      <div class="fixed-side-bar">
+        <a href="https://twitter.com/TristanMarshall" target="_blank">
+          <div class="social-box twitter"></div>
+        </a>
+        <a href="https://www.instagram.com/fullmarshallstack/" target="_blank">
+          <div class="social-box instagram"></div>
+        </a>
+        <a href="https://www.linkedin.com/in/tristan-marshall-3222a88b/" target="_blank">
+          <div class="social-box linkedin"></div>
+        </a>
+      </div>
 
       </app-header-layout>
     </app-drawer-layout>
 
-<!--     <div class$="commander-overlay {{overlay}}" style="text-align: center;">
+    <div class$="commander-overlay {{overlay}}" style="text-align: center;">
       <div class="commander-overlay-wrapper">
         <img style="max-width: 250px; text-align: center;" src="/images/logo-TM-shadow.png">
       </div>
@@ -428,8 +415,7 @@
       <div style="text-align: center; margin: 0 auto;">
         <paper-progress style="margin: 0 auto;" indeterminate class="slow"></paper-progress>
       </div>
-    </div> -->
-
+    </div>
 
     <firebase-app auth-domain="commander-portfolio.firebaseapp.com"
       database-url="https://commander-portfolio.firebaseio.com"
@@ -440,7 +426,6 @@
       path="/likes/guestbook"
       data="{{likes}}">
     </firebase-document>
-
 
   </template>
 
@@ -517,7 +502,6 @@
       },
 
       _guestbook_route: function() {
-        // console.log("Step 1) Element: Portfolio-app.html, function: _guestbook_route");
         this.set("signal", "open");
         this.set("page", "development");
         this.set("route.path", "development");
@@ -528,23 +512,20 @@
       },
 
       _pageChanged: function(page) {
-        // load page import on demand.
         this.importHref(
           this.resolveUrl(page + "-page" + '.html'), null, null, true);
       },
 
       ready: function() {
-
-        // var self = this;
-
-        // setTimeout(function() {
-        //   self.set("overlay", "fade-overlay");
-        // }, 3000);
-
-        // setTimeout(function() {
-        //   self.set("overlay", "display-none");
-        // }, 4500);
+        var self = this;
+        setTimeout(function() {
+          self.set("overlay", "fade-overlay");
+        }, 3000);
+        setTimeout(function() {
+          self.set("overlay", "display-none");
+        }, 4500);
       }
+
 
     });
   </script>

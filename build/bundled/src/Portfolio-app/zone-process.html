@@ -1,0 +1,415 @@
+<html><head><link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+</head><body><dom-module id="zone-process">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      .gradient-side {
+        float: left;
+        height: 525px;
+        width: 5px;
+        margin-right: 15px;
+      }
+
+      .image-div {
+      }
+
+      .image-image {
+        float: left;
+        margin-bottom: 10px;
+      }
+
+      .width-control {
+        width: 80%;
+      }
+
+      .build-div {
+        background-color: white;
+        width: 80%;
+        border: 1px solid #aeaeae;
+        float: left;
+        margin-bottom: 10px;
+      }
+
+      .contact-book-header {
+        font-size: 2vw;
+        padding-top: 6vw;
+        padding-left: 1vw;
+        font-family: roboto condensed;
+        font-weight: 200;
+        color: rgba(255, 255, 255, .7);
+        text-align: left;
+        padding-bottom: 1vw;
+      }
+
+      .header-section {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 0%, rgba(0,0,0,1) 97%, rgba(0,0,0,1) 100%), url('/images/contact-images/contact-background.jpg');
+        height: 9.2vw;
+      }
+
+      .floating-action-button {
+        height: 75px;
+        width: 75px;
+        background-color: var(--paper-indigo-500);
+        border-radius: 50%;
+        /*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);*/
+      }
+
+      .bottom-section {
+        padding: 10px;
+        padding-bottom: 0px;
+      }
+
+      .displaying {
+        text-align: left;
+        font-family: roboto condensed;
+        font-size: 1.4vw;
+        margin-top: -1.5vw;
+        margin-bottom: 1.2vw;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .profile-image-div {
+        width: 4.4vw;
+        height: 3.6vw;
+        margin-right: 12px;
+        overflow: hidden;
+      }
+
+      .user-photo {
+        height: 3.6vw;
+        width: auto;
+      }
+
+      .user-card {
+        background-color: white;
+        border: 1px solid #aeaeae;
+        padding: 0.5vw;
+        margin-bottom: 1.4vw;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.48);
+      }
+
+      .user-name {
+        font-size: 1.6vw;
+        font-family: Roboto Condensed;
+        text-align: left;
+        margin-top: -4px;
+        color: rgba(0, 0, 0, .8);
+      }
+
+      .user-line {
+        width: 100%;
+        border: none;
+        padding-bottom: 1px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        background-color: #cdcdcd;
+      }
+
+      .user-number {
+        font-size: 1vw;
+        font-family: Roboto Condensed;
+        text-align: left;
+        color: #293995;
+      }
+
+      .gradient-1 {
+        background: linear-gradient(180deg, rgba(229,57,53,1) 0%, rgba(255,179,0,1) 100%);
+      }
+
+      .gradient-2 {
+        background: linear-gradient(180deg, rgba(251,192,45,1) 0%, rgba(251,192,45,1) 12%, rgba(0,200,83,1) 100%);
+      }
+
+      .gradient-3 {
+        background: linear-gradient(180deg, rgba(0,150,136,1) 0%, rgba(0,150,136,1) 18%, rgba(63,81,181,1) 100%);
+      }
+
+      .title-1 {
+        color: rgba(229,57,53,1);
+      }
+
+      .title-2 {
+        color: rgba(251,192,45,1);
+      }
+
+      .title-3 {
+        color: rgba(0,150,136,1);
+      }
+
+      @media only screen and (min-width: 640px) {
+
+        .floating-action-button {
+          height: 6vw;
+          width: 6vw;
+          background-color: #3f51b5;
+          border-radius: 50%;
+          margin-top: -3vw;
+          margin-right: 1.5vw;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .bottom-section {
+          padding: 15px;
+          padding-top: 0px;
+          padding-bottom: 0px;
+        }
+
+        .user-card {
+          padding: 10px;
+          margin-bottom: 16px;
+        }
+
+        .user-name {
+          font-size: 18px;
+          margin-top: -4px;
+        }
+
+        .user-number {
+          font-size: 14px;
+        }
+
+        .build-div {
+          height: auto;
+          width: 90%;
+          margin-left: 20px;
+          float: none;
+        }
+
+        .header-section {
+          height: 150px;
+        }
+
+        .contact-book-header {
+          font-size: 26px;
+          padding-top: 105px;
+          padding-left: 15px;
+        }
+
+        .floating-action-button {
+          height: 75px;
+          width: 75px;
+          margin-top: -51px;
+          margin-right: 4.5vw;
+        }
+
+        .displaying {
+          font-size: 19px;
+        }
+
+        .profile-image-div {
+          width: 60px;
+          height: 44px;
+          margin-right: 18px;
+          overflow: hidden;
+        }
+
+        .user-photo {
+          width: 100%;
+          height: 100%;
+        }
+
+        .no-bottom {
+          padding-bottom: 0px;
+          border-bottom: none;
+        }
+
+        .gradient-side {
+          height: 600px;
+        }
+
+        .width-control {
+          width: 90%;
+        }
+
+        .image-div {
+          text-align: left;
+        }
+        .image-image {
+          float: none;
+        }
+      }
+
+      @media only screen and (min-width: 1064px) {
+
+        .user-card {
+          background-color: #fafafa;
+          border: .5px solid #cfcfcf;
+          padding: 6.5px;
+          margin-bottom: 16px;
+          box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .user-name {
+          font-size: 16px;
+          font-family: Roboto Condensed;
+          text-align: left;
+          margin-top: -0.2vw;        
+        }
+
+        .user-number {
+          font-size: 11px;
+        }
+
+        .profile-image-div {
+          width: 45px;
+          height: 38px;
+        }
+
+        .user-photo {
+          width: auto;
+          height: 38px;
+        }
+
+        .header-section {
+          height: 100px;
+        }
+
+        .displaying {
+          font-size: 16px;
+        }
+
+        .contact-book-header {
+          font-size: 21px;
+          padding-top: 63px;
+        }
+
+        .displaying {
+          text-align: left;
+          font-family: roboto condensed;
+          margin-top: -25px;
+          margin-bottom: 15px;
+          font-weight: 100;
+          color: rgba(0, 0, 0, 0.75);
+        }
+
+        .floating-action-button {
+          height: 65px;
+          width: 65px;
+          margin-top: -38px;
+        }
+      }
+
+    </style>
+
+
+
+
+
+      <div class="commander-section-dark">
+        <div class="commander-inner-section">
+        <div class="captain-header flexchild">
+              Design to Development Process
+            </div>
+          <hr class="captain-app-line-plain-light">
+          <div class="captain-subheader">
+            Below is a simple example of how an <span class="captain-subheader-span">idea / web element</span> gets built
+          </div>
+          <br>
+          <br>
+          <div class="commander-guide">
+            <div class="commander-triple-one no-bottom">
+              <div>
+                <div class="gradient-side gradient-1"></div>
+                <div class="image-div">
+                  <img class="image-image width-control" src="/images/wireframe.jpg">
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Identify idea:
+                    <span class="title-1"> wireframe</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                    Wireframing allows design layout &amp; element states to be identified without the distraction of colors / fonts.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="commander-triple-two no-bottom">
+              <div>
+                <div class="gradient-side gradient-2"></div>
+                <div class="image-div">
+                  <img class="image-image width-control" src="/images/wireframe-digital.png">
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Detail layout:
+                    <span class="title-2"> illustrator</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                      Creating a detailed layout of exactly what the element will look like once handed off to development.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="commander-triple-three no-bottom">
+              <div>
+                <div class="gradient-side gradient-3"></div>
+                <div class="build-div">
+                  <div class="header-section">
+                    <div class="contact-book-header">Contact Book</div>
+                  </div>
+                  <div class="horizontal end-justified layout">
+          
+                    <paper-fab icon="add" class="floating-action-button" raised=""></paper-fab>
+                  </div>
+                  <div class="bottom-section">
+                    <div class="displaying"> Displaying 3 cards:</div>
+
+
+                    <template is="dom-repeat" items="{{contacts}}">
+                      <div class="user-card container flex-horizontal">
+                        <div class="profile-image-div">
+                          <img class="user-photo" src="{{item.image}}">
+                        </div>
+                        <div class="flexchild">
+                          <div class="user-name">
+                            {{item.name}}
+                          </div>
+                          <hr class="user-line">
+                          <div class="user-number">
+                            {{item.number}}
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+
+
+
+                  </div>
+                </div>
+                <div>
+                  <div class="captain-header">
+                    Build concept:
+                    <span class="title-3"> code</span>
+                  </div>
+                  <div class="captain-content-light width-control">
+                  <hr class="captain-app-line-plain-light">
+                    Detailed layout is then structured in HTML, styled with CSS / SCSS, and given functionality with JavaScript.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+  <script>Polymer({is:"zone-process",properties:{},ready:function(){this.contacts=[{image:"/images/contact-images/contact-1.jpg",name:"Paulina Wallace",number:"( 330 ) 549 2210"},{image:"/images/contact-images/contact-2.jpg",name:"Jack Harrison",number:"( 312 ) 566 3423"},{image:"/images/contact-images/contact-3.jpg",name:"Matthew Smith",number:"( 216 ) 444 3212"}],console.log(this.contacts.image)}});</script>
+</dom-module></body></html>

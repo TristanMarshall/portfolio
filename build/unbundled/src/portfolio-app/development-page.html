@@ -1,0 +1,263 @@
+<html><head><link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+</head><body><dom-module id="development-page">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      iron-collapse {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      .toggle-project-div {
+        cursor: pointer;
+      }
+
+      .project-collapse-line {
+        border: none;
+        background-color: rgba(0, 0, 0, .25);
+        padding-bottom: 1px;
+      }
+
+      .project-collapse-header {
+        font-weight: 100;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 16px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: rgba(0, 0, 0, .65);
+      }
+
+/*      .guest-likes-count {
+        font-size: 12px;
+        font-family: 'Roboto Condensed', sans-serif;
+        padding: 0;
+        margin: 0;
+        color: rgb(170, 170, 170);
+      }*/
+
+      .thank-you-content {
+        padding-top: 50px;
+        font-family: roboto;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .thank-you-image {
+        width: 45px;
+        margin-top: 25px;
+      }
+
+      .toggle-icon-container {
+        padding-top: 18px;
+        padding-right: 17px;
+        padding-left: 1px;      
+      }
+
+      .toggleopen {
+        width: 13px;
+        transform: rotate(45deg);
+
+      }
+
+      .toggleclose {
+        width: 13px;
+        transform: rotate(0deg);
+      }
+
+      .freelance-card {
+        width: 100%;
+        background-color: white;
+        margin-top: 15px;
+        margin-bottom: 20px;
+      }
+
+      .freelance-inner-card {
+        padding: 15px;
+        min-height: 150px;
+      }
+
+      .freelance-card-left {
+      }
+
+      .freelance-card-right {
+      }
+
+      .freelance-image {
+        width: 100%;
+      }
+
+      @media only screen and (max-width: 640px) {
+        .image-position {
+          margin-top: 0px;
+          margin-bottom: 25px;
+        }
+      }
+
+    </style>
+
+
+
+
+    <div class="top-section grid-dark">
+      <div class="commander-inner-section">
+          <div class="mobile-hide">
+            <div class="captain-header">
+              Development
+            </div>
+            <hr class="captain-app-line-plain-light">
+            <br>
+            <br>
+          </div>
+        <div class="commander-left-small">
+          <div>
+            <img style="width: 100%; max-width: 200px" class="captain-image image-position" src="/images/large-icon-desktop-code-circle.png">
+          </div>
+        </div>
+        <div class="commander-right-large">
+          <div class="mobile-show">
+            <div class="captain-header">
+              Development
+            </div>
+            <hr class="captain-app-line-plain-light">
+          </div>
+          <div class="captain-content-light padding-right-20px">
+
+            Writing code &amp; building cool programs / websites is my preferred cup of tea. I truly enjoy the moment when a problem or function is solved &amp; its true purpose comes to life. Creating responsive, functional programs / websites while maintaining clean, easy to read code is really what its all about.
+            <br>
+            <br>
+            Below you can find some examples of just that! Please have a look &amp; reach out if you have any questions about my process or anything else!
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commander-section white">
+      <div class="commander-inner-section">
+          <div class="container flex-horizontal">
+            <div class="captain-header-dark-left flexchild">
+              Web Projects
+            </div>
+            <div class="guestbook-entry-count child3">
+              <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
+                <div class="guest-likes-count inline">
+                  {{webprojectlikes}} likes
+                </div>
+                <img style="width: 20px" src="{{webprojectheart}}">
+              </div>
+            </div>
+          </div>
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px" id="guestbookscrolltarget">
+          Below are some projects I've made just for fun, please take a moment and try them out!
+        </div>
+        <div id="guestbooktop"></div>
+        <br>
+        <br>
+        <br>
+        
+
+        <custom-element-collapse id="guestbookid" title="Website Guestbook">
+          <content>
+            <home-zone-guestbook></home-zone-guestbook>
+          </content>
+        </custom-element-collapse>
+        <custom-element-collapse title="Credit Card Validation">
+          <content>
+            <zone-validation></zone-validation>
+          </content>
+        </custom-element-collapse>
+        <hr class="project-collapse-line captain-app-line-plain">
+      </div>
+    </div>
+    <div class="commander-section-dark">
+      <div class="commander-inner-section">
+          <div class="container flex-horizontal">
+            <div class="captain-header flexchild">
+              Freelance projects
+            </div>
+            <div class="guestbook-entry-count child3">
+              <div class="align-right padding-left" on-tap="like_freelanceproject">
+                <div class="guest-likes-count inline">
+                  {{freelancelikes}} likes
+                </div>
+                <img style="width: 20px" src="{{freelanceheart}}">
+              </div>
+            </div>
+          </div>
+        <hr class="captain-app-line-plain-light">
+        <div class="freelance-card commander-card-light">
+          <div class="freelance-inner-card">
+            <div class="commander-left-small freelance-card-left">
+              <div class="freelance-image-div">
+                <img class="freelance-image" src="/images/freelance/ricky-portfolio.png">
+              </div>
+            </div>
+            <div class="commander-right-large freelance-card-right">
+              <div>
+                <div class="captain-content-dark margin-left-20px">
+                  
+                  <span class="bold-weight">Build with:</span> Polymer
+                  <hr class="captain-app-line-plain">
+                  <span class="bold-weight">About:</span> This single page web app was built for Actor/Producer <b>Ricky Staffieri</b>. Deployed using the Google Cloud Platforms gcloud.
+                  <br>
+                  <span class="bold-weight">URL:</span> <a href="http://www.rickymstaffieri.com/">www.rickymstaffieri.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="freelance-card commander-card-light">
+          <div class="freelance-inner-card">
+            <div class="commander-left-small freelance-card-left">
+              <div class="freelance-image-div">
+                <img class="freelance-image" src="/images/freelance/limoservice.jpg">
+              </div>
+            </div>
+            <div class="commander-right-large freelance-card-right">
+              <div>
+                <div class="captain-content-dark margin-left-20px">
+                  <span class="bold-weight">Build with:</span> HTML / CSS / JavaScript
+                  <hr class="captain-app-line-plain">
+                  <span class="bold-weight">About:</span> Static webpage for Livonia Black Car Services. Utilizes Velocity.js library. 
+                  <br>
+                  <b>Currently not hosted.</b>
+                  <br>
+                  <span class="bold-weight">Code:</span> <a target="_blank" href="https://github.com/TristanMarshall/LivoniaBlackCarService">VIEW CODE ON GITHUB</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+        <div class="thank-you-content align-center">
+          Thanks for looking!
+          <br>
+        <img class="thank-you-image" src="/images/logo-TM-outline.png">
+        </div>
+      </div>
+      </div>
+
+      <iron-signals on-iron-signal-guestbookscroll="_guestbook_scroll"></iron-signals>
+
+      <firebase-document path="/likes/webproject" data="{{webprojectlikes}}">
+      </firebase-document>
+
+      <firebase-document path="/likes/freelance" data="{{freelancelikes}}">
+      </firebase-document>
+
+      <app-footer></app-footer>
+
+
+  </template>
+
+  <script>Polymer({is:"development-page",properties:{webprojectheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},freelanceheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},webprojectlikes:{type:String,notify:!0,reflectToAttribute:!0},freelancelikes:{type:String,notify:!0,reflectToAttribute:!0},guestbookelement:{type:String,value:"done",notify:!0,reflectToAttribute:!0,observer:"_open_guestbook"},guestbookpass:{type:String,value:"",notify:!0,reflectToAttribute:!0}},_guestbook_scroll:function(){console.log("scroll time!");var e=document.getElementById("guestbooktop");e.scrollIntoView({behavior:"smooth"})},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},like_freelanceproject:function(){"/images/small-icon-heart-outline.png"===this.freelanceheart?(this.set("freelanceheart","/images/small-icon-heart.png"),this.set("freelancelikes",this.freelancelikes+1)):"/images/small-icon-heart.png"===this.freelanceheart&&(this.set("freelanceheart","/images/small-icon-heart-outline.png"),this.set("freelancelikes",this.freelancelikes-1))}});</script>
+</dom-module></body></html>

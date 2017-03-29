@@ -1,0 +1,418 @@
+<html><head><link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
+
+
+
+
+</head><body><dom-module id="Portfolio-app">
+  <template>
+    <style is="custom-style" include="app-styles">
+      :host {
+        display: block;
+      }
+
+      .header-main-menu {
+        margin: 0 auto;
+        width: 100%;
+      }
+
+
+/*
+--paper-tabs-selection-bar-color  Color for the selection bar --paper-yellow-a100
+--paper-tabs-selection-bar  Mixin applied to the selection bar  {}
+--paper-tabs  Mixin applied to the tabs {}
+--paper-tabs-content  Mixin applied to the content container of tabs  {}
+--paper-tabs-container  Mixin applied to the layout container of tabs {}
+
+*/
+
+      paper-tabs {
+        max-width: 960px; 
+        width: 100%; 
+        height: auto;
+        margin: 0 auto; 
+        height: 63px;
+        --paper-tabs-selection-bar-color: var(--paper-pink-500);
+
+      }
+
+      paper-tab {
+        width: 100%;
+        height: 35px;
+        color: blue;
+        text-align: center;
+        font-weight: 100;
+        font-size: 12px;
+      }
+
+      paper-tab[link] a {
+        color: var(--paper-teal-800);
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 16px;
+        text-decoration: none;
+      }
+
+      .top-toolbar {
+        margin-bottom: 50px;
+      }
+
+      .bottom-toolbar {
+        background-color: white;
+        border-top: 1px solid #aeaeae;
+        border-bottom: 1px solid #aeaeae;
+
+      }
+
+      .destroy-app-hamburger  {
+        display: none;
+      }
+
+      .close-menu-icon {
+        width: 20px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+
+      .menu-line {
+        border: none;
+        padding-bottom: 2px;
+        background: linear-gradient(91deg, rgba(0,150,136,0) 0%, rgba(0,150,136,1) 18%, rgba(63,81,181,1) 81%, rgba(63,81,181,0) 100%);
+        opacity: .3;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+
+      .menu-line-half {
+        width: 50%;
+        margin-left: 25%;
+      }
+
+      .menu-item-container {
+        width: 100%;
+        text-align: center;
+      }
+
+      .menu-link-items {
+        color: rgb(156, 170, 174);
+        opacity: .8;
+        font-family: 'Yantramanav', sans-serif;
+        font-size: 22px;
+        font-weight: 100;
+      }
+      
+      .drawer-list .menu-item-container.iron-selected .menu-link-items{
+        color: rgb(234, 250, 255);
+      }
+
+      .menu-link-items-desktop {
+        color: var(--paper-teal-500);
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .self-end {
+        @apply(--layout-self-end);
+      }
+
+      .outer-tab-div {
+        width: 100%;
+      }
+
+      .custom-fab {
+        margin-top: 55px;
+        z-index: 10;
+        padding: 2px;
+        height: 55px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: #252525;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.47);
+
+      }
+
+      img {
+        width: 70%;
+      }
+
+      .bottom-toolbar-content {
+        color: #7e7e7e;
+        font-size: 13px;
+        font-weight: 100;
+        letter-spacing: 0px;
+      }
+
+      .header-logo-mobile {
+        width: 70px;
+        float: right;
+      }
+
+      .last-tab {
+        width: 475px;
+      }
+
+      .toolbar-button {
+        background-color: var(--paper-pink-600);
+        font-size: 12px;
+        padding-left: 10px;
+        color: white;
+        font-weight: 500;
+        padding-right: 10px;
+      }
+
+      .header-name-mobile {
+        margin-left: 20px;
+        color: rgba(0, 0, 0, .7);
+        font-weight: 200;
+        font-size: 14px;
+      }
+
+      .fixed-side-bar {
+        height: auto;
+        width: auto;
+        position: fixed;
+        top: 202px;
+        right: 5px;
+      }
+
+      .social-box {
+        width: 40px; 
+        height: 40px;
+      }
+
+      .app-drawer-logo {
+        width: 70px; 
+        margin-top: 6px;
+      }
+
+      .twitter {
+        background-image: url('/images/social-icons/twitter-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        margin-bottom: 5px;
+      }
+
+      .linkedin {
+        background-image: url('/images/social-icons/linkedin-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat; 
+      }
+
+      .instagram {
+        background-image: url('/images/social-icons/instagram-icon.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        margin-bottom: 5px;
+        
+      }
+
+      .commander-overlay-wrapper {
+        margin: 0 auto; 
+        text-align: center; 
+        margin-top: 250px;
+      }
+
+      .commander-overlay {
+        width: 100%;
+        height: 2000px;
+        background-color: #f7f7f7;
+        position: absolute;
+        opacity: 1;
+        transition: opacity 2s;
+      }
+
+      .commander-overlay.fade-overlay {
+        opacity: 0;
+      }
+
+      .commander-overlay.display-none {
+        display: none;
+      }
+
+      paper-progress {
+       --paper-progress-active-color: var(--paper-indigo-500);
+      }
+
+      paper-progress.slow {
+        --paper-progress-indeterminate-cycle-duration: 5s;
+      }
+
+      @media only screen and (max-width: 750px) {
+        .fixed-side-bar {
+          display: none;
+        }
+      }
+
+      @media only screen and (min-width: 640px) {
+         app-drawer {
+          display: none;
+        }
+        .header-logo-mobile-div {
+          display: none;
+        } 
+
+        .header-name-mobile {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .commander-overlay-wrapper {
+          margin-top: 180px;
+        }
+
+        .destroy-app-hamburger {
+          display: block;
+        }
+
+        .destroy-app-toolbar {
+          display: none;
+        }
+
+        .header-logo-desktop {
+          display: none;
+        }
+      }
+
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}">
+    </app-route>
+
+    <app-scrollpos-control reset="true" selected="{{page}}"></app-scrollpos-control>
+
+    <app-drawer-layout>
+      <app-drawer id="drawertoggle">
+        <app-toolbar class="top-toolbar">
+          <div on-click="change_icon" class="header-main-menu container flex-horizontal">
+            <div class="flexchild">
+            </div>
+            <div>
+              <img class="close-menu-icon" src="/images/small-icon-x.png">
+            </div>
+          </div>
+        </app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <div class="menu-item-container" name="home">  
+            <a class="menu-link-items menu-item-margin" href="/home" drawer-toggle="">Home</a>
+          </div>
+          <hr class="menu-line menu-line-half">
+          <div class="menu-item-container" name="design">       
+            <a class="menu-link-items menu-item-margin" href="/design" drawer-toggle="">Design</a>
+          </div>
+          <hr class="menu-line">
+          <div class="menu-item-container" name="development">       
+            <a class="menu-link-items menu-item-margin" href="/development" drawer-toggle="">Development</a>
+          </div>
+          <hr class="menu-line">
+          <div class="menu-item-container" name="contact">       
+            <a class="menu-link-items menu-item-margin" href="/contact" drawer-toggle="">Contact</a>
+          </div>
+          <hr class="menu-line menu-line-half">
+          <div class="menu-item-container">
+            <a href="/home">
+              <img class="app-drawer-logo" src="/images/logo-TM-outline-white.png">
+            </a>
+          </div>
+        </iron-selector>
+      </app-drawer>
+      <app-header-layout fullbleed="">
+        <app-header condenses="" fixed="" effects="waterfall">
+          <app-toolbar>
+            <div class="destroy-app-hamburger" on-click="change_icon">
+              <img style="width: 22px; padding-left: 6px" src="{{menucommand}}">
+            </div>
+            <div class="header-logo-mobile-div" on-click="change_home" main-title="">
+              <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
+            </div>
+          </app-toolbar>
+          <app-toolbar class="destroy-app-toolbar">
+          <div main-title=""></div>
+            <div class="commander-section-translucent width100" style="padding-right: 0px">
+              <div class="commander-inner-section width100 align-right">
+                <a href="/home">
+                  <div class="header-logo-desktop">
+                   <img style="width: 150px; margin-bottom: 75px; margin-right: 30px" src="/images/logo-TM-outline.png">
+                  </div>
+                </a>
+              </div>
+            </div>
+          </app-toolbar>
+          <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto">
+            <div class="header-name-mobile captain-header" main-title=""></div>
+            <paper-tabs selected-class="paper-tabs-selected" attr-for-selected="name" selected="[[page]]">
+              <paper-tab name="home" link="">
+                <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
+              </paper-tab>
+              <paper-tab name="design" link="">
+                <a href="/design" class="link" tabindex="-1">Design</a>
+              </paper-tab>
+              <paper-tab name="development" link="">
+                <a href="/development" class="link" tabindex="-1">Development</a>
+              </paper-tab>
+              <paper-tab name="contact" link="">
+                <a href="/contact" class="link" tabindex="-1">Contact</a>
+              </paper-tab>
+
+            </paper-tabs>
+          </app-toolbar>
+        </app-header>
+
+
+
+      <neon-animated-pages id="pages" attr-for-selected="name" class="flex" selected="{{page}}" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
+        <neon-animatable name="home">
+          <home-page></home-page>
+        </neon-animatable>
+        <neon-animatable name="design">
+          <design-page></design-page>
+        </neon-animatable>
+        <neon-animatable name="development">
+          <development-page></development-page>
+        </neon-animatable>
+        <neon-animatable name="contact">
+          <contact-page></contact-page>
+        </neon-animatable>
+      </neon-animated-pages>
+
+      <div class="fixed-side-bar">
+        <a href="https://twitter.com/TristanMarshall" target="_blank">
+          <div class="social-box twitter"></div>
+        </a>
+        <a href="https://www.instagram.com/fullmarshallstack/" target="_blank">
+          <div class="social-box instagram"></div>
+        </a>
+        <a href="https://www.linkedin.com/in/tristan-marshall-3222a88b/" target="_blank">
+          <div class="social-box linkedin"></div>
+        </a>
+      </div>
+
+      </app-header-layout>
+    </app-drawer-layout>
+
+    <div class$="commander-overlay {{overlay}}" style="text-align: center">
+      <div class="commander-overlay-wrapper">
+        <img style="max-width: 250px; text-align: center" src="/images/logo-TM-shadow.png">
+      </div>
+      <br>
+      <div style="text-align: center; margin: 0 auto">
+        <paper-progress style="margin: 0 auto" indeterminate="" class="slow"></paper-progress>
+      </div>
+    </div>
+
+    <firebase-app auth-domain="commander-portfolio.firebaseapp.com" database-url="https://commander-portfolio.firebaseio.com" api-key="AIzaSyA1iZIOBpF18KgN6finP9k04DdwM6qMWRA">
+    </firebase-app>
+
+    <firebase-document path="/likes/guestbook" data="{{likes}}">
+    </firebase-document>
+
+  </template>
+
+  <script>Polymer({is:"Portfolio-app",behaviors:[Polymer.NeonAnimationRunnerBehavior],properties:{animationConfig:{value:function(){return{entry:{name:"entry-animation",node:this,timing:{duration:2e3}},exit:{name:"exit-animation",node:this,timing:{duration:2e3}}}}},likes:{type:Object,reflectToAttribute:!0,notify:!0},overlay:{type:String,value:"",reflectToAttribute:!0,notify:!0},page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"},route:{type:Object,reflectToAttribute:!0,notify:!0},menucommand:{type:String,value:"/images/hamburger-icon.png",reflectToAttribute:!0},signal:{type:String,value:"",reflectToAttribute:!0,notify:!0}},observers:["_routePageChanged(routeData.page)"],change_icon:function(){var e=this.$.drawertoggle;e.toggle()},_guestbook_route:function(){this.set("signal","open"),this.set("page","development"),this.set("route.path","development")},_routePageChanged:function(e){this.page=e||"home"},_pageChanged:function(e){this.importHref(this.resolveUrl(e+"-page.html"),null,null,!0)},ready:function(){var e=this;setTimeout(function(){e.set("overlay","fade-overlay")},3e3),setTimeout(function(){e.set("overlay","display-none")},4500)}});</script>
+</dom-module>
+</body></html>

@@ -1,0 +1,17 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/portfolio-app.html",
+  "fragments": [
+  	"src/portfolio-app/home-page.html",
+    "src/portfolio-app/design-page.html",
+    "src/portfolio-app/development-page.html",
+    "src/portfolio-app/contact-page.html"
+  ],
+  "sources": [
+  "bower_components/**/*",
+  "src/**/*",
+  "images/**/*",
+  "downloads/*",
+  "bower.json"
+  ]
+}

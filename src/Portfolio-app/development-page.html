@@ -35,13 +35,13 @@
         color: rgba(0, 0, 0, .65);
       }
 
-      .guest-likes-count {
+/*      .guest-likes-count {
         font-size: 12px;
         font-family: 'Roboto Condensed', sans-serif;
         padding: 0;
         margin: 0;
         color: rgb(170, 170, 170);
-      }
+      }*/
 
       .thank-you-content {
         padding-top: 50px;
@@ -129,7 +129,14 @@
             <hr class="captain-app-line-plain-light">
           </div>
           <div class="captain-content-light padding-right-20px">
-            Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings. Although the family was not wealthy, Twain apparently had a happy and secure childhood.
+
+            Writing code &amp; building cool programs / websites is my preferred cup of tea. I truly enjoy the moment when a problem or function is solved &amp; its true purpose comes to life. Creating responsive, functional programs / websites while maintaining clean, easy to read code is really what its all about.
+            <br>
+            <br>
+            Below you can find some examples of just that! Please have a look &amp; reach out if you have any questions about my process or anything else!
+
+            <!-- Adding functionality to a user-friendly interface &amp; bringing it to life. -->
+
           </div>
         </div>
       </div>
@@ -239,8 +246,6 @@
       </div>
       </div>
 
-      <!-- <iron-signals on-iron-signal-openguestbook="_open_guestbook"></iron-signals> -->
-
       <iron-signals on-iron-signal-guestbookscroll="_guestbook_scroll"></iron-signals>
 
       <firebase-document
@@ -316,22 +321,21 @@
         target.scrollIntoView({behavior: "smooth"});
       },
 
-      _open_guestbook: function() {
+      // _open_guestbook: function() {
 
-        // console.log("Step 2) Element: development-page.html, function: _open_guestbook");
+      //   // console.log("Step 2) Element: development-page.html, function: _open_guestbook");
 
-        var guestbookscrolltarget = document.getElementById("guestbookscrolltarget");
-        guestbookscrolltarget.scrollIntoView({behavior: "smooth"});
+      //   var guestbookscrolltarget = document.getElementById("guestbookscrolltarget");
+      //   guestbookscrolltarget.scrollIntoView({behavior: "smooth"});
 
-        // if (this.guestbookelement === "done") {
-        //   console.log(this.guestbookelement);
-        this.set("guestbookpass", "open");
-        this.set("guestbookelement", "done");
+      //   // if (this.guestbookelement === "done") {
+      //   //   console.log(this.guestbookelement);
+      //   this.set("guestbookpass", "open");
+      //   this.set("guestbookelement", "done");
 
-        // }
+      //   // }
 
-      },
-
+      // },
 
       like_webproject: function() {
 

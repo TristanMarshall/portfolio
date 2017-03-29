@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <title>iron-list test</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="helpers.html">
+  <link rel="import" href="x-grid.html">
+</head>
+<body>
+
+
+  <test-fixture id="trivialList">
+    <template>
+      <x-grid dir="rtl" style="width: 300px"></x-grid>
+    </template>
+  </test-fixture>
+
+<script>suite("basic features",function(){var t,e;setup(function(){e=fixture("trivialList"),t=e.list}),test("check horizontal rendering for rtl direction",function(i){e.data=buildDataSet(100),flush(function(){for(var e,r,o,n,s,a=0;a<9;a++)e=getGridRowFromIndex(t,a),r=a%t._itemsPerRow,o=e*t._itemsPerRow,n=getNthItemFromGrid(t,a).textContent,s=o+t._itemsPerRow-r-1,assert.equal(n,s);i()})})});</script>
+
+
+
+</body></html>

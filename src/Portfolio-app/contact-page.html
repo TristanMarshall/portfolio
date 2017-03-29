@@ -15,10 +15,59 @@
         color: var(--paper-teal-500);
       }
 
+      .commander-faq-section {
+        height: auto; 
+        /*padding: 10px 10px;*/
+        /*background-color: white;*/
+      }
+
+      .faq-content-div {
+        width: 95%;
+        height: auto;
+        padding-left: 50px;
+        padding-top: 50px;
+        padding-bottom: 100px;
+      }
+
+      .border-indigo {
+        border-left: 5px solid var(--paper-indigo-500);
+      }
+
+      .border-teal {
+        border-left: 5px solid var(--paper-teal-500);
+      }      
+
+      .border-pink {
+        border-left: 5px solid var(--paper-pink-500);
+      }
+
+      .captain-faq-content-dark {
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .6);
+        text-align: left;
+        line-height: 1.8;
+      }
+
       @media only screen and (max-width: 325px) {
         .responsive-font-size {
           font-size: 13px;
           padding-top: 4px;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+
+        .commander-faq-section {
+          padding: 10px 25px 25px 0px;
+        }
+
+        .faq-content-div {
+          width: 100%;
+          padding-left: 15px;
+          padding-top: 0px;
+          padding-bottom: 0px;
         }
       }
 
@@ -74,14 +123,14 @@
           <div class="captain-header-dark-left flexchild">
             FAQs
           </div>
-          <!-- <div class="guestbook-entry-count child3">
-            <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
+          <div class="guestbook-entry-count child3">
+            <div class="align-right cursor-pointer padding-left" on-tap="like_faq">
               <div class="guest-likes-count inline">
-                {{likes}} likes
+                {{faqlikes}} likes
               </div>
               <img style="width: 20px;" src="{{heart}}">
             </div>
-          </div> -->
+          </div>
         </div>
       <hr class="captain-app-line-plain">
       <div class="captain-content-dark padding-right-20px">
@@ -92,22 +141,63 @@
       <br>
       <custom-element-collapse title="Do you have a dog?">
         <content>
-
+          <div class="commander-faq-section">
+            <div class="commander-inner-section">
+              <div class="commander-right-small-mild">
+            <div>
+              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/holiday.png">
+            </div>
+              </div> 
+              <div class="commander-left-large-mild">
+                <div class="faq-content-div border-indigo">
+                  <div class="captain-faq-content-dark">
+                    I do have a dog, thanks for asking! Her name is <b>Holiday</b>. My Wife &amp; I adopted her when she was just a pupper. As you can see she is currently the prettiest dog alive!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </content>
       </custom-element-collapse>
-      <custom-element-collapse title="What is your dream job?">
+      <custom-element-collapse title="In another life I would be..">
         <content>
-
+          <div class="commander-faq-section">
+            <div class="commander-inner-section">
+              <div class="commander-right-small-mild">
+            <div>
+              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/boxing.png">
+            </div>
+              </div> 
+              <div class="commander-left-large-mild">
+                <div class="faq-content-div border-teal">
+                  <div class="captain-faq-content-dark">
+                    <b>The Welterweight Boxing Champion of the World!</b> I would go undefeated with more than 30 KOs. I would then retire at the age of 30 because my Wife wouldn't want me getting hurt, then we would travel the world staying in fancy boutique hotels &amp; wearing too much Gucci.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </content>
       </custom-element-collapse>
-      <custom-element-collapse title="Do you like donuts more than pizza?">
+      <custom-element-collapse title="Did you have a previous career?">
         <content>
+          <div class="commander-faq-section">
+            <div class="commander-inner-section">
+              <div class="commander-right-small-mild">
+            <div>
+              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/diver.png">
+            </div>
+              </div> 
+              <div class="commander-left-large-mild">
+                <div class="faq-content-div border-pink">
+                  <div class="captain-faq-content-dark">
+                    I did! I worked as a <b>commercial diver / captain</b>. Primarily involved in the installation &amp; burial of Fiber Optic cables to connect different locations with telecommunications. I was able to travel to some cool places for this job, including: Fiji, Qatar, Greece, &amp; Madagascar!
 
-        </content>
-      </custom-element-collapse>
-      <custom-element-collapse title="What is your dream job?">
-        <content>
-
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </content>
       </custom-element-collapse>
       <hr class="project-collapse-line captain-app-line-plain">
@@ -116,6 +206,12 @@
     </div>
   </div>
   <app-footer></app-footer>
+
+      <firebase-document
+        path="/likes/faq"
+        data="{{faqlikes}}">
+      </firebase-document>
+
   </template>
 
   <script>
@@ -124,8 +220,31 @@
       is: 'contact-page',
 
       properties: {
-
+        heart: {
+          type: String,
+          value: "/images/small-icon-heart-outline.png",
+          notify: true,
+          reflectToAttribute: true
+        },
+        faqlikes: {
+          type: String,
+          notify: true,
+          reflectToAttribute: true
+        }
       },
+
+      like_faq: function() {
+
+        if (this.heart === "/images/small-icon-heart-outline.png") {
+          this.set('heart', "/images/small-icon-heart.png");
+          this.set('faqlikes', this.faqlikes+1);
+
+        } else if (this.heart === "/images/small-icon-heart.png") {
+          this.set('heart', "/images/small-icon-heart-outline.png");
+          this.set('faqlikes', this.faqlikes-1);
+        }
+      },
+      
 
       ready: function() {
         this.contacts = [
@@ -142,7 +261,7 @@
             },
             {
               title: "Telephone : ",
-              bold: "3 3 0 - 6 0 8 - 3 0 6 5",
+              bold: "330 - 608 - 3065",
               icon: "/images/contact-icons/icon-phone.svg",
               link: "tel:330-608-3065"
             },
