@@ -365,7 +365,7 @@
     }
 
     </style>
-        <div class="commander-right-small">
+        <div class="commander-right-small-mild">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
               <B>Credit Card Validation</b> check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!  <br>
@@ -373,7 +373,6 @@
                 <span class="captain-subheader">Try with these Test Credit Card Numbers:</span> <br>
                 <b>mastercard:</b> 5555 5555 5555 4444 <br>
                 <b>visa:</b> 2424 2424 2424 2424
-
                 <br>
                 <br>
             <a target="_blank" href="https://www.github.com">VIEW CODE ON GITHUB</a>
@@ -382,7 +381,7 @@
             </div>
           </div>
         </div> 
-      <div class="commander-left-large">
+      <div class="commander-left-large-mild">
         <div class="appContainer">
           <div class="appWrapper">
           <div class="container flex-horizontal"></div>
@@ -437,6 +436,11 @@
       </div>
 
       <paper-dialog class="sizeAndPosition" id="validationDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+        <div class="container flex-end-justified">
+          <div on-tap="closeDialog">
+            <img style="width: 15px;" src="/images/small-icon-x.png">
+          </div>
+        </div>
         <iron-pages class="validationIronPages" selected="{{pages}}">
           <div class="invalidCardDiv">
             <div class="xDiv">
@@ -466,8 +470,6 @@
             </div>
           </div>
         </iron-pages>
-        <hr class="dialogHr">
-        <div on-tap="closeDialog" class="dialogClose">CLOSE</div>
       </paper-dialog>
   </template>
 

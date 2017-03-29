@@ -1,4 +1,4 @@
-<link rel="import" href="import-elements.html">
+<!-- <link rel="import" href="import-elements.html"> -->
 <link rel="import" href="app-styles.html">
 
 
@@ -183,6 +183,10 @@
         color: rgb(170, 170, 170);
       }
 
+      .emptyFieldsX {
+        width: 30%;
+      }
+
       .iron-list-gradient {
         margin-top: -115px;
         height: 118px;
@@ -206,7 +210,7 @@
 <!-- /////////////////////////////////////////// -->
 <!-- GUESTBOOK SECTION -->
 <!-- /////////////////////////////////////////// -->
-        <paper-dialog no-cancel-on-outside-click class="guestbook-class" id="guestbook">
+        <paper-dialog no-cancel-on-outside-click  entry-animation="scale-up-animation" exit-animation="fade-out-animation" class="guestbook-class" id="guestbook">
         <div class="container flex-end-justified">
           <div on-tap="close_reset_dialog">
             <img style="width: 15px;" src="/images/small-icon-x.png">
@@ -260,25 +264,41 @@
             <div class="validation-error-div">
               {{error}}
             </div>
-            <paper-button class="captain-app-button" on-tap="add_entry">
+            <paper-button class="captain-app-button" on-tap="next_page">
               ADD ENTRY TO GUESTBOOK
             </paper-button>
           </div>
+          <div class="guestbook-page">
+            <div class="validCardDiv">
+              <div class="xDiv">
+                <img class="emptyFieldsX" src="/images/validation-images/empty-fields-check.png">
+              </div>
+              <br>
+              <div class="captain-dialog-header">
+                Thank you for Your Entry!
+              </div>
+              <br>
+              <paper-button class="captain-app-button" on-tap="add_entry">
+                CLOSE
+              </paper-button>
+            </div>
+          </div>
+
         </iron-pages>
         </paper-dialog>
-        <div class="commander-right-small">
+        <div class="commander-right-small-mild">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
-                Here, you can make a guest book entry. The guest list data is being saved to a Firebase database
-                <br>
-                <paper-button class="captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
-                <br>
-                <br>
+              Here, you can make a guest book entry. The guest list data is being saved to a Firebase database
+              <br>
+              <paper-button class="captain-app-button" onclick="guestbook.open();" raised>SIGN GUESTBOOK</paper-button>
+              <br>
+              <br>
             <a target="_blank" href="https://www.github.com">VIEW CODE ON GITHUB</a>
             </div>
           </div>
         </div> 
-        <div class="commander-left-large">
+        <div class="commander-left-large-mile">
           <iron-list is="iron-list" items="{{guests}}"> 
             <template class="testing">       
               <div>
@@ -298,12 +318,12 @@
                           {{item.location}}
                         </div>
                       </div>
-                      <div class="align-right cursor-pointer" on-tap="like_entry">
-                        <img style="width: 20px;" src="{{item.heart}}">
+           <!--            <div class="align-right cursor-pointer" on-tap="like_entry">
+                        <img style="width: 20px;" id="idheart{{item.key}}" src="/images/small-icon-heart-outline.png">
                         <div class="guest-likes-count">
                           {{item.likes}} likes
                         </div>
-                      </div>
+                      </div> -->
                     </div>
 
                     <hr class="guestbook-line">
@@ -316,7 +336,7 @@
             </template>
           </iron-list>
           <div class="iron-list-gradient"></div>
-          <paper-button on-tap="firebase_test">test button</paper-button>
+          <!-- <paper-button on-tap="firebase_test">test button</paper-button> -->
         </div>
 
     <firebase-document
@@ -324,8 +344,13 @@
       data="{{guests}}">
     </firebase-document>
 
+<!--     <firebase-query
+      id="query"
+      path="/guests"
+      data="{{queryguests}}">
+    </firebase-query>
+ -->
 
-    
   </template>
 
   <script>
@@ -428,11 +453,7 @@
         },
       },
 
-      firebase_test: function() {
-          console.log(this.guests);
-          this.ready_go();
-      },
-
+ 
       like_guestbook: function() {
 
         if (this.guestbooklikes.heart === "/images/small-icon-heart-outline.png") {
@@ -504,20 +525,42 @@
       },
 
       like_entry: function(e) {
+
         var model = e.model;
+        var i = model.item.key;
+        console.log(i);
+        var idString = "idheart" + i;
+        console.log(typeof(idString));
+
+        var element = document.getElementById(idString);
         
-        console.log(model.item.heart);
+
+        console.log(element.src);
 
 
-        if (model.item.heart === "/images/small-icon-heart-outline.png") {
-          model.set('item.heart', "/images/small-icon-heart.png");
+    
+        if (element.src == "http://localhost:8080/images/small-icon-heart-outline.png") {
+          element.src = "http://localhost:8080/images/small-icon-heart.png";          
           model.set('item.likes', model.item.likes+1);
-          console.log(model.item.heart);
 
-        } else if (model.item.heart === "/images/small-icon-heart.png") {
-          model.set('item.heart', "/images/small-icon-heart-outline.png");
+
+        } else if (element.src == "http://localhost:8080/images/small-icon-heart.png") {
+          element.src = "http://localhost:8080/images/small-icon-heart-outline.png";
           model.set('item.likes', model.item.likes-1);
         }
+
+
+        // if (model.item.heart === "/images/small-icon-heart-outline.png") {
+        //   model.set("item.heart", "/images/small-icon-heart.png");
+        //   model.set('item.likes', model.item.likes+1);
+        //   console.log(model.item.heart);
+
+        // } else if (model.item.heart === "/images/small-icon-heart.png") {
+        //   model.set("item.heart", "/images/small-icon-heart-outline.png");
+        //   model.set('item.likes', model.item.likes-1);
+        // }
+
+
       },
 
 
@@ -548,7 +591,8 @@
           message: "",
           likes: 0,
           heart: "/images/small-icon-heart-outline.png",
-          avatar: ""
+          avatar: "",
+          key: ""
         };
 
         // set values to entry object
@@ -556,6 +600,7 @@
         entry.location = this.location;
         entry.message = this.message;
         entry.avatar = this.avatar;
+        entry.key = this.guests.length+1;
 
         // push entry object into guests array
         this.unshift('guests', entry);
@@ -565,21 +610,25 @@
         this.set("location", "");
         this.set("message", "");
         this.set("avatar", "");
+        this.set("key", "");
 
         // reset iron-pages
         this.$.guestbookpages.selected = 0;
 
+        //reset avatar select 
+        for (var i = 0; i < this.avatars.length; i++) {
+          if (this.avatars[i].test === "avatar-div-select") {
+            this.set("avatars." + i + ".test", "avatar-div");
+          } 
+        }
+
+        //iron-signal broadcast to scoll to view guestbook (handled in development-page.html)
+        this.fire('iron-signal', {name: 'guestbookscroll', data: null});
+
         // close guestbook
         this.$.guestbook.close();
-
-        console.log(entry);
       },
 
-      // ready: function(){
-      //   setTimeout(function(){ 
-      //     this.readygo();
-      //   }, 4000);
-      // },
       // readygo: function() {
       //   console.log(this.guests);
       // }

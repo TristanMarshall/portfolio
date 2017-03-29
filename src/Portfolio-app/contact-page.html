@@ -11,36 +11,59 @@
         display: block;
       }
 
+      .teal {
+        color: var(--paper-teal-500);
+      }
+
+      @media only screen and (max-width: 325px) {
+        .responsive-font-size {
+          font-size: 13px;
+          padding-top: 4px;
+        }
+      }
+
     </style>
 
     <div class="top-section grid-dark">
       <div class="commander-inner-section">
         <div class="mobile-hide">
           <div class="captain-header">
-            Contact
+            Contact  /  Resume
           </div>
-          <hr class="captain-app-line">
-          <div class="captain-subheader">
-            <span class="captain-subheader-span">Get in touch</span>
-          </div>
+          <hr class="captain-app-line-plain-light">
+          <br>
+          <br>
         </div>
-        <div class="commander-right-small">
-          <div>
-            <img class="captain-image image-position" src="/images/icon-space-filler.png">
-          </div>
+        <div class="commander-left-small">
+          <img style="width: 100%; max-width: 200px;" src="/images/large-icon-desktop-contact-circle.png">
         </div>
-        <div class="commander-left-large">
+        <div class="commander-right-large">
           <div class="mobile-show">
+            <br>
+            <br>
             <div class="captain-header">
-              Design
+              Contact  /  Resume
             </div>
-            <hr class="captain-app-line">
-            <div class="captain-subheader">
-              <span class="captain-subheader-span">wireframes / UI / icons / illustrations</span>
-            </div>
+            <hr class="captain-app-line-plain-light">
+            <br>
           </div>
-          <div style="border-left: 5px solid #aeaeae; height: 400px;">
-
+          <div>
+            <!-- <br> -->
+            <template is="dom-repeat" items="{{contacts}}">
+              <a href="{{item.link}}" target="_blank">
+                <div class="container flex-horizontal">
+                  <div style="text-align: center; width: 30px; margin-right: 10px; padding-top:4px;">
+                    <img style="height: 20px;" src="{{item.icon}}">
+                  </div>
+                  <div>
+                    <div class="captain-content-light responsive-font-size">
+                      <span class="bold-weight teal">{{item.title}} </span> &nbsp; {{item.bold}}
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <br>
+            </template>
           </div>
         </div>
       </div>
@@ -92,6 +115,7 @@
 
     </div>
   </div>
+  <app-footer></app-footer>
   </template>
 
   <script>
@@ -102,6 +126,34 @@
       properties: {
 
       },
+
+      ready: function() {
+        this.contacts = [
+            {
+              title: "Download Resume",
+              icon: "/images/contact-icons/icon-download.svg",
+              link: "/images/downloads/tristan-marshall-resume.pdf"
+            },
+            {
+              title: "Email : ",
+              bold: "fullMarshallStack@gmail.com",
+              icon: "/images/contact-icons/icon-mail.svg",
+              link: "mailto:fullmarshallstack@gmail.com"
+            },
+            {
+              title: "Telephone : ",
+              bold: "3 3 0 - 6 0 8 - 3 0 6 5",
+              icon: "/images/contact-icons/icon-phone.svg",
+              link: "tel:330-608-3065"
+            },
+            {
+              title: "Linkedin : ",
+              bold: "/TristanMarshall",
+              icon: "/images/contact-icons/icon-linkedin.svg",
+              link: "https://www.linkedin.com/in/tristan-marshall-3222a88b/"
+            }       
+        ];
+      }
 
     });
   </script>

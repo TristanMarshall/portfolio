@@ -65,7 +65,8 @@
 <!-- /////////////////////////////////////////// -->
         <hr class="project-collapse-line captain-app-line-plain">
         <div class="toggle-project-div">
-          <div class="container flex-horizontal"  id="project1"  on-click="project_toggle">
+
+          <div class="container flex-horizontal" id="project1"  on-click="project_toggle">
             <div class="toggle-icon-container">
               <div>
                 <img class$="{{toggleicon}}" src="/images/small-icon-x.png">
@@ -75,6 +76,7 @@
               {{title}}
             </div>
           </div>
+
          <iron-collapse id="collapse">
 
           <div id="testjump"></div>
@@ -110,14 +112,47 @@
           value: "project-collapse-header",
           notify: true,
           reflectToAttribute: true
+        },
+
+        guestbookopen: {
+          type: String,
+          notify: true,
+          value: "default",
+          reflectToAttribute: true,
+          observer: 'guestbook_observer'     
+        }
+
+      },
+
+      guestbook_observer: function() {
+
+        // console.log("Step 4) Element: custom-element-collapse.html, function: guestbook_observer");
+        if (this.guestbookopen === "open") {
+          this.project_toggle_guestbook();
+
         }
       },
 
+      project_toggle_guestbook: function() {
+          this.$.collapse.toggle();
+
+          if (this.toggleicon === "toggleopen") {
+            this.set("toggleicon", "toggleclose");
+            this.set("titleClass", "project-collapse-header-open");
+
+          } else if (this.toggleicon === "toggleclose") {
+            this.set("toggleicon", "toggleopen");
+            this.set("titleClass", "project-collapse-header");
+
+          }
+      },
+ 
       project_toggle: function(e) {
 
         // get project-collapse ID
         var project = e.currentTarget;
         var id = project.id;
+        // var id = e;
         console.log(id);
 
         if (id === "project1") {
@@ -134,6 +169,13 @@
           }
       }
     },
+
+    // ready: function() {
+    //   if (this.guestbookopen === "open") {
+    //     this.$.collapse.opened = true;
+    //   } else 
+    //   return;
+    // },
 
 
     });

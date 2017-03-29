@@ -272,7 +272,7 @@ font-family: 'Lobster', cursive;
       }
 
       .image-position {
-        margin-top: -10px;
+        max-width: 250px;
       }
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* FULL SITE STYLE CLASSES */
@@ -359,7 +359,7 @@ font-family: 'Lobster', cursive;
 
       .captain-app-line-plain {
         border: none;
-        background: rgba(0, 0, 0, .2);
+        background-color: #c6c6c6;
         padding-bottom: 1px;
         margin-top: 5px;
         margin-bottom: 5px;
@@ -373,6 +373,24 @@ font-family: 'Lobster', cursive;
         margin-bottom: 5px;
       }
 
+      .triple-step-header-line {
+        max-width: 175px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding-bottom: 1px;
+        border: none;
+        margin-bottom: 5px;
+      }
+
+      .line-dot {
+        width: 3px;
+        background-color: #c6c6c6;
+        height: 3px;
+        margin: 0 auto;
+        margin-top: -8px;
+        border: 1px solid #c6c6c6;
+        border-radius: 50%;
+      }
+
       .captain-app-button {
         width: 100%;
         max-width: 200px;
@@ -380,11 +398,11 @@ font-family: 'Lobster', cursive;
 
       .grid-dark {
         position: relative;
-        background-image: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 100%), url('/images/background-grid-dark.png');
+        background-image: linear-gradient(45deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.2) 100%), linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 100%), url('/images/background-grid-dark.png');
         background-position: 0% 0%;
         overflow: hidden;
         background-repeat: no-repeat;
-        background-size: cover;
+        /*background-size: cover;*/
       }
 
       .grid-light {
@@ -424,7 +442,7 @@ font-family: 'Lobster', cursive;
 
       .top-section {
         height: auto; 
-        padding: 75px 50px 150px 50px;
+        padding: 75px 50px 75px 50px;
       }
 
       .commander-section-footer {
@@ -451,16 +469,26 @@ font-family: 'Lobster', cursive;
       }
 
       .commander-left-large {
-        width: 60%;  
+        width: 74%;  
         padding-right: 20px;
       }
 
       .commander-right-small {
         float: right;
         text-align: right;
-        width: 40%; 
+        width: 24%; 
       }
 
+      .commander-left-large-mild {
+        width: 60%;  
+        padding-right: 20px;
+      }
+
+      .commander-right-small-mild {
+        float: right;
+        text-align: right;
+        width: 40%; 
+      }
 
       .commander-left-half {
         width: 50%;  
@@ -482,13 +510,13 @@ font-family: 'Lobster', cursive;
        }
 
       .commander-left-small {
-        width: 33.5%; 
+        width: 24%; 
         display: inline-block;  
         /*float: left;   */
       }
 
       .commander-right-large {
-        width: 66.5%; 
+        width: 74%; 
         display: inline-block;
         float: right;
       }
@@ -559,6 +587,7 @@ font-family: 'Lobster', cursive;
         .image-position {
           margin-top: 0px;
           margin-bottom: 10px;
+          max-width: 200px;
         }
 
         .captain-content-dark, .captain-content-light {
@@ -592,7 +621,7 @@ font-family: 'Lobster', cursive;
           padding-top: 50px;
         }
 
-        .commander-inner-section, .commander-right-half, .commander-left-half, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small  {
+        .commander-inner-section, .commander-right-half, .commander-left-half, .commander-left-large, .commander-right-small, .commander-right-large, .commander-left-small, .commander-left-large-mild, .commander-right-small-mild  {
           float: none;
           width: 100%;
           display: block;

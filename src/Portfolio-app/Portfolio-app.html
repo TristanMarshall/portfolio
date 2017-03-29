@@ -17,15 +17,14 @@
       }
 
 
-
-/*--paper-tabs-selection-bar-color  Color for the selection bar --paper-yellow-a100
+/*
+--paper-tabs-selection-bar-color  Color for the selection bar --paper-yellow-a100
 --paper-tabs-selection-bar  Mixin applied to the selection bar  {}
 --paper-tabs  Mixin applied to the tabs {}
 --paper-tabs-content  Mixin applied to the content container of tabs  {}
---paper-tabs-container  Mixin applied to the layout container of tabs {}*/
+--paper-tabs-container  Mixin applied to the layout container of tabs {}
 
-
-
+*/
 
       paper-tabs {
         max-width: 960px; 
@@ -33,23 +32,23 @@
         height: auto;
         margin: 0 auto; 
         height: 63px;
+        --paper-tabs-selection-bar-color: var(--paper-pink-500);
+
       }
 
       paper-tab {
         width: 100%;
         height: 35px;
-        color: yellow;
+        color: blue;
         text-align: center;
         font-weight: 100;
         font-size: 12px;
       }
 
-
-
       paper-tab[link] a {
         color: var(--paper-teal-800);
         font-family: 'Yantramanav', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         text-decoration: none;
       }
 
@@ -102,6 +101,10 @@
         font-size: 22px;
         font-weight: 100;
       }
+      
+      .drawer-list .menu-item-container.iron-selected .menu-link-items{
+        color: var(--paper-teal-500);
+      }
 
       .menu-link-items-desktop {
         color: var(--paper-teal-500);
@@ -131,8 +134,6 @@
       }
 
       img {
-        /*margin-top: 15px;*/
-        /*margin-left: 10px;*/
         width: 70%;
       }
 
@@ -153,7 +154,7 @@
       }
 
       .toolbar-button {
-        background-color: var(--paper-pink-700);
+        background-color: var(--paper-pink-600);
         font-size: 12px;
         padding-left: 10px;
         color: white;
@@ -181,6 +182,11 @@
         height: 40px;
       }
 
+      .app-drawer-logo {
+        width: 70px; 
+        margin-top: 6px;
+      }
+
       .twitter {
         background-image: url('/images/social-icons/twitter-icon.png');
         background-size: 40px;
@@ -202,6 +208,37 @@
         
       }
 
+      .commander-overlay-wrapper {
+        margin: 0 auto; 
+        text-align: center; 
+        margin-top: 250px;
+      }
+
+      .commander-overlay {
+        width: 100%;
+        height: 2000px;
+        background-color: #f7f7f7;
+        position: absolute;
+        opacity: 1;
+        transition: opacity 2s;
+      }
+
+      .commander-overlay.fade-overlay {
+        opacity: 0;
+      }
+
+      .commander-overlay.display-none {
+        display: none;
+      }
+
+      paper-progress {
+       --paper-progress-active-color: var(--paper-indigo-500);
+      }
+
+      paper-progress.slow {
+        --paper-progress-indeterminate-cycle-duration: 5s;
+      }
+
       @media only screen and (max-width: 750px) {
         .fixed-side-bar {
           display: none;
@@ -219,11 +256,13 @@
         .header-name-mobile {
           display: none;
         }
-
-
       }
 
       @media only screen and (max-width: 640px) {
+
+        .commander-overlay-wrapper {
+          margin-top: 180px;
+        }
 
         .destroy-app-hamburger {
           display: block;
@@ -238,7 +277,6 @@
         }
       }
 
-
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -250,7 +288,7 @@
       tail="{{subroute}}">
     </app-route>
 
-    <app-scrollpos-control selected="{{page}}"></app-scrollpos-control>
+    <app-scrollpos-control reset="true" selected="{{page}}"></app-scrollpos-control>
 
     <app-drawer-layout>
       <app-drawer id="drawertoggle">
@@ -263,45 +301,48 @@
             </div>
           </div>
         </app-toolbar>
+
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <div class="menu-item-container">       
-            <a class="active-class menu-link-items menu-item-margin homeMargin" name="home" href="/home" drawer-toggle>Home</a>
+         
+          <div class="menu-item-container" name="home">  
+            <a class="menu-link-items menu-item-margin" href="/home" drawer-toggle>Home</a>
           </div>
+
           <hr class="menu-line menu-line-half">
-          <div class="menu-item-container">       
-            <a class="active-class menu-link-items menu-item-margin" name="design" href="/design" drawer-toggle>Design</a>
+
+          <div class="menu-item-container" name="design">       
+            <a class="menu-link-items menu-item-margin" href="/design" drawer-toggle>Design</a>
           </div>
           <hr class="menu-line">
-          <div class="menu-item-container">       
-            <a class="active-class menu-link-items menu-item-margin" name="development" href="/development" drawer-toggle>Development</a>
+          <div class="menu-item-container" name="development">       
+            <a class="menu-link-items menu-item-margin" href="/development" drawer-toggle>Development</a>
           </div>
           <hr class="menu-line">
-          <div class="menu-item-container">       
-            <a class="active-class menu-link-items menu-item-margin" name="contact" href="/contact" drawer-toggle>Contact</a>
+          <div class="menu-item-container" name="contact">       
+            <a class="menu-link-items menu-item-margin" href="/contact" drawer-toggle>Contact</a>
           </div>
           <hr class="menu-line menu-line-half">
-<!--           <a class="active-class menu-link-items menu-item-margin" name="test" href="/test" drawer-toggle>Test</a>
-          <hr class="menu-line"> -->
           <div class="menu-item-container">
             <a href="/home">
-              <img style="width: 20px;" src="/images/small-icon-diver.svg">
+              <img class="app-drawer-logo" src="/images/logo-TM-outline-white.png">
             </a>
           </div>
+
+
         </iron-selector>
+
       </app-drawer>
       <app-header-layout fullbleed>
         <app-header condenses fixed effects="waterfall">
 
           <app-toolbar>
-            <!-- <paper-icon-button style="color: grey" icon="menu" drawer-toggle></paper-icon-button> -->
             <div class="destroy-app-hamburger" on-click="change_icon">
               <img style="width: 22px; padding-left: 6px;" src="{{menucommand}}">
             </div>
-              <div class="header-logo-mobile-div" on-click="change_home" main-title>
-                <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
-              </div>
+            <div class="header-logo-mobile-div" on-click="change_home" main-title>
+              <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
+            </div>
           </app-toolbar>
-
 
           <app-toolbar class="destroy-app-toolbar">
           <div main-title></div>
@@ -317,34 +358,51 @@
           </app-toolbar>
           <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto;">
             <div class="header-name-mobile captain-header" main-title></div>
-              <paper-tabs selected="[[page]]" no-bar>
-                <paper-tab link>
-                  <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/design" class="link" tabindex="-1">Design</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/development" class="link" tabindex="-1">Development</a>
-                </paper-tab>
-                <paper-tab link>
-                  <a href="/contact" class="link" tabindex="-1">Contact</a>
-                </paper-tab>
-                <paper-tab class="last-tab">
-                  <!-- <a href="/#testjump"> -->
-                    <paper-button on-click="testready" class="toolbar-button">sign guestbook</paper-button>
-                  <!-- </a> -->
-                </paper-tab>
-              </paper-tabs>
+            <paper-tabs selected-class="paper-tabs-selected" attr-for-selected="name" selected="[[page]]">
+              <paper-tab name="home" link>
+                <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
+              </paper-tab>
+              <paper-tab name="design" link>
+                <a href="/design" class="link" tabindex="-1">Design</a>
+              </paper-tab>
+              <paper-tab name="development" link>
+                <a href="/development" class="link" tabindex="-1">Development</a>
+              </paper-tab>
+              <paper-tab name="contact" link>
+                <a href="/contact" class="link" tabindex="-1">Contact</a>
+              </paper-tab>
+<!--               <paper-tab>
+                <paper-button on-click="_guestbook_route" class="toolbar-button">sign guestbook</paper-button>
+              </paper-tab> -->
+            </paper-tabs>
           </app-toolbar>
         </app-header>
-        <iron-pages selected="{{page}}" role="main" attr-for-selected="name">
+
+<!--         <iron-pages selected="{{page}}" role="main" attr-for-selected="name">
           <home-page name="home"></home-page>
           <design-page name="design"></design-page>
-          <development-page name="development"></development-page>
+          <development-page guestbookelement="{{signal}}" name="development"></development-page>
           <contact-page name="contact"></contact-page>
           <test-page name="test"></test-page>
-        </iron-pages>
+        </iron-pages> -->
+
+      <neon-animated-pages id="pages" attr-for-selected="name" class="flex" selected="{{page}}" entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+        <neon-animatable name="home">
+          <home-page></home-page>
+        </neon-animatable>
+        <neon-animatable name="design">
+          <design-page></design-page>
+        </neon-animatable>
+        <neon-animatable name="development">
+          <development-page></development-page>
+        </neon-animatable>
+        <neon-animatable name="contact">
+          <contact-page></contact-page>
+        </neon-animatable>
+      </neon-animated-pages>
+
+
+
         <div class="fixed-side-bar">
           <a href="https://twitter.com/TristanMarshall" target="_blank">
             <div class="social-box twitter"></div>
@@ -357,10 +415,20 @@
           </a>
         </div>
 
-        <app-footer></app-footer>
+        <!-- <app-footer></app-footer> -->
 
       </app-header-layout>
     </app-drawer-layout>
+
+<!--     <div class$="commander-overlay {{overlay}}" style="text-align: center;">
+      <div class="commander-overlay-wrapper">
+        <img style="max-width: 250px; text-align: center;" src="/images/logo-TM-shadow.png">
+      </div>
+      <br>
+      <div style="text-align: center; margin: 0 auto;">
+        <paper-progress style="margin: 0 auto;" indeterminate class="slow"></paper-progress>
+      </div>
+    </div> -->
 
 
     <firebase-app auth-domain="commander-portfolio.firebaseapp.com"
@@ -380,8 +448,29 @@
     Polymer({
 
       is: 'Portfolio-app',
-
+      behaviors: [
+        Polymer.NeonAnimationRunnerBehavior
+      ],
       properties: {
+
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                // provided by neon-animation/animations/scale-up-animation.html
+                name: 'entry-animation',
+                node: this,
+                timing: {duration: 2000}
+              },
+              'exit': {
+                // provided by neon-animation/animations/fade-out-animation.html
+                name: 'exit-animation',
+                node: this,
+                timing: {duration: 2000}
+              }
+            }
+          }
+        },
 
         likes: {
           type: Object,
@@ -389,19 +478,32 @@
           notify: true
         },
 
+        overlay: {
+          type: String,
+          value: "",
+          reflectToAttribute: true,
+          notify: true
+        },
         page: {
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged'
+        },
+        route: {
+          type: Object,
+          reflectToAttribute: true,
+          notify: true
         },
         menucommand: {
           type: String,
           value: "/images/hamburger-icon.png",
           reflectToAttribute: true
         },
-        prop1: {
+        signal: {
           type: String,
-          value: 'Portfolio-app',
+          value: '',
+          reflectToAttribute: true,
+          notify: true
         },
       },
 
@@ -410,14 +512,15 @@
       ],
 
       change_icon: function() {
-        console.log(this.page);
         var drawerid = this.$.drawertoggle;
         drawerid.toggle();
       },
 
-
-      change_home: function() {
-        console.log( "HELLOOO" + this.page);
+      _guestbook_route: function() {
+        // console.log("Step 1) Element: Portfolio-app.html, function: _guestbook_route");
+        this.set("signal", "open");
+        this.set("page", "development");
+        this.set("route.path", "development");
       },
 
       _routePageChanged: function(page) {
@@ -430,15 +533,18 @@
           this.resolveUrl(page + "-page" + '.html'), null, null, true);
       },
 
-      test: function() {
-        console.log("test");
-      },
+      ready: function() {
 
-      // testready: function() {
-      //   this.set("likes", this.likes + 1);
-      //   console.log(this.likes);
-      // }
+        // var self = this;
 
+        // setTimeout(function() {
+        //   self.set("overlay", "fade-overlay");
+        // }, 3000);
+
+        // setTimeout(function() {
+        //   self.set("overlay", "display-none");
+        // }, 4500);
+      }
 
     });
   </script>

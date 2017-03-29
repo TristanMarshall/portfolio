@@ -13,8 +13,14 @@
 
       .icon-container-div {
         height: auto;
-        width: 12%; 
+        width: 15.9%; 
         display: inline-block;
+      }
+
+      .illustration-container-div {
+        width: 24%;
+        display: inline-block;
+        text-align: center;
       }
 
       .icon-image {
@@ -23,12 +29,16 @@
 
       .side-line {
         border-left: 5px solid #3949ab;
-        margin-top: -5px;
+        /*margin-top: -5px;*/
       }
 
       @media only screen and (max-width: 960px) {
         .icon-container-div {
           width: 16%;
+        }
+
+        .illustration-container-div {
+          width: ;
         }
       }
 
@@ -36,11 +46,18 @@
         .icon-container-div {
           width: 19%;
         }
+
+        .illustration-container-div {
+        }
       }
 
       @media only screen and (max-width: 640px) {
         .icon-container-div {
-          width: 24.5%;
+          width: 49%;
+        }
+
+        .illustration-container-div {
+          width: 49%;
         }
       }
 
@@ -55,25 +72,24 @@
           <div class="captain-header">
             Design
           </div>
-          <hr class="captain-app-line">
-          <div class="captain-subheader">
-            <span class="captain-subheader-span">on paper or screen</span>
-          </div>
+          <hr class="captain-app-line-plain-light">
+          <br>
+          <br>
         </div>
-        <div class="commander-right-small">
+        <div class="commander-left-small">
           <div>
-            <img class="captain-image image-position" src="/images/large-desktop-design.png">
+            <img  style="width: 100%; max-width: 200px;" class="captain-image image-position" src="/images/large-icon-desktop-design-circle.png">
           </div>
         </div>
-        <div class="commander-left-large">
+        <div class="commander-right-large">
           <div class="mobile-show">
             <div class="captain-header">
               Design
             </div>
-            <hr class="captain-app-line">
-            <div class="captain-subheader">
+            <hr class="captain-app-line-plain-light">
+ <!--            <div class="captain-subheader">
               <span class="captain-subheader-span">wireframes / UI / icons / illustrations</span>
-            </div>
+            </div> -->
           </div>
           <div class="captain-content-light padding-right-20px">
             Twain's father was a lawyer by profession but was only mildly successful. He was, however, highly intelligent and a stern disciplinarian. Twain's mother, a southern belle in her youth, had a natural sense of humor, was emotional, and was known to be particularly fond of animals and unfortunate human beings.
@@ -90,7 +106,7 @@
     <div class="commander-section white">
       <div class="commander-inner-section">
         <div class="captain-header-dark-left flexchild">
-          Icons / Illustrations
+          Icons
         </div>
       <hr class="captain-app-line-plain">
       <div class="captain-content-dark padding-right-20px">
@@ -104,8 +120,46 @@
       </div>  
     </div>
   </div>
-  <zone-process></zone-process>
 
+
+    <div class="commander-section grid-light">
+      <div class="commander-inner-section">
+        <div class="captain-header-dark-left flexchild">
+          Illustrations
+        </div>
+      <hr class="captain-app-line-plain">
+      <div class="captain-content-dark padding-right-20px">
+      </div>
+      <div class="side-line">
+        <template is="dom-repeat" items="{{avatars}}">
+          <div class="illustration-container-div">
+            <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
+          </div>
+        </template>
+        <br>
+        <br>
+        <br>
+        <hr class="captain-app-line-plain">
+        <div class="line-dot dot-triple"></div>
+        <br>
+        <template is="dom-repeat" items="{{weathers}}">
+          <div class="illustration-container-div">
+            <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
+          </div>
+        </template>
+        <br>
+        <br>
+        <br>
+        <hr class="captain-app-line-plain">
+        <div class="line-dot dot-triple"></div>
+        <!-- <br> -->
+      </div>  
+    </div>
+  </div>
+
+
+  <zone-process></zone-process>
+  <app-footer></app-footer>
   </template>
 
   <script>
@@ -151,8 +205,21 @@
                 '/images/icons/icon-github.svg',
                 '/images/icons/icon-facebook.svg'
               ];
-            },
+            
+              this.avatars = [
+                '/images/avatars/avatar-1.png',
+                '/images/avatars/avatar-2.png',
+                '/images/avatars/avatar-3.png',
+                '/images/avatars/avatar-4.png'
+              ];
 
+              this.weathers = [
+                '/images/weather-icons/icon-sunny.png',
+                '/images/weather-icons/icon-storm.png',
+                '/images/weather-icons/icon-rain.png',
+                '/images/weather-icons/icon-night.png'
+              ];
+            },
     });
   </script>
 </dom-module>
