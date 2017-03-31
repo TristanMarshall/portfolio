@@ -52,6 +52,11 @@
       @apply(--layout-justified);
     }
 
+  .flex-center-justified {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-justified);
+  }
+
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* MIXINS CUSTOM */
 /*//////////////////////////////////////////////////////////////////////////////*/
@@ -325,6 +330,7 @@ font-family: 'Lobster', cursive;
       .captain-subheader-span {
         font-style: italic;
         font-weight: 500;
+        color: var(--paper-indigo-600);
       }
 
       .captain-content-dark {
@@ -449,6 +455,12 @@ font-family: 'Lobster', cursive;
         background-color: #111111;
       }
 
+      .commander-section-short {
+        height: auto;
+        width: 100%;
+        background-color: var(--paper-indigo-500);
+      }
+
       .top-section {
         height: auto; 
         padding: 75px 50px 75px 50px;
@@ -461,13 +473,20 @@ font-family: 'Lobster', cursive;
 
       .commander-section-translucent {
         height: auto; 
-        padding: 75px 50px;       
+        padding: 15px 50px 0px 75px;       
       }
 
       .commander-inner-section {
         max-width: 960px; 
         width: 100%; 
         height: auto;
+        margin: 0 auto; 
+      }
+
+      .commander-inner-section-short {
+        max-width: 960px; 
+        padding-top: 14px;
+        padding-bottom: 10px;
         margin: 0 auto; 
       }
 
@@ -623,7 +642,7 @@ font-family: 'Lobster', cursive;
         }
 
         .top-section {
-          padding: 50px 25px 100px 25px;
+          padding: 50px 25px 40px 25px;
         }
 
         .first-section-top {

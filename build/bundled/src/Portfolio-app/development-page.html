@@ -130,13 +130,15 @@
           </div>
           <div class="captain-content-light padding-right-20px">
 
-            Writing code &amp; building cool programs / websites is my preferred cup of tea. I truly enjoy the moment when a problem or function is solved &amp; its true purpose comes to life. Creating responsive, functional programs / websites while maintaining clean, easy to read code is really what its all about.
+            Writing code &amp; building cool programs / websites is my preferred cup of tea. I enjoy the moment when a problem or function is solved &amp; its true purpose comes to life. I look to continue creating responsive, functional programs / websites while maintaining clean, easy to read code
             <br>
             <br>
-            Below you can find some examples of just that! Please have a look &amp; reach out if you have any questions about my process or anything else!
-
-            
-
+            Below are some examples of just that! Please have a look &amp; reach out if you have any questions
+            <br>
+            <br>
+            <b>Further examples of work available upon request</b>
+            <br>
+            <a href="https://github.com/TristanMarshall">VIEW CODE ON GITHUB</a>
           </div>
         </div>
       </div>
@@ -210,7 +212,7 @@
                   <hr class="captain-app-line-plain">
                   <span class="bold-weight">About:</span> This single page web app was built for Actor/Producer <b>Ricky Staffieri</b>. Deployed using the Google Cloud Platforms gcloud.
                   <br>
-                  <span class="bold-weight">URL:</span> <a href="http://www.rickymstaffieri.com/">www.rickymstaffieri.com</a>
+                  <span class="bold-weight">URL:</span> <a target="_blank" href="http://www.rickymstaffieri.com/">www.rickymstaffieri.com</a>
                 </div>
               </div>
             </div>
@@ -259,5 +261,5 @@
 
   </template>
 
-  <script>Polymer({is:"development-page",properties:{webprojectheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},freelanceheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},webprojectlikes:{type:String,notify:!0,reflectToAttribute:!0},freelancelikes:{type:String,notify:!0,reflectToAttribute:!0},guestbookelement:{type:String,value:"done",notify:!0,reflectToAttribute:!0,observer:"_open_guestbook"},guestbookpass:{type:String,value:"",notify:!0,reflectToAttribute:!0}},_guestbook_scroll:function(){console.log("scroll time!");var e=document.getElementById("guestbooktop");e.scrollIntoView({behavior:"smooth"})},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},like_freelanceproject:function(){"/images/small-icon-heart-outline.png"===this.freelanceheart?(this.set("freelanceheart","/images/small-icon-heart.png"),this.set("freelancelikes",this.freelancelikes+1)):"/images/small-icon-heart.png"===this.freelanceheart&&(this.set("freelanceheart","/images/small-icon-heart-outline.png"),this.set("freelancelikes",this.freelancelikes-1))}});</script>
+  <script>Polymer({is:"development-page",properties:{webprojectheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},freelanceheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},webprojectlikes:{type:String,notify:!0,reflectToAttribute:!0},freelancelikes:{type:String,notify:!0,reflectToAttribute:!0},guestbookelement:{type:String,value:"done",notify:!0,reflectToAttribute:!0},guestbookpass:{type:String,value:"",notify:!0,reflectToAttribute:!0}},_guestbook_scroll:function(){console.log("scroll time!");var e=document.getElementById("guestbooktop");e.scrollIntoView({behavior:"smooth"})},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},like_freelanceproject:function(){"/images/small-icon-heart-outline.png"===this.freelanceheart?(this.set("freelanceheart","/images/small-icon-heart.png"),this.set("freelancelikes",this.freelancelikes+1)):"/images/small-icon-heart.png"===this.freelanceheart&&(this.set("freelanceheart","/images/small-icon-heart-outline.png"),this.set("freelancelikes",this.freelancelikes-1))}});</script>
 </dom-module></body></html>
