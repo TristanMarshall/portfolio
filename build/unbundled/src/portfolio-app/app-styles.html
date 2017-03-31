@@ -166,6 +166,12 @@ font-family: 'Lobster', cursive;
          @apply(--input-theme);
       };
 
+      paper-input.uppercaseinput {
+         --paper-input-container-input: {                
+            text-transform: capitalize;
+         }
+      } 
+
       --paper-input-container: {
         background-color: white !important;
       };
@@ -185,6 +191,12 @@ font-family: 'Lobster', cursive;
       --paper-input-container-label: {
          @apply(--input-theme);
       };
+
+      paper-textarea.uppercaseinput {
+         --paper-input-container-input: {                
+            text-transform: capitalize;
+         }
+      } 
 
       --paper-input-container: {
         background-color: white !important;
@@ -458,7 +470,7 @@ font-family: 'Lobster', cursive;
       .commander-section-short {
         height: auto;
         width: 100%;
-        background-color: var(--paper-indigo-500);
+        background: linear-gradient(45deg, rgba(63,81,181,1) 0%, rgba(233,30,99,1) 100%);
       }
 
       .top-section {

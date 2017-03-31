@@ -41,9 +41,21 @@
         text-align: left;
       }
 
+      paper-input.uppercaseinput {
+         --paper-input-container-input: {                
+            text-transform: capitalize;
+         }
+      } 
+
       paper-textarea {
         text-align: left;
       }
+
+      paper-textarea.uppercaseinput {
+         --paper-input-container-input: {                
+            text-transform: capitalize;
+         }
+      } 
 
       iron-list {
         height: 400px; 
@@ -83,10 +95,10 @@
 
       .guestbook-avatar-div {
         height: auto;
-        width: 43px;
+        width: 89px;
         display: inline-block;
         margin: 0 auto;
-        float: right;
+        /*float: right;*/
         padding-right: 10px;
       }
 
@@ -243,8 +255,8 @@
               <div class="captain-dialog-header">
                 Enter your name &amp; location.
               </div>
-              <paper-input value="{{name}}" label="name"></paper-input>
-              <paper-input value="{{location}}" label="location"></paper-input>
+              <paper-input class="uppercaseinput" value="{{name}}" label="name"></paper-input>
+              <paper-input class="uppercaseinput" value="{{location}}" label="location"></paper-input>
             </div>
             <div class="validation-error-div">
               {{error}}
@@ -300,12 +312,14 @@
             <template class="testing">       
               <div>
                 <paper-material elevation="2">
+
+
                   <div class="guestbook-inner-card">
                     <div class="container flex-horizontal">
                       <div>
-                      <div class="guestbook-avatar-div">
-                        <img style="width: 100%" src="{{item.avatar}}">
-                      </div>
+                        <div class="guestbook-avatar-div">
+                          <img style="width: 100%" src="{{item.avatar}}">
+                        </div>
                       </div>
                       <div class="flexchild">
                         <div class="guest-name">
@@ -314,15 +328,19 @@
                         <div class="guest-location">
                           {{item.location}}
                         </div>
+                                            <hr class="captain-app-line-plain">
+                    <div class="guest-message">
+                      {{item.message}}
+                    </div>
                       </div>
            
                     </div>
 
-                    <hr class="guestbook-line">
-                    <div class="guest-message">
-                      {{item.message}}
-                    </div>
+
                   </div>
+
+
+
                 </paper-material>
               </div>
             </template>
