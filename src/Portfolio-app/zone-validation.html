@@ -44,6 +44,12 @@
         color: white;
       }
 
+      paper-input.uppercaseinput {
+         --paper-input-container-input: {                
+            text-transform: capitalize;
+         }
+      } 
+
       .validate {
         margin-top: 30px;
       }
@@ -405,10 +411,10 @@
             </div>
             <div class="container flex">
               <div class="firstNameDiv">
-                <paper-input autocapitalize="on" autocomplete="off" value="{{firstName}}" label="First name"></paper-input>
+                <paper-input class="uppercaseinput" autocomplete="off" value="{{firstName}}" label="First name"></paper-input>
               </div>
               <div class="lastNameDiv">
-                <paper-input value="{{lastName}}" label="Last name"></paper-input>
+                <paper-input class="uppercaseinput" value="{{lastName}}" label="Last name"></paper-input>
               </div>
             </div>
             <div class="container flex-horizontal">
