@@ -27,12 +27,19 @@
 */
 
       paper-tabs {
-        max-width: 960px; 
+        max-width: 700px; 
         width: 100%; 
         height: auto;
         margin: 0 auto; 
         height: 63px;
         --paper-tabs-selection-bar-color: var(--paper-pink-500);
+
+      }
+
+      .left-header-space {
+        width: 260px;
+        height: 10px;
+        text-align: center;
 
       }
 
@@ -75,19 +82,19 @@
 
       .menu-line {
         border: none;
-        padding-bottom: 2px;
+        padding-bottom: 1px;
         background: linear-gradient(91deg, rgba(0,150,136,0) 0%, rgba(0,150,136,1) 18%, rgba(63,81,181,1) 81%, rgba(63,81,181,0) 100%);
         opacity: .3;
         margin-top: 25px;
         margin-bottom: 25px;
-        margin-right: 25px;
-        margin-left: 25px;
+        margin-right: 5px;
+        margin-left: 5px;
       }
 
-      .menu-line-half {
+/*      .menu-line-half {
         width: 50%;
         margin-left: 25%;
-      }
+      }*/
 
       .menu-item-container {
         width: 100%;
@@ -98,7 +105,7 @@
         color: rgb(156, 170, 174);
         opacity: .8;
         font-family: 'Yantramanav', sans-serif;
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 100;
       }
       
@@ -243,6 +250,10 @@
         .fixed-side-bar {
           display: none;
         }
+
+        .left-header-space {
+          width: 100px;
+        }
       }
 
       @media only screen and (min-width: 640px) {
@@ -298,6 +309,7 @@
           </div>
         </app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <hr class="menu-line menu-line-half">
           <div class="menu-item-container" name="home">  
             <a class="menu-link-items menu-item-margin" href="/home" drawer-toggle="">Home</a>
           </div>
@@ -315,9 +327,6 @@
           </div>
           <hr class="menu-line menu-line-half">
           <div class="menu-item-container">
-            <a href="/home">
-              <img class="app-drawer-logo" src="/images/logo-TM-outline-white.png">
-            </a>
           </div>
         </iron-selector>
       </app-drawer>
@@ -327,7 +336,7 @@
             <div class="destroy-app-hamburger" on-click="change_icon">
               <img style="width: 22px; padding-left: 6px" src="{{menucommand}}">
             </div>
-            <div class="header-logo-mobile-div" on-click="change_home" main-title="">
+            <div class="header-logo-mobile-div" on-tap="change_home" main-title="">
               <img class="header-logo-mobile" src="/images/logo-TM-outline.png">
             </div>
           </app-toolbar>
@@ -345,18 +354,21 @@
           </app-toolbar>
           <app-toolbar class="bottom-toolbar destroy-app-toolbar" style="margin: 0 auto">
             <div class="header-name-mobile captain-header" main-title=""></div>
+            <div class="left-header-space">
+            </div>
             <paper-tabs selected-class="paper-tabs-selected" attr-for-selected="name" selected="[[page]]">
-              <paper-tab name="home" link="">
-                <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
+              <paper-tab name="development" link="">
+                <a href="/development" class="link" tabindex="-1">Development</a>
               </paper-tab>
               <paper-tab name="design" link="">
                 <a href="/design" class="link" tabindex="-1">Design</a>
               </paper-tab>
-              <paper-tab name="development" link="">
-                <a href="/development" class="link" tabindex="-1">Development</a>
-              </paper-tab>
+
               <paper-tab name="contact" link="">
                 <a href="/contact" class="link" tabindex="-1">Contact</a>
+              </paper-tab>
+              <paper-tab name="home" link="">
+                <a href="/home" class="link menu-link-items-desktop" tab-index="-1">Home</a>
               </paper-tab>
 
             </paper-tabs>
@@ -413,6 +425,6 @@
 
   </template>
 
-  <script>Polymer({is:"Portfolio-app",behaviors:[Polymer.NeonAnimationRunnerBehavior],properties:{animationConfig:{value:function(){return{entry:{name:"entry-animation",node:this,timing:{duration:2e3}},exit:{name:"exit-animation",node:this,timing:{duration:2e3}}}}},likes:{type:Object,reflectToAttribute:!0,notify:!0},overlay:{type:String,value:"",reflectToAttribute:!0,notify:!0},page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"},route:{type:Object,reflectToAttribute:!0,notify:!0},menucommand:{type:String,value:"/images/hamburger-icon.png",reflectToAttribute:!0},signal:{type:String,value:"",reflectToAttribute:!0,notify:!0}},observers:["_routePageChanged(routeData.page)"],change_icon:function(){var e=this.$.drawertoggle;e.toggle()},_guestbook_route:function(){this.set("signal","open"),this.set("page","development"),this.set("route.path","development")},_routePageChanged:function(e){this.page=e||"home"},_pageChanged:function(e){this.importHref(this.resolveUrl(e+"-page.html"),null,null,!0)},ready:function(){var e=this;setTimeout(function(){e.set("overlay","fade-overlay")},3e3),setTimeout(function(){e.set("overlay","display-none")},4500)}});</script>
+  <script>Polymer({is:"Portfolio-app",behaviors:[Polymer.NeonAnimationRunnerBehavior],properties:{animationConfig:{value:function(){return{entry:{name:"entry-animation",node:this,timing:{duration:2e3}},exit:{name:"exit-animation",node:this,timing:{duration:2e3}}}}},likes:{type:Object,reflectToAttribute:!0,notify:!0},overlay:{type:String,value:"",reflectToAttribute:!0,notify:!0},page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"},route:{type:Object,reflectToAttribute:!0,notify:!0},menucommand:{type:String,value:"/images/hamburger-icon.png",reflectToAttribute:!0},signal:{type:String,value:"",reflectToAttribute:!0,notify:!0}},observers:["_routePageChanged(routeData.page)"],change_icon:function(){var e=this.$.drawertoggle;e.toggle()},_guestbook_route:function(){this.set("signal","open"),this.set("page","development"),this.set("route.path","development")},change_home:function(){console.log("change home function")},_routePageChanged:function(e){this.page=e||"home"},_pageChanged:function(e){this.importHref(this.resolveUrl(e+"-page.html"),null,null,!0)},ready:function(){var e=this;setTimeout(function(){e.set("overlay","fade-overlay")},3e3),setTimeout(function(){e.set("overlay","display-none")},4500)}});</script>
 </dom-module>
 </body></html>

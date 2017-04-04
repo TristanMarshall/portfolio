@@ -77,7 +77,7 @@
             </div>
           </div>
 
-         <iron-collapse id="collapse">
+         <iron-collapse opened="true" id="collapse">
 
           <div id="testjump"></div>
           <content>
@@ -89,5 +89,5 @@
 
   </template>
 
-  <script>Polymer({is:"custom-element-collapse",properties:{title:{type:String,value:"",notify:!0,reflectToAttribute:!0},toggleicon:{type:String,value:"toggleopen",notify:!0,reflectToAttribute:!0},titleClass:{type:String,value:"project-collapse-header",notify:!0,reflectToAttribute:!0},guestbookopen:{type:String,notify:!0,value:"default",reflectToAttribute:!0,observer:"guestbook_observer"}},guestbook_observer:function(){"open"===this.guestbookopen&&this.project_toggle_guestbook()},project_toggle_guestbook:function(){this.$.collapse.toggle(),"toggleopen"===this.toggleicon?(this.set("toggleicon","toggleclose"),this.set("titleClass","project-collapse-header-open")):"toggleclose"===this.toggleicon&&(this.set("toggleicon","toggleopen"),this.set("titleClass","project-collapse-header"))},project_toggle:function(e){var t=e.currentTarget,o=t.id;console.log(o),"project1"===o&&(this.$.collapse.toggle(),"toggleopen"===this.toggleicon?(this.set("toggleicon","toggleclose"),this.set("titleClass","project-collapse-header-open")):"toggleclose"===this.toggleicon&&(this.set("toggleicon","toggleopen"),this.set("titleClass","project-collapse-header")))}});</script>
+  <script>Polymer({is:"custom-element-collapse",properties:{title:{type:String,value:"",notify:!0,reflectToAttribute:!0},toggleicon:{type:String,value:"toggleclose",notify:!0,reflectToAttribute:!0},titleClass:{type:String,value:"project-collapse-header-open",notify:!0,reflectToAttribute:!0},guestbookopen:{type:String,notify:!0,value:"default",reflectToAttribute:!0,observer:"guestbook_observer"}},guestbook_observer:function(){"open"===this.guestbookopen&&this.project_toggle_guestbook()},project_toggle_guestbook:function(){this.$.collapse.toggle(),"toggleopen"===this.toggleicon?(this.set("toggleicon","toggleclose"),this.set("titleClass","project-collapse-header-open")):"toggleclose"===this.toggleicon&&(this.set("toggleicon","toggleopen"),this.set("titleClass","project-collapse-header"))},project_toggle:function(e){var t=e.currentTarget,o=t.id;console.log(o),"project1"===o&&(this.$.collapse.toggle(),"toggleopen"===this.toggleicon?(this.set("toggleicon","toggleclose"),this.set("titleClass","project-collapse-header-open")):"toggleclose"===this.toggleicon&&(this.set("toggleicon","toggleopen"),this.set("titleClass","project-collapse-header")))}});</script>
 </dom-module></body></html>
