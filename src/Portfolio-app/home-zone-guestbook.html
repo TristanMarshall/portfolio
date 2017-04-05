@@ -1,27 +1,11 @@
-<!-- <link rel="import" href="import-elements.html"> -->
+<link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
-
 
 <dom-module id="home-zone-guestbook">
   <template>
     <style is="custom-style" include="app-styles">
       :host {
         display: block;
-      }
-
-      paper-material {
-        @apply(--layout-horizontal);
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #ddd;
-        margin: 0 auto 10px auto;
-      }
-
-      paper-button {
-        background-color: var(--paper-pink-600);
-        color: white;
-        margin-top: 20px;
-        margin-left: 0px;
       }
 
       paper-dialog.guestbook-class {
@@ -35,6 +19,37 @@
 
       iron-pages {
         margin-top: 15px;
+      }
+
+      .guestbook-page {
+        height: auto;
+        text-align: center; 
+      }
+
+      .guestbook-page-inner {
+        min-height: 175px;
+      }
+
+      .captain-dialog-header {
+        color: rgba(0, 0, 0, .7);
+        font-family: 'Roboto', sans-serif;
+        font-style: italic;
+        font-size: 24px;
+        padding-bottom: 20px;
+      }
+
+      .guestbook-avatar-catelog {
+        height: auto; 
+        margin: 0 auto;
+        padding-top: 30px;
+        padding-bottom: 0px;
+      }
+
+      .validation-error-div {
+        height: 10px; 
+        text-align: center; 
+        font-family: 'Roboto', sans-serif;
+        color: var(--paper-red-500);
       }
 
       paper-input {
@@ -52,6 +67,10 @@
         text-align: left;
       }
 
+      .paper-textarea {
+        padding-top: 25px;
+      }
+
       paper-textarea.uppercaseinput {
          --paper-input-container-input: {                
             text-transform: capitalize;
@@ -66,20 +85,12 @@
         margin-top: 15px;
       }
 
-      .guestbook-page {
-        height: auto;
-        text-align: center; 
-      }
-
-      .guestbook-page-inner {
-        min-height: 175px;
-      }
-
-      .validation-error-div {
-        height: 10px; 
-        text-align: center; 
-        font-family: 'Roboto', sans-serif;
-        color: var(--paper-red-500);
+      paper-material {
+        @apply(--layout-horizontal);
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        margin: 0 auto 10px auto;
       }
 
       .guestbook-card {
@@ -99,15 +110,7 @@
         width: 89px;
         display: inline-block;
         margin: 0 auto;
-        /*float: right;*/
         padding-right: 10px;
-      }
-
-      .guestbook-avatar-catelog {
-        height: auto; 
-        margin: 0 auto;
-        padding-top: 30px;
-        padding-bottom: 0px;
       }
 
       .avatar-div {
@@ -134,16 +137,11 @@
         border-radius: 50%;
       }
 
-      .captain-dialog-header {
-        color: rgba(0, 0, 0, .7);
-        font-family: 'Roboto', sans-serif;
-        font-style: italic;
-        font-size: 24px;
-        padding-bottom: 20px;
-      }
-
-      .paper-textarea {
-        padding-top: 25px;
+      paper-button {
+        background-color: var(--paper-pink-600);
+        color: white;
+        margin-top: 20px;
+        margin-left: 0px;
       }
 
       .guest-name {
@@ -222,81 +220,80 @@
 <!-- /////////////////////////////////////////// -->
 <!-- GUESTBOOK SECTION -->
 <!-- /////////////////////////////////////////// -->
+
         <paper-dialog no-cancel-on-outside-click  entry-animation="scale-up-animation" exit-animation="fade-out-animation" class="guestbook-class" id="guestbook">
-        <div class="container flex-end-justified">
-          <div on-tap="close_reset_dialog">
-            <img style="width: 15px;" src="/images/small-icon-x.png">
+          <div class="container flex-end-justified">
+            <div on-tap="close_reset_dialog">
+              <img style="width: 15px;" src="/images/small-icon-x.png">
+            </div>
           </div>
-        </div>
-        <iron-pages id="guestbookpages" selected="0">
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">
-              <div class="captain-dialog-header">
-                Choose an avatar.
+          <iron-pages id="guestbookpages" selected="0">
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">
+                <div class="captain-dialog-header">
+                  Choose an avatar
+                </div>
+                <div class="guestbook-avatar-catelog container flex-horizontal">
+                  <template is="dom-repeat" items="{{avatars}}">
+                    <div class$="{{item.test}}" on-tap="set_avatar">
+                      <img style="width: 100%;" src="{{item.img}}">
+                    </div>
+                  </template>
+                </div>
               </div>
-              <div class="guestbook-avatar-catelog container flex-horizontal">
-
-                <template is="dom-repeat" items="{{avatars}}">
-                  <div class$="{{item.test}}" on-tap="set_avatar">
-                    <img style="width: 100%;" src="{{item.img}}">
-                  </div>
-                </template>
-
+              <div class="validation-error-div">
+                {{error}}
               </div>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" on-tap="next_page">
-              CONTINUE
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">            
-              <div class="captain-dialog-header">
-                Enter your name &amp; location.
-              </div>
-              <paper-input class="uppercaseinput" value="{{name}}" label="name"></paper-input>
-              <paper-input class="uppercaseinput" value="{{location}}" label="location"></paper-input>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" style="bottom: 0;" on-tap="next_page">
-              CONTINUE
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">            
-              <div class="captain-dialog-header">
-                Leave a message.
-              </div>
-                <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" on-tap="next_page">
-              ADD ENTRY TO GUESTBOOK
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="validCardDiv">
-              <div class="xDiv">
-                <img class="emptyFieldsX" src="/images/validation-images/empty-fields-check.png">
-              </div>
-              <br>
-              <div class="captain-dialog-header">
-                Thank you for Your Entry!
-              </div>
-              <br>
-              <paper-button class="captain-app-button" on-tap="add_entry">
-                CLOSE
+              <paper-button class="captain-app-button" on-tap="next_page">
+                CONTINUE
               </paper-button>
             </div>
-          </div>
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
+                <div class="captain-dialog-header">
+                  Enter your name &amp; location
+                </div>
+                <paper-input class="uppercaseinput" value="{{name}}" label="name"></paper-input>
+                <paper-input class="uppercaseinput" value="{{location}}" label="location"></paper-input>
+              </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" style="bottom: 0;" on-tap="next_page">
+                CONTINUE
+              </paper-button>
+            </div>
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
+                <div class="captain-dialog-header">
+                  Leave a message
+                </div>
+                  <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter maxlength="50"></paper-textarea>
+              </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" on-tap="next_page">
+                ADD ENTRY TO GUESTBOOK
+              </paper-button>
+            </div>
+            <div class="guestbook-page">
+              <div class="validCardDiv">
+                <div class="xDiv">
+                  <img class="emptyFieldsX" src="/images/validation-images/empty-fields-check.png">
+                </div>
+                <br>
+                <div class="captain-dialog-header">
+                  Thank you for Your Entry!
+                </div>
+                <br>
+                <paper-button class="captain-app-button" on-tap="add_entry">
+                  CLOSE
+                </paper-button>
+              </div>
+            </div>
+          </iron-pages>
 
-        </iron-pages>
         </paper-dialog>
         <div class="commander-right-small-mild">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
@@ -308,13 +305,11 @@
             </div>
           </div>
         </div> 
-        <div class="commander-left-large-mile">
+        <div class="commander-left-large-mild">
           <iron-list is="iron-list" items="{{guests}}"> 
-            <template class="testing">       
+            <template>       
               <div>
                 <paper-material elevation="2">
-
-
                   <div class="guestbook-inner-card">
                     <div class="container flex-horizontal">
                       <div>
@@ -329,24 +324,13 @@
                         <div class="guest-location">
                           {{item.location}}
                         </div>
-                                            <hr class="captain-app-line-plain">
+                        <hr class="captain-app-line-plain">
                     <div class="guest-message">
                       {{item.message}}
                     </div>
                       </div>
-           <!--            <div class="align-right cursor-pointer" on-tap="like_entry">
-                        <img style="width: 20px;" id="idheart{{item.key}}" src="/images/small-icon-heart-outline.png">
-                        <div class="guest-likes-count">
-                          {{item.likes}} likes
-                        </div>
-                      </div> -->
                     </div>
-
-
                   </div>
-
-
-
                 </paper-material>
               </div>
             </template>
@@ -365,13 +349,6 @@
       path="/guests"
       data="{{guests}}">
     </firebase-document>
-
-<!--     <firebase-query
-      id="query"
-      path="/guests"
-      data="{{queryguests}}">
-    </firebase-query>
- -->
 
   </template>
 
@@ -499,25 +476,19 @@
         this.set("avatar", "");
       },
 
-
       set_avatar: function(e) {
         var position = e.model.index;
         var model = e.model;
-        console.log(position);
         for (var i = 0; i < this.avatars.length; i++) {
 
           if (position === i) {
-            console.log('match');
-            console.log(this.avatars[i].test);
             this.set("avatars." + i + ".test", "avatar-div-select");
-            console.log(this.avatars[i].test);
           } else {
             this.set("avatars." + i + ".test", "avatar-div");
           }
         }
         this.set("avatar", this.avatars[position].img);
       },
-
 
       next_page: function() {
 
@@ -541,7 +512,6 @@
           this.set("error", "Please enter a location!");
           return;
         }
-
         // change iron-pages
         this.$.guestbookpages.selectNext();
       },
@@ -550,16 +520,9 @@
 
         var model = e.model;
         var i = model.item.key;
-        console.log(i);
         var idString = "idheart" + i;
-        console.log(typeof(idString));
 
         var element = document.getElementById(idString);
-        
-
-        console.log(element.src);
-
-
     
         if (element.src == "http://localhost:8080/images/small-icon-heart-outline.png") {
           element.src = "http://localhost:8080/images/small-icon-heart.png";          
@@ -570,19 +533,6 @@
           element.src = "http://localhost:8080/images/small-icon-heart-outline.png";
           model.set('item.likes', model.item.likes-1);
         }
-
-
-        // if (model.item.heart === "/images/small-icon-heart-outline.png") {
-        //   model.set("item.heart", "/images/small-icon-heart.png");
-        //   model.set('item.likes', model.item.likes+1);
-        //   console.log(model.item.heart);
-
-        // } else if (model.item.heart === "/images/small-icon-heart.png") {
-        //   model.set("item.heart", "/images/small-icon-heart-outline.png");
-        //   model.set('item.likes', model.item.likes-1);
-        // }
-
-
       },
 
 
@@ -651,9 +601,6 @@
         this.$.guestbook.close();
       },
 
-      // readygo: function() {
-      //   console.log(this.guests);
-      // }
   });
   </script>
 </dom-module>

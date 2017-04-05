@@ -8,60 +8,10 @@
         display: block;
       }
 
-      iron-collapse {
-        padding-top: 50px;
-        padding-bottom: 50px;
-      }
-
-      .toggle-project-div {
-        cursor: pointer;
-      }
-
       .project-collapse-line {
         border: none;
         background-color: rgba(0, 0, 0, .25);
         padding-bottom: 1px;
-      }
-
-      .project-collapse-header {
-        font-weight: 100;
-        font-family: 'Yantramanav', sans-serif;
-        font-size: 16px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        color: rgba(0, 0, 0, .65);
-      }
-
-/*      .guest-likes-count {
-        font-size: 12px;
-        font-family: 'Roboto Condensed', sans-serif;
-        padding: 0;
-        margin: 0;
-        color: rgb(170, 170, 170);
-      }*/
-
-      .thank-you-content {
-        padding-top: 50px;
-        font-family: roboto;
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      .toggle-icon-container {
-        padding-top: 18px;
-        padding-right: 17px;
-        padding-left: 1px;      
-      }
-
-      .toggleopen {
-        width: 13px;
-        transform: rotate(45deg);
-
-      }
-
-      .toggleclose {
-        width: 13px;
-        transform: rotate(0deg);
       }
 
       .freelance-card {
@@ -76,14 +26,15 @@
         min-height: 150px;
       }
 
-      .freelance-card-left {
-      }
-
-      .freelance-card-right {
-      }
-
       .freelance-image {
         width: 100%;
+      }
+
+      .thank-you-content {
+        padding-top: 50px;
+        font-family: roboto;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
       }
 
       @media only screen and (max-width: 640px) {
@@ -92,12 +43,13 @@
           margin-bottom: 25px;
         }
       }
-
+      
     </style>
 
 <!-- /////////////////////////////////////////// -->
-<!-- DEVELOPMENT INTRO SECTION -->
+<!-- DEVELOPMENT FIRST SECTION -->
 <!-- /////////////////////////////////////////// -->
+
     <div class="top-section grid-dark">
       <div class="commander-inner-section">
           <div class="mobile-hide">
@@ -121,10 +73,7 @@
             <hr class="captain-app-line-plain-light">
           </div>
           <div class="captain-content-light padding-right-20px">
-
             Tristan enjoys creating responsive user-friendly web apps from design through development. He is looking to work for a company that allows his development skills to prosper while completing useful projects &amp; creating revenue
-
-            
             <br>
             <br>
             Below are some examples of just that! Please have a look &amp; reach out if you have any questions
@@ -137,6 +86,11 @@
         </div>
       </div>
     </div>
+
+<!-- /////////////////////////////////////////// -->
+<!-- WEB PROJECTS SECTION -->
+<!-- /////////////////////////////////////////// -->
+
     <div class="commander-section white">
       <div class="commander-inner-section">
           <div class="container flex-horizontal">
@@ -160,8 +114,6 @@
         <br>
         <br>
         <br>
-        <!-- guestbookopen="{{guestbookpass}}"  -->
-
         <custom-element-collapse id="guestbookid" title="Website Guestbook">
           <content>
             <home-zone-guestbook></home-zone-guestbook>
@@ -175,6 +127,11 @@
         <hr class="project-collapse-line captain-app-line-plain">
       </div>
     </div>
+
+<!-- /////////////////////////////////////////// -->
+<!-- FREELANCE SECTION -->
+<!-- /////////////////////////////////////////// -->
+
     <div class="commander-section-dark">
       <div class="commander-inner-section">
           <div class="container flex-horizontal">
@@ -239,22 +196,21 @@
           <br>
         </div>
       </div>
-      </div>
+    </div>
 
-      <iron-signals on-iron-signal-guestbookscroll="_guestbook_scroll"></iron-signals>
+    <iron-signals on-iron-signal-guestbookscroll="_guestbook_scroll"></iron-signals>
 
-      <firebase-document
-        path="/likes/webproject"
-        data="{{webprojectlikes}}">
-      </firebase-document>
+    <firebase-document
+      path="/likes/webproject"
+      data="{{webprojectlikes}}">
+    </firebase-document>
 
-      <firebase-document
-        path="/likes/freelance"
-        data="{{freelancelikes}}">
-      </firebase-document>
+    <firebase-document
+      path="/likes/freelance"
+      data="{{freelancelikes}}">
+    </firebase-document>
 
-      <app-footer></app-footer>
-
+    <app-footer></app-footer>
 
   </template>
 
@@ -296,7 +252,6 @@
           value: "done",
           notify: true,
           reflectToAttribute: true,
-          // observer: "_open_guestbook"
         },
 
         guestbookpass: {
@@ -305,8 +260,6 @@
           notify: true,
           reflectToAttribute: true,
         },
-
-
       },
 
       _guestbook_scroll: function() {
@@ -315,22 +268,6 @@
         var target = document.getElementById("guestbooktop");
         target.scrollIntoView({behavior: "smooth"});
       },
-
-      // _open_guestbook: function() {
-
-      //   // console.log("Step 2) Element: development-page.html, function: _open_guestbook");
-
-      //   var guestbookscrolltarget = document.getElementById("guestbookscrolltarget");
-      //   guestbookscrolltarget.scrollIntoView({behavior: "smooth"});
-
-      //   // if (this.guestbookelement === "done") {
-      //   //   console.log(this.guestbookelement);
-      //   this.set("guestbookpass", "open");
-      //   this.set("guestbookelement", "done");
-
-      //   // }
-
-      // },
 
       like_webproject: function() {
 
@@ -357,5 +294,6 @@
       },
 
     });
+
   </script>
 </dom-module>

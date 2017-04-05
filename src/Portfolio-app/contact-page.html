@@ -1,9 +1,6 @@
 <link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
-
-
 <dom-module id="contact-page">
   <template>
     <style is="custom-style" include="app-styles">
@@ -11,14 +8,8 @@
         display: block;
       }
 
-      .teal {
-        color: var(--paper-teal-500);
-      }
-
       .commander-faq-section {
         height: auto; 
-        /*padding: 10px 10px;*/
-        /*background-color: white;*/
       }
 
       .faq-content-div {
@@ -27,6 +18,15 @@
         padding-left: 50px;
         padding-top: 50px;
         padding-bottom: 100px;
+      }
+
+      .captain-faq-content-dark {
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .6);
+        text-align: left;
+        line-height: 1.8;
       }
 
       .border-indigo {
@@ -39,15 +39,6 @@
 
       .border-pink {
         border-left: 5px solid var(--paper-pink-500);
-      }
-
-      .captain-faq-content-dark {
-        font-size: 18px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-        color: rgba(0, 0, 0, .6);
-        text-align: left;
-        line-height: 1.8;
       }
 
       @media only screen and (max-width: 325px) {
@@ -73,6 +64,10 @@
 
     </style>
 
+<!-- /////////////////////////////////////////// -->
+<!-- CONTACT FIRST SECTION -->
+<!-- /////////////////////////////////////////// -->
+
     <div class="top-section grid-dark">
       <div class="commander-inner-section">
         <div class="mobile-hide">
@@ -97,7 +92,6 @@
             <br>
           </div>
           <div>
-            <!-- <br> -->
             <template is="dom-repeat" items="{{contacts}}">
               <a href="{{item.link}}" target="_blank">
                 <div class="container flex-horizontal">
@@ -117,94 +111,97 @@
         </div>
       </div>
     </div>
-  <div class="commander-section white">
-    <div class="commander-inner-section">
-        <div class="container flex-horizontal">
-          <div class="captain-header-dark-left flexchild">
-            FAQs
-          </div>
-          <div class="guestbook-entry-count child3">
-            <div class="align-right cursor-pointer padding-left" on-tap="like_faq">
-              <div class="guest-likes-count inline">
-                {{faqlikes}} likes
+
+<!-- /////////////////////////////////////////// -->
+<!-- FREQUENT ASKED QUESTIONS SECTION -->
+<!-- /////////////////////////////////////////// -->
+
+    <div class="commander-section white">
+      <div class="commander-inner-section">
+          <div class="container flex-horizontal">
+            <div class="captain-header-dark-left flexchild">
+              FAQs
+            </div>
+            <div class="guestbook-entry-count child3">
+              <div class="align-right cursor-pointer padding-left" on-tap="like_faq">
+                <div class="guest-likes-count inline">
+                  {{faqlikes}} likes
+                </div>
+                <img style="width: 20px;" src="{{heart}}">
               </div>
-              <img style="width: 20px;" src="{{heart}}">
             </div>
           </div>
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px">
+          Below are some questions I've been asked more than once or twice
         </div>
-      <hr class="captain-app-line-plain">
-      <div class="captain-content-dark padding-right-20px">
-        Below are some questions I've been asked more than once or twice
+        <br>
+        <br>
+        <br>
+        <custom-element-collapse title="Do you have a dog?">
+          <content>
+            <div class="commander-faq-section">
+              <div class="commander-inner-section">
+                <div class="commander-right-small-mild">
+              <div>
+                <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/holiday.png">
+              </div>
+                </div> 
+                <div class="commander-left-large-mild">
+                  <div class="faq-content-div border-indigo">
+                    <div class="captain-faq-content-dark">
+                      I do have a doggy, Her name is <b>Holiday</b> (pictured). My Wife &amp; I adopted her when she was just a pupper. As you can see she is perfect. She enjoys going on walks &amp; napping for extended periods of time.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </content>
+        </custom-element-collapse>
+        <custom-element-collapse title="In another life I would be..">
+          <content>
+            <div class="commander-faq-section">
+              <div class="commander-inner-section">
+                <div class="commander-right-small-mild">
+              <div>
+                <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/boxing.png">
+              </div>
+                </div> 
+                <div class="commander-left-large-mild">
+                  <div class="faq-content-div border-teal">
+                    <div class="captain-faq-content-dark">
+                      <b>The Welterweight Boxing Champion of the World.</b> I would go undefeated but retire young because my Wife wants me to, then we would travel the world staying in fancy boutique hotels &amp; wearing too much Gucci.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </content>
+        </custom-element-collapse>
+        <custom-element-collapse title="Did you have a previous career?">
+          <content>
+            <div class="commander-faq-section">
+              <div class="commander-inner-section">
+                <div class="commander-right-small-mild">
+              <div>
+                <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/diver.png">
+              </div>
+                </div> 
+                <div class="commander-left-large-mild">
+                  <div class="faq-content-div border-pink">
+                    <div class="captain-faq-content-dark">
+                      I worked as a <b>commercial diver / captain</b>. Primarily involved in the installation &amp; burial of Fiber Optic cables to connect different locations with telecommunications. I was able to travel to some cool places for this job, including: Fiji, Qatar, Greece, &amp; Madagascar!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </content>
+        </custom-element-collapse>
+        <hr class="project-collapse-line captain-app-line-plain">
       </div>
-      <br>
-      <br>
-      <br>
-      <custom-element-collapse title="Do you have a dog?">
-        <content>
-          <div class="commander-faq-section">
-            <div class="commander-inner-section">
-              <div class="commander-right-small-mild">
-            <div>
-              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/holiday.png">
-            </div>
-              </div> 
-              <div class="commander-left-large-mild">
-                <div class="faq-content-div border-indigo">
-                  <div class="captain-faq-content-dark">
-                    I do have a doggy, Her name is <b>Holiday</b> (pictured). My Wife &amp; I adopted her when she was just a pupper. As you can see she is perfect. She enjoys going on walks &amp; napping for extended periods of time.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </content>
-      </custom-element-collapse>
-      <custom-element-collapse title="In another life I would be..">
-        <content>
-          <div class="commander-faq-section">
-            <div class="commander-inner-section">
-              <div class="commander-right-small-mild">
-            <div>
-              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/boxing.png">
-            </div>
-              </div> 
-              <div class="commander-left-large-mild">
-                <div class="faq-content-div border-teal">
-                  <div class="captain-faq-content-dark">
-                    <b>The Welterweight Boxing Champion of the World.</b> I would go undefeated but retire young because my Wife wants me to, then we would travel the world staying in fancy boutique hotels &amp; wearing too much Gucci.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </content>
-      </custom-element-collapse>
-      <custom-element-collapse title="Did you have a previous career?">
-        <content>
-          <div class="commander-faq-section">
-            <div class="commander-inner-section">
-              <div class="commander-right-small-mild">
-            <div>
-              <img  style="width: 100%; max-width: 250px;" class="captain-image image-position" src="/images/diver.png">
-            </div>
-              </div> 
-              <div class="commander-left-large-mild">
-                <div class="faq-content-div border-pink">
-                  <div class="captain-faq-content-dark">
-                    I worked as a <b>commercial diver / captain</b>. Primarily involved in the installation &amp; burial of Fiber Optic cables to connect different locations with telecommunications. I was able to travel to some cool places for this job, including: Fiji, Qatar, Greece, &amp; Madagascar!
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </content>
-      </custom-element-collapse>
-      <hr class="project-collapse-line captain-app-line-plain">
-
-
     </div>
-  </div>
+
   <app-footer></app-footer>
 
       <firebase-document
@@ -245,7 +242,6 @@
         }
       },
       
-
       ready: function() {
         this.contacts = [
             {

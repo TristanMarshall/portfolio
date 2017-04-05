@@ -1,9 +1,6 @@
 <link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
-
-
 <dom-module id="design-page">
   <template>
     <style is="custom-style" include="app-styles">
@@ -17,19 +14,18 @@
         display: inline-block;
       }
 
-      .illustration-container-div {
-        width: 24%;
-        display: inline-block;
-        text-align: center;
-      }
-
       .icon-image {
         max-width: 100%;
       }
 
       .side-line {
         border-left: 5px solid #3949ab;
-        /*margin-top: -5px;*/
+      }
+
+      .illustration-container-div {
+        width: 24%;
+        display: inline-block;
+        text-align: center;
       }
 
       @media only screen and (max-width: 960px) {
@@ -64,8 +60,9 @@
     </style>
 
 <!-- /////////////////////////////////////////// -->
-<!-- DESIGN INTRO SECTION -->
+<!-- DESIGN FIRST SECTION -->
 <!-- /////////////////////////////////////////// -->
+
     <div class="top-section grid-dark">
       <div class="commander-inner-section">
         <div class="mobile-hide">
@@ -108,63 +105,73 @@
       </div>
     </div>
 
+<!-- /////////////////////////////////////////// -->
+<!-- ICON SECTION -->
+<!-- /////////////////////////////////////////// -->
+
     <div class="commander-section white">
       <div class="commander-inner-section">
         <div class="captain-header-dark-left flexchild">
           Icons
         </div>
-      <hr class="captain-app-line-plain">
-      <div class="captain-content-dark padding-right-20px">
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px"></div>
+        <div class="side-line">
+          <template is="dom-repeat" items="{{icons}}">
+            <div class="icon-container-div">
+              <img class="icon-image" src="{{item}}">
+            </div>
+          </template>
+        </div>  
       </div>
-      <div class="side-line">
-        <template is="dom-repeat" items="{{icons}}">
-          <div class="icon-container-div">
-            <img class="icon-image" src="{{item}}">
-          </div>
-        </template>
-      </div>  
     </div>
-  </div>
 
+<!-- /////////////////////////////////////////// -->
+<!-- ILLUSTRATION SECTION -->
+<!-- /////////////////////////////////////////// -->
 
     <div class="commander-section grid-light">
       <div class="commander-inner-section">
         <div class="captain-header-dark-left flexchild">
           Illustrations
         </div>
-      <hr class="captain-app-line-plain">
-      <div class="captain-content-dark padding-right-20px">
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px">
+        </div>
+        <div class="side-line">
+          <template is="dom-repeat" items="{{avatars}}">
+            <div class="illustration-container-div">
+              <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
+            </div>
+          </template>
+          <br>
+          <br>
+          <br>
+          <hr class="captain-app-line-plain">
+          <div class="line-dot dot-triple"></div>
+          <br>
+          <template is="dom-repeat" items="{{weathers}}">
+            <div class="illustration-container-div">
+              <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
+            </div>
+          </template>
+          <br>
+          <br>
+          <br>
+          <hr class="captain-app-line-plain">
+          <div class="line-dot dot-triple"></div>
+        </div>  
       </div>
-      <div class="side-line">
-        <template is="dom-repeat" items="{{avatars}}">
-          <div class="illustration-container-div">
-            <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
-          </div>
-        </template>
-        <br>
-        <br>
-        <br>
-        <hr class="captain-app-line-plain">
-        <div class="line-dot dot-triple"></div>
-        <br>
-        <template is="dom-repeat" items="{{weathers}}">
-          <div class="illustration-container-div">
-            <img style="width: 75%; margin-top: 25px;" class="icon-image" src="{{item}}">
-          </div>
-        </template>
-        <br>
-        <br>
-        <br>
-        <hr class="captain-app-line-plain">
-        <div class="line-dot dot-triple"></div>
-        <!-- <br> -->
-      </div>  
     </div>
-  </div>
 
+<!-- /////////////////////////////////////////// -->
+<!-- PROCESS SECTION -->
+<!-- /////////////////////////////////////////// -->
 
   <zone-process></zone-process>
+
   <app-footer></app-footer>
+
   </template>
 
   <script>
@@ -173,9 +180,6 @@
       is: 'design-page',
 
       properties: {
-
-
-
       },
 
       ready: function() {

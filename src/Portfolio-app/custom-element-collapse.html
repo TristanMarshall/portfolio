@@ -1,7 +1,6 @@
 <link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
 <dom-module id="custom-element-collapse">
   <template>
     <style is="custom-style" include="app-styles">
@@ -22,6 +21,16 @@
         border: none;
         background-color: rgba(0, 0, 0, .25);
         padding-bottom: 1px;
+      }
+
+      .toggleopen {
+        width: 13px;
+        transform: rotate(45deg);
+      }
+
+      .toggleclose {
+        width: 13px;
+        transform: rotate(0deg);
       }
 
       .project-collapse-header {
@@ -48,24 +57,12 @@
         padding-left: 1px;      
       }
 
-      .toggleopen {
-        width: 13px;
-        transform: rotate(45deg);
-
-      }
-
-      .toggleclose {
-        width: 13px;
-        transform: rotate(0deg);
-      }
-
     </style>
 <!-- /////////////////////////////////////////// -->
 <!-- CUSTOM ELEMENT COLLAPSE -->
 <!-- /////////////////////////////////////////// -->
         <hr class="project-collapse-line captain-app-line-plain">
         <div class="toggle-project-div">
-
           <div class="container flex-horizontal" id="project1"  on-click="project_toggle">
             <div class="toggle-icon-container">
               <div>
@@ -76,15 +73,12 @@
               {{title}}
             </div>
           </div>
-
-         <iron-collapse opened="true" id="collapse">
-
-          <div id="testjump"></div>
-          <content>
-            <!-- CONTENT OF ELEMENT HERE -->
-          </content>
-          </iron-collapse>
-          <!-- <hr class="project-collapse-line captain-app-line-plain"> -->
+            <iron-collapse opened="true" id="collapse">
+              <div id="testjump"></div>
+              <content>
+                <!-- CONTENT OF ELEMENT HERE -->
+              </content>
+            </iron-collapse>
         </div>
 
   </template>
@@ -126,14 +120,13 @@
 
       guestbook_observer: function() {
 
-        // console.log("Step 4) Element: custom-element-collapse.html, function: guestbook_observer");
         if (this.guestbookopen === "open") {
           this.project_toggle_guestbook();
-
         }
       },
 
       project_toggle_guestbook: function() {
+
           this.$.collapse.toggle();
 
           if (this.toggleicon === "toggleopen") {
@@ -143,7 +136,6 @@
           } else if (this.toggleicon === "toggleclose") {
             this.set("toggleicon", "toggleopen");
             this.set("titleClass", "project-collapse-header");
-
           }
       },
  
@@ -167,16 +159,8 @@
             this.set("titleClass", "project-collapse-header");
 
           }
-      }
-    },
-
-    // ready: function() {
-    //   if (this.guestbookopen === "open") {
-    //     this.$.collapse.opened = true;
-    //   } else 
-    //   return;
-    // },
-
+        }
+      },
 
     });
   </script>

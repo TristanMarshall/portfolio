@@ -1,7 +1,6 @@
 <link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
 <dom-module id="zone-process">
   <template>
     <style is="custom-style" include="app-styles">
@@ -334,9 +333,6 @@
                 </div>
               </div>
             </div>
-
-
-
             <div class="commander-triple-two no-bottom">
               <div>
                 <div class="gradient-side gradient-2"></div>
@@ -355,9 +351,6 @@
                 </div>
               </div>
             </div>
-
-
-
             <div class="commander-triple-three no-bottom">
               <div>
                 <div class="gradient-side gradient-3"></div>
@@ -366,15 +359,10 @@
                     <div class="contact-book-header">Contact Book</div>
                   </div>
                   <div class="horizontal end-justified layout">
-          <!--           <div class="floating-action-button">
-                      <img src="/images/small-icon-x.png"> 
-                    </div> -->
                     <paper-fab icon="add" class="floating-action-button" raised></paper-fab>
                   </div>
                   <div class="bottom-section">
                     <div class="displaying"> Displaying 3 cards:</div>
-
-
                     <template is="dom-repeat" items="{{contacts}}">
                       <div class="user-card container flex-horizontal">
                         <div class="profile-image-div">
@@ -391,9 +379,6 @@
                         </div>
                       </div>
                     </template>
-
-
-
                   </div>
                 </div>
                 <div>
@@ -419,7 +404,6 @@
       is: 'zone-process',
 
       properties: {
-
       },
 
       ready: function() {
@@ -440,8 +424,6 @@
                   "number": "( 216 ) 444 3212"
                 }
               ];
-
-              console.log(this.contacts.image);
             }
 
     });

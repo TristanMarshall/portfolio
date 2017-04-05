@@ -374,19 +374,18 @@
         <div class="commander-right-small-mild">
           <div style="width: 100%; text-align: left; padding-bottom: 20px;">
             <div class="captain-content-dark padding-left-20px">
-              <B>Credit Card Validation</b> check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!  <br>
-                <br>
-                <span class="captain-subheader">Test Credit Card Numbers:</span> <br>
-                <b>mastercard:</b> 5555 5555 5555 4444 <br>
-                <b>visa:</b> 2424 2424 2424 2424
-                <br>
+              <b>Credit Card Validation</b> check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!  <br>
+              <br>
+              <span class="captain-subheader">Test Credit Card Numbers:</span> <br>
+              <b>mastercard:</b> 5555 5555 5555 4444 <br>
+              <b>visa:</b> 2424 2424 2424 2424
+              <br>
             <br>
             <br>
             </div>
           </div>
         </div> 
       <div class="commander-left-large-mild">
-
         <div class="appContainer">
           <div class="appWrapper">
           <div class="container flex-horizontal"></div>
@@ -443,9 +442,7 @@
               <a target="_blank" href="https://github.com/TristanMarshall/portfolio/blob/master/src/Portfolio-app/zone-validation.html">VIEW CODE ON GITHUB</a>
           </div>
         </div>
-
       </div>
-
       <paper-dialog class="sizeAndPosition" id="validationDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
         <div class="container flex-end-justified">
           <div on-tap="closeDialog">
@@ -490,87 +487,96 @@
       is: 'zone-validation',
 
       properties: {
-        // prop1: {
-        //   type: String,
-        //   value: 'payment-element-app',
-        // },
         firstName: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         lastName: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         nameOnCard: {
           type: String,
           value: "nameOnCard",
           notify: true,
           reflectToAttribute: true   
         },
+
         goodThru: {
           type: String,
           value: "goodThru",
           notify: true,
           reflectToAttribute: true   
         },
+
         numberOnCard: {
           type: String,
           value: "numberOnCard",
           notify: true,
           reflectToAttribute: true
         },
+
         cv2style: {
           type: String,
           value: "cv2style1",
           notify: true,
           reflectToAttribute: true
         },
+
         creditCardNumber: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         cardType: {
           type: String,
           value: "placeholder",
           notify: true,
           reflectToAttribute: true 
         },
+
         cv2: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         expires: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         makeOfCard: {
           type: String,
           value: "",
           notify: true,
           reflectToAttribute: true
         },
+
         creditCardDiv: {
           type: String,
           value: "creditCardDiv",
           notify: true,
           reflectToAttribute: true
         },
+
         pages: {
           type: Number,
           notify: true,
           reflectToAttribute: true
         },
+
         emptyfields: {
           type: Array,
           value: "",
@@ -580,7 +586,6 @@
       },
 
       validateCard: function() {
-        console.log("Validate Card function fired!");
 
         // variables
         var cardType = this.$["cc"].cardType;
@@ -606,9 +611,7 @@
         }
         if (this.expires === "") {
           // if (this.$.expirecheck.invalid = true) {
-
           // }
-
           fieldsArray.push("Expiration Date");
         }
 
@@ -650,19 +653,10 @@
       },
 
       clearForm: function() {
-
-         var typeOfCard = this.$["cc"].cardType;
-
-
-         if (typeOfCard === "visa" || typeOfCard === "mastercard") {
-          console.log("CLEARING TYPE OF CARD");
-          console.log(typeOfCard);
-                   typeOfCard = "none";
-          console.log(typeOfCard);
-
-         }
-
-
+        var typeOfCard = this.$["cc"].cardType;
+        if (typeOfCard === "visa" || typeOfCard === "mastercard") {
+          typeOfCard = "none";
+        }
         console.log("testing first name logic");
         this.cardType = "placeholder";
         this.creditCardDiv = "creditCardDiv";
