@@ -8,29 +8,6 @@
         display: block;
       }
 
-      .triple-button {
-        background-color: var(--paper-pink-600);
-        color: white;
-        margin-top: 20px;
-        width: 150px;
-        border-radius: 2px;
-      }
-
-      .image-container {
-        height: 150px;
-      }
-
-      .responsive-site-image-container {
-        margin: 0 auto; 
-        width: 100%;
-        height: auto;
-      }
-
-      .responsive-site-image {
-        width: 100%;
-        max-width: 450px;
-      }
-
       .landing-image {
         max-width: 150px;
       }
@@ -68,6 +45,23 @@
         margin-left: 15px;
       }
 
+      .triple-button {
+        background-color: var(--paper-pink-600);
+        color: white;
+        margin-top: 20px;
+        width: 150px;
+        border-radius: 2px;
+      }
+
+      .image-container {
+        height: 150px;
+      }
+
+      .responsive-site-image {
+        width: 100%;
+        max-width: 450px;
+      }
+
       .responsive-span {
         float: left;
         padding-right: 25px;
@@ -87,49 +81,44 @@
 
       @media only screen and (max-width: 640px) {
 
-        .min-height {
-          min-height: 455px;
+          .min-height {
+            min-height: 455px;
+          }
+
+          .landing-image {
+            max-width: 175px;
+          }
+
+          .landing-name {
+            font-size: 34px;
+          }
+
+          .m-span {
+            font-size: 36px;
+          }
+
+          .landing-title {
+            font-size: 18px;
+          }
+
+          .landing-line {
+            width: 66%;
+          }
+
+          .triple-step-header-line {
+            max-width: 200px;
+          }
+
+        .responsive-span {
+          max-width: 400px;
+          float: none;
+          padding-right: 0px;
+          padding-bottom: 20px;
         }
 
-        .landing-image {
-          max-width: 175px;
+        .responsive-img {
+          margin-left: 0px;
         }
-
-        .landing-name {
-          font-size: 34px;
-        }
-
-        .m-span {
-          font-size: 36px;
-        }
-
-        .landing-title {
-          font-size: 18px;
-        }
-
-        .landing-line {
-          width: 66%;
-        }
-
-        .triple-step-header-line {
-          max-width: 200px;
-        }
-
-        .responsive-site-image-container {
-          padding-top: 25px;
-        }
-
-      .responsive-span {
-        max-width: 400px;
-        float: none;
-        padding-right: 0px;
-        padding-bottom: 20px;
-      }
-
-      .responsive-img {
-        margin-left: 0px;
-      }
-
       }
 
     </style>
@@ -149,7 +138,6 @@
           <paper-button class="captain-app-button triple-button" on-tap="scroll_to_nav">VIEW PORTFOLIO</paper-button>
         </div>
           <div  id="target"></div>
-        
       </div>
 
 <!-- /////////////////////////////////////////// -->
