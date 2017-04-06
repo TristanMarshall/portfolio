@@ -1,26 +1,11 @@
-<html><head><link rel="import" href="app-styles.html">
-
+<html><head><link rel="import" href="import-elements.html">
+<link rel="import" href="app-styles.html">
 
 </head><body><dom-module id="home-zone-guestbook">
   <template>
     <style is="custom-style" include="app-styles">
       :host {
         display: block;
-      }
-
-      paper-material {
-        @apply(--layout-horizontal);
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #ddd;
-        margin: 0 auto 10px auto;
-      }
-
-      paper-button {
-        background-color: var(--paper-pink-600);
-        color: white;
-        margin-top: 20px;
-        margin-left: 0px;
       }
 
       paper-dialog.guestbook-class {
@@ -34,6 +19,37 @@
 
       iron-pages {
         margin-top: 15px;
+      }
+
+      .guestbook-page {
+        height: auto;
+        text-align: center; 
+      }
+
+      .guestbook-page-inner {
+        min-height: 175px;
+      }
+
+      .captain-dialog-header {
+        color: rgba(0, 0, 0, .7);
+        font-family: 'Roboto', sans-serif;
+        font-style: italic;
+        font-size: 24px;
+        padding-bottom: 20px;
+      }
+
+      .guestbook-avatar-catelog {
+        height: auto; 
+        margin: 0 auto;
+        padding-top: 30px;
+        padding-bottom: 0px;
+      }
+
+      .validation-error-div {
+        height: 10px; 
+        text-align: center; 
+        font-family: 'Roboto', sans-serif;
+        color: var(--paper-red-500);
       }
 
       paper-input {
@@ -51,6 +67,10 @@
         text-align: left;
       }
 
+      .paper-textarea {
+        padding-top: 25px;
+      }
+
       paper-textarea.uppercaseinput {
          --paper-input-container-input: {                
             text-transform: capitalize;
@@ -65,20 +85,12 @@
         margin-top: 15px;
       }
 
-      .guestbook-page {
-        height: auto;
-        text-align: center; 
-      }
-
-      .guestbook-page-inner {
-        min-height: 175px;
-      }
-
-      .validation-error-div {
-        height: 10px; 
-        text-align: center; 
-        font-family: 'Roboto', sans-serif;
-        color: var(--paper-red-500);
+      paper-material {
+        @apply(--layout-horizontal);
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        margin: 0 auto 10px auto;
       }
 
       .guestbook-card {
@@ -98,15 +110,7 @@
         width: 89px;
         display: inline-block;
         margin: 0 auto;
-        /*float: right;*/
         padding-right: 10px;
-      }
-
-      .guestbook-avatar-catelog {
-        height: auto; 
-        margin: 0 auto;
-        padding-top: 30px;
-        padding-bottom: 0px;
       }
 
       .avatar-div {
@@ -133,16 +137,11 @@
         border-radius: 50%;
       }
 
-      .captain-dialog-header {
-        color: rgba(0, 0, 0, .7);
-        font-family: 'Roboto', sans-serif;
-        font-style: italic;
-        font-size: 24px;
-        padding-bottom: 20px;
-      }
-
-      .paper-textarea {
-        padding-top: 25px;
+      paper-button {
+        background-color: var(--paper-pink-600);
+        color: white;
+        margin-top: 20px;
+        margin-left: 0px;
       }
 
       .guest-name {
@@ -221,81 +220,80 @@
 
 
 
+
         <paper-dialog no-cancel-on-outside-click="" entry-animation="scale-up-animation" exit-animation="fade-out-animation" class="guestbook-class" id="guestbook">
-        <div class="container flex-end-justified">
-          <div on-tap="close_reset_dialog">
-            <img style="width: 15px" src="/images/small-icon-x.png">
+          <div class="container flex-end-justified">
+            <div on-tap="close_reset_dialog">
+              <img style="width: 15px" src="/images/small-icon-x.png">
+            </div>
           </div>
-        </div>
-        <iron-pages id="guestbookpages" selected="0">
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">
-              <div class="captain-dialog-header">
-                Choose an avatar.
+          <iron-pages id="guestbookpages" selected="0">
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">
+                <div class="captain-dialog-header">
+                  Choose an avatar
+                </div>
+                <div class="guestbook-avatar-catelog container flex-horizontal">
+                  <template is="dom-repeat" items="{{avatars}}">
+                    <div class$="{{item.test}}" on-tap="set_avatar">
+                      <img style="width: 100%" src="{{item.img}}">
+                    </div>
+                  </template>
+                </div>
               </div>
-              <div class="guestbook-avatar-catelog container flex-horizontal">
-
-                <template is="dom-repeat" items="{{avatars}}">
-                  <div class$="{{item.test}}" on-tap="set_avatar">
-                    <img style="width: 100%" src="{{item.img}}">
-                  </div>
-                </template>
-
+              <div class="validation-error-div">
+                {{error}}
               </div>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" on-tap="next_page">
-              CONTINUE
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">            
-              <div class="captain-dialog-header">
-                Enter your name &amp; location.
-              </div>
-              <paper-input class="uppercaseinput" value="{{name}}" label="name"></paper-input>
-              <paper-input class="uppercaseinput" value="{{location}}" label="location"></paper-input>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" style="bottom: 0" on-tap="next_page">
-              CONTINUE
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="guestbook-page-inner">            
-              <div class="captain-dialog-header">
-                Leave a message.
-              </div>
-                <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter="" maxlength="50"></paper-textarea>
-            </div>
-            <div class="validation-error-div">
-              {{error}}
-            </div>
-            <paper-button class="captain-app-button" on-tap="next_page">
-              ADD ENTRY TO GUESTBOOK
-            </paper-button>
-          </div>
-          <div class="guestbook-page">
-            <div class="validCardDiv">
-              <div class="xDiv">
-                <img class="emptyFieldsX" src="/images/validation-images/empty-fields-check.png">
-              </div>
-              <br>
-              <div class="captain-dialog-header">
-                Thank you for Your Entry!
-              </div>
-              <br>
-              <paper-button class="captain-app-button" on-tap="add_entry">
-                CLOSE
+              <paper-button class="captain-app-button" on-tap="next_page">
+                CONTINUE
               </paper-button>
             </div>
-          </div>
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
+                <div class="captain-dialog-header">
+                  Enter your name &amp; location
+                </div>
+                <paper-input class="uppercaseinput" value="{{name}}" label="name"></paper-input>
+                <paper-input class="uppercaseinput" value="{{location}}" label="location"></paper-input>
+              </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" style="bottom: 0" on-tap="next_page">
+                CONTINUE
+              </paper-button>
+            </div>
+            <div class="guestbook-page">
+              <div class="guestbook-page-inner">            
+                <div class="captain-dialog-header">
+                  Leave a message
+                </div>
+                  <paper-textarea class="paper-textarea" value="{{message}}" label="enter your message" char-counter="" maxlength="50"></paper-textarea>
+              </div>
+              <div class="validation-error-div">
+                {{error}}
+              </div>
+              <paper-button class="captain-app-button" on-tap="next_page">
+                ADD ENTRY TO GUESTBOOK
+              </paper-button>
+            </div>
+            <div class="guestbook-page">
+              <div class="validCardDiv">
+                <div class="xDiv">
+                  <img class="emptyFieldsX" src="/images/validation-images/empty-fields-check.png">
+                </div>
+                <br>
+                <div class="captain-dialog-header">
+                  Thank you for Your Entry!
+                </div>
+                <br>
+                <paper-button class="captain-app-button" on-tap="add_entry">
+                  CLOSE
+                </paper-button>
+              </div>
+            </div>
+          </iron-pages>
 
-        </iron-pages>
         </paper-dialog>
         <div class="commander-right-small-mild">
           <div style="width: 100%; text-align: left; padding-bottom: 20px">
@@ -307,13 +305,11 @@
             </div>
           </div>
         </div> 
-        <div class="commander-left-large-mile">
+        <div class="commander-left-large-mild">
           <iron-list is="iron-list" items="{{guests}}"> 
-            <template class="testing">       
+            <template>       
               <div>
                 <paper-material elevation="2">
-
-
                   <div class="guestbook-inner-card">
                     <div class="container flex-horizontal">
                       <div>
@@ -328,19 +324,13 @@
                         <div class="guest-location">
                           {{item.location}}
                         </div>
-                                            <hr class="captain-app-line-plain">
+                        <hr class="captain-app-line-plain">
                     <div class="guest-message">
                       {{item.message}}
                     </div>
                       </div>
-           
                     </div>
-
-
                   </div>
-
-
-
                 </paper-material>
               </div>
             </template>
@@ -358,9 +348,7 @@
     <firebase-document path="/guests" data="{{guests}}">
     </firebase-document>
 
-
-
   </template>
 
-  <script>Polymer({is:"home-zone-guestbook",properties:{error:{type:String,value:"",notify:!0,reflectToAttribute:!0},name:{type:String,value:"",notify:!0,reflectToAttribute:!0},location:{type:String,value:"",notify:!0,reflectToAttribute:!0},message:{type:String,value:"",notify:!0,reflectToAttribute:!0},avatar:{type:String,value:"",notify:!0,reflectToAttribute:!0},avatarselect:{type:String,value:"avatar-div",notify:!0,reflectToAttribute:!0},guesttest:{type:String,notify:!0,reflectToAttribute:!0},guestbooklikes:{type:Object,value:{likes:0,heart:"/images/small-icon-heart-outline.png"},notify:!0,reflectToAttribute:!0},avatars:{type:Array,value:[{img:"/images/avatars/avatar-1.png",test:"avatar-div",ind:0},{img:"/images/avatars/avatar-2.png",test:"avatar-div",ind:1},{img:"/images/avatars/avatar-3.png",test:"avatar-div",ind:2},{img:"/images/avatars/avatar-4.png",test:"avatar-div",ind:3}],notify:!0,reflectToAttribute:!0},guests:{type:Array,value:[],notify:!0,reflectToAttribute:!0}},like_guestbook:function(){"/images/small-icon-heart-outline.png"===this.guestbooklikes.heart?(this.set("guestbooklikes.heart","/images/small-icon-heart.png"),this.set("guestbooklikes.likes",this.guestbooklikes.likes+1)):"/images/small-icon-heart.png"===this.guestbooklikes.heart&&(this.set("guestbooklikes.heart","/images/small-icon-heart-outline.png"),this.set("guestbooklikes.likes",this.guestbooklikes.likes-1))},close_reset_dialog:function(){this.$.guestbook.toggle(),this.$.guestbookpages.selected=0,this.set("name",""),this.set("location",""),this.set("message",""),this.set("avatar","")},set_avatar:function(t){var e=t.model.index;t.model;console.log(e);for(var s=0;s<this.avatars.length;s++)e===s?(console.log("match"),console.log(this.avatars[s].test),this.set("avatars."+s+".test","avatar-div-select"),console.log(this.avatars[s].test)):this.set("avatars."+s+".test","avatar-div");this.set("avatar",this.avatars[e].img)},next_page:function(){return this.set("error",""),0===this.$.guestbookpages.selected&&""===this.avatar?void this.set("error","Please select an avatar!"):1===this.$.guestbookpages.selected&&""===this.name&&""===this.location?void this.set("error","Please enter a name & location!"):1===this.$.guestbookpages.selected&&""===this.name?void this.set("error","Please enter a name!"):1===this.$.guestbookpages.selected&&""===this.location?void this.set("error","Please enter a location!"):void this.$.guestbookpages.selectNext()},like_entry:function(t){var e=t.model,s=e.item.key;console.log(s);var a="idheart"+s;console.log(typeof a);var i=document.getElementById(a);console.log(i.src),"http://localhost:8080/images/small-icon-heart-outline.png"==i.src?(i.src="http://localhost:8080/images/small-icon-heart.png",e.set("item.likes",e.item.likes+1)):"http://localhost:8080/images/small-icon-heart.png"==i.src&&(i.src="http://localhost:8080/images/small-icon-heart-outline.png",e.set("item.likes",e.item.likes-1))},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},add_entry:function(){if(2===this.$.guestbookpages.selected&&""===this.message)return void this.set("error","Please enter a message!");entry={name:"",location:"",message:"",likes:0,heart:"/images/small-icon-heart-outline.png",avatar:"",key:""},entry.name=this.name,entry.location=this.location,entry.message=this.message,entry.avatar=this.avatar,entry.key=this.guests.length+1,this.unshift("guests",entry),this.set("name",""),this.set("location",""),this.set("message",""),this.set("avatar",""),this.set("key",""),this.$.guestbookpages.selected=0;for(var t=0;t<this.avatars.length;t++)"avatar-div-select"===this.avatars[t].test&&this.set("avatars."+t+".test","avatar-div");this.fire("iron-signal",{name:"guestbookscroll",data:null}),this.$.guestbook.close()}});</script>
+  <script>Polymer({is:"home-zone-guestbook",properties:{error:{type:String,value:"",notify:!0,reflectToAttribute:!0},name:{type:String,value:"",notify:!0,reflectToAttribute:!0},location:{type:String,value:"",notify:!0,reflectToAttribute:!0},message:{type:String,value:"",notify:!0,reflectToAttribute:!0},avatar:{type:String,value:"",notify:!0,reflectToAttribute:!0},avatarselect:{type:String,value:"avatar-div",notify:!0,reflectToAttribute:!0},guesttest:{type:String,notify:!0,reflectToAttribute:!0},guestbooklikes:{type:Object,value:{likes:0,heart:"/images/small-icon-heart-outline.png"},notify:!0,reflectToAttribute:!0},avatars:{type:Array,value:[{img:"/images/avatars/avatar-1.png",test:"avatar-div",ind:0},{img:"/images/avatars/avatar-2.png",test:"avatar-div",ind:1},{img:"/images/avatars/avatar-3.png",test:"avatar-div",ind:2},{img:"/images/avatars/avatar-4.png",test:"avatar-div",ind:3}],notify:!0,reflectToAttribute:!0},guests:{type:Array,value:[],notify:!0,reflectToAttribute:!0}},like_guestbook:function(){"/images/small-icon-heart-outline.png"===this.guestbooklikes.heart?(this.set("guestbooklikes.heart","/images/small-icon-heart.png"),this.set("guestbooklikes.likes",this.guestbooklikes.likes+1)):"/images/small-icon-heart.png"===this.guestbooklikes.heart&&(this.set("guestbooklikes.heart","/images/small-icon-heart-outline.png"),this.set("guestbooklikes.likes",this.guestbooklikes.likes-1))},close_reset_dialog:function(){this.$.guestbook.toggle(),this.$.guestbookpages.selected=0,this.set("name",""),this.set("location",""),this.set("message",""),this.set("avatar","")},set_avatar:function(t){for(var e=t.model.index,s=(t.model,0);s<this.avatars.length;s++)e===s?this.set("avatars."+s+".test","avatar-div-select"):this.set("avatars."+s+".test","avatar-div");this.set("avatar",this.avatars[e].img)},next_page:function(){return this.set("error",""),0===this.$.guestbookpages.selected&&""===this.avatar?void this.set("error","Please select an avatar!"):1===this.$.guestbookpages.selected&&""===this.name&&""===this.location?void this.set("error","Please enter a name & location!"):1===this.$.guestbookpages.selected&&""===this.name?void this.set("error","Please enter a name!"):1===this.$.guestbookpages.selected&&""===this.location?void this.set("error","Please enter a location!"):void this.$.guestbookpages.selectNext()},like_entry:function(t){var e=t.model,s=e.item.key,a="idheart"+s,i=document.getElementById(a);"http://localhost:8080/images/small-icon-heart-outline.png"==i.src?(i.src="http://localhost:8080/images/small-icon-heart.png",e.set("item.likes",e.item.likes+1)):"http://localhost:8080/images/small-icon-heart.png"==i.src&&(i.src="http://localhost:8080/images/small-icon-heart-outline.png",e.set("item.likes",e.item.likes-1))},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},add_entry:function(){if(2===this.$.guestbookpages.selected&&""===this.message)return void this.set("error","Please enter a message!");entry={name:"",location:"",message:"",likes:0,heart:"/images/small-icon-heart-outline.png",avatar:"",key:""},entry.name=this.name,entry.location=this.location,entry.message=this.message,entry.avatar=this.avatar,entry.key=this.guests.length+1,this.unshift("guests",entry),this.set("name",""),this.set("location",""),this.set("message",""),this.set("avatar",""),this.set("key",""),this.$.guestbookpages.selected=0;for(var t=0;t<this.avatars.length;t++)"avatar-div-select"===this.avatars[t].test&&this.set("avatars."+t+".test","avatar-div");this.fire("iron-signal",{name:"guestbookscroll",data:null}),this.$.guestbook.close()}});</script>
 </dom-module></body></html>

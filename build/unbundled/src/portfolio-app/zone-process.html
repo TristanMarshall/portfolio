@@ -1,7 +1,6 @@
 <html><head><link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
 </head><body><dom-module id="zone-process">
   <template>
     <style is="custom-style" include="app-styles">
@@ -334,9 +333,6 @@
                 </div>
               </div>
             </div>
-
-
-
             <div class="commander-triple-two no-bottom">
               <div>
                 <div class="gradient-side gradient-2"></div>
@@ -355,9 +351,6 @@
                 </div>
               </div>
             </div>
-
-
-
             <div class="commander-triple-three no-bottom">
               <div>
                 <div class="gradient-side gradient-3"></div>
@@ -366,13 +359,10 @@
                     <div class="contact-book-header">Contact Book</div>
                   </div>
                   <div class="horizontal end-justified layout">
-          
                     <paper-fab icon="add" class="floating-action-button" raised=""></paper-fab>
                   </div>
                   <div class="bottom-section">
                     <div class="displaying"> Displaying 3 cards:</div>
-
-
                     <template is="dom-repeat" items="{{contacts}}">
                       <div class="user-card container flex-horizontal">
                         <div class="profile-image-div">
@@ -389,9 +379,6 @@
                         </div>
                       </div>
                     </template>
-
-
-
                   </div>
                 </div>
                 <div>
@@ -411,5 +398,5 @@
       </div>
     </template>
 
-  <script>Polymer({is:"zone-process",properties:{},ready:function(){this.contacts=[{image:"/images/contact-images/contact-1.jpg",name:"Paulina Wallace",number:"( 330 ) 549 2210"},{image:"/images/contact-images/contact-2.jpg",name:"Jack Harrison",number:"( 312 ) 566 3423"},{image:"/images/contact-images/contact-3.jpg",name:"Matthew Smith",number:"( 216 ) 444 3212"}],console.log(this.contacts.image)}});</script>
+  <script>Polymer({is:"zone-process",properties:{},ready:function(){this.contacts=[{image:"/images/contact-images/contact-1.jpg",name:"Paulina Wallace",number:"( 330 ) 549 2210"},{image:"/images/contact-images/contact-2.jpg",name:"Jack Harrison",number:"( 312 ) 566 3423"},{image:"/images/contact-images/contact-3.jpg",name:"Matthew Smith",number:"( 216 ) 444 3212"}]}});</script>
 </dom-module></body></html>

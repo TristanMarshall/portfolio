@@ -1,7 +1,6 @@
 <html><head><link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
 </head><body><dom-module id="custom-element-collapse">
   <template>
     <style is="custom-style" include="app-styles">
@@ -22,6 +21,16 @@
         border: none;
         background-color: rgba(0, 0, 0, .25);
         padding-bottom: 1px;
+      }
+
+      .toggleopen {
+        width: 13px;
+        transform: rotate(45deg);
+      }
+
+      .toggleclose {
+        width: 13px;
+        transform: rotate(0deg);
       }
 
       .project-collapse-header {
@@ -48,24 +57,12 @@
         padding-left: 1px;      
       }
 
-      .toggleopen {
-        width: 13px;
-        transform: rotate(45deg);
-
-      }
-
-      .toggleclose {
-        width: 13px;
-        transform: rotate(0deg);
-      }
-
     </style>
 
 
 
         <hr class="project-collapse-line captain-app-line-plain">
         <div class="toggle-project-div">
-
           <div class="container flex-horizontal" id="project1" on-click="project_toggle">
             <div class="toggle-icon-container">
               <div>
@@ -76,15 +73,12 @@
               {{title}}
             </div>
           </div>
-
-         <iron-collapse opened="true" id="collapse">
-
-          <div id="testjump"></div>
-          <content>
-            
-          </content>
-          </iron-collapse>
-          
+            <iron-collapse opened="true" id="collapse">
+              <div id="testjump"></div>
+              <content>
+                
+              </content>
+            </iron-collapse>
         </div>
 
   </template>

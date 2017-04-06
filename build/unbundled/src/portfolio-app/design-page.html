@@ -1,9 +1,6 @@
 <html><head><link rel="import" href="import-elements.html">
 <link rel="import" href="app-styles.html">
 
-
-
-
 </head><body><dom-module id="design-page">
   <template>
     <style is="custom-style" include="app-styles">
@@ -17,19 +14,18 @@
         display: inline-block;
       }
 
-      .illustration-container-div {
-        width: 24%;
-        display: inline-block;
-        text-align: center;
-      }
-
       .icon-image {
         max-width: 100%;
       }
 
       .side-line {
         border-left: 5px solid #3949ab;
-        /*margin-top: -5px;*/
+      }
+
+      .illustration-container-div {
+        width: 24%;
+        display: inline-block;
+        text-align: center;
       }
 
       @media only screen and (max-width: 960px) {
@@ -62,6 +58,7 @@
       }
 
     </style>
+
 
 
 
@@ -108,23 +105,29 @@
       </div>
     </div>
 
+
+
+
+
     <div class="commander-section white">
       <div class="commander-inner-section">
         <div class="captain-header-dark-left flexchild">
           Icons
         </div>
-      <hr class="captain-app-line-plain">
-      <div class="captain-content-dark padding-right-20px">
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px"></div>
+        <div class="side-line">
+          <template is="dom-repeat" items="{{icons}}">
+            <div class="icon-container-div">
+              <img class="icon-image" src="{{item}}">
+            </div>
+          </template>
+        </div>  
       </div>
-      <div class="side-line">
-        <template is="dom-repeat" items="{{icons}}">
-          <div class="icon-container-div">
-            <img class="icon-image" src="{{item}}">
-          </div>
-        </template>
-      </div>  
     </div>
-  </div>
+
+
+
 
 
     <div class="commander-section grid-light">
@@ -132,39 +135,43 @@
         <div class="captain-header-dark-left flexchild">
           Illustrations
         </div>
-      <hr class="captain-app-line-plain">
-      <div class="captain-content-dark padding-right-20px">
+        <hr class="captain-app-line-plain">
+        <div class="captain-content-dark padding-right-20px">
+        </div>
+        <div class="side-line">
+          <template is="dom-repeat" items="{{avatars}}">
+            <div class="illustration-container-div">
+              <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item}}">
+            </div>
+          </template>
+          <br>
+          <br>
+          <br>
+          <hr class="captain-app-line-plain">
+          <div class="line-dot dot-triple"></div>
+          <br>
+          <template is="dom-repeat" items="{{weathers}}">
+            <div class="illustration-container-div">
+              <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item}}">
+            </div>
+          </template>
+          <br>
+          <br>
+          <br>
+          <hr class="captain-app-line-plain">
+          <div class="line-dot dot-triple"></div>
+        </div>  
       </div>
-      <div class="side-line">
-        <template is="dom-repeat" items="{{avatars}}">
-          <div class="illustration-container-div">
-            <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item}}">
-          </div>
-        </template>
-        <br>
-        <br>
-        <br>
-        <hr class="captain-app-line-plain">
-        <div class="line-dot dot-triple"></div>
-        <br>
-        <template is="dom-repeat" items="{{weathers}}">
-          <div class="illustration-container-div">
-            <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item}}">
-          </div>
-        </template>
-        <br>
-        <br>
-        <br>
-        <hr class="captain-app-line-plain">
-        <div class="line-dot dot-triple"></div>
-        
-      </div>  
     </div>
-  </div>
+
+
+
 
 
   <zone-process></zone-process>
+
   <app-footer></app-footer>
+
   </template>
 
   <script>Polymer({is:"design-page",properties:{},ready:function(){this.icons=["/images/icons/icon-bookmark.png","/images/icons/icon-chat-outline.png","/images/icons/icon-check-mark.png","/images/icons/icon-chevron-right.png","/images/icons/icon-chevron-left.png","/images/icons/icon-garbage.png","/images/icons/icon-hamburger-menu.png","/images/icons/icon-heart.png","/images/icons/icon-home.png","/images/icons/icon-key.png","/images/icons/icon-landmark.png","/images/icons/icon-list-items.png","/images/icons/icon-mail.png","/images/icons/icon-medical.png","/images/icons/icon-minus.png","/images/icons/icon-nav-arrow.png","/images/icons/icon-phone.png","/images/icons/icon-pin-drop.png","/images/icons/icon-plus.png","/images/icons/icon-profile.png","/images/icons/icon-settings-gear.png","/images/icons/icon-shopping-cart.png","/images/icons/icon-ticket.png","/images/icons/icon-time.png","/images/icons/icon-twitter.svg","/images/icons/icon-instagram.svg","/images/icons/icon-linkedin.svg","/images/icons/icon-github.svg","/images/icons/icon-facebook.svg"],this.avatars=["/images/avatars/avatar-1.png","/images/avatars/avatar-2.png","/images/avatars/avatar-3.png","/images/avatars/avatar-4.png"],this.weathers=["/images/weather-icons/icon-sunny.png","/images/weather-icons/icon-storm.png","/images/weather-icons/icon-rain.png","/images/weather-icons/icon-night.png"]}});</script>

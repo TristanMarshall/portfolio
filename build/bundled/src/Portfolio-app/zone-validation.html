@@ -375,18 +375,17 @@
           <div style="width: 100%; text-align: left; padding-bottom: 20px">
             <div class="captain-content-dark padding-left-20px">
               <b>Credit Card Validation</b> check to see if your card is valid, while building a visual version of your card. It utilizes data binding between the input fields and credit card illustration, along with strong conditions to ensure your card is valid!  <br>
-                <br>
-                <span class="captain-subheader">Test Credit Card Numbers:</span> <br>
-                <b>mastercard:</b> 5555 5555 5555 4444 <br>
-                <b>visa:</b> 2424 2424 2424 2424
-                <br>
+              <br>
+              <span class="captain-subheader">Test Credit Card Numbers:</span> <br>
+              <b>mastercard:</b> 5555 5555 5555 4444 <br>
+              <b>visa:</b> 4242 4242 4242 4242
+              <br>
             <br>
             <br>
             </div>
           </div>
         </div> 
       <div class="commander-left-large-mild">
-
         <div class="appContainer">
           <div class="appWrapper">
           <div class="container flex-horizontal"></div>
@@ -443,9 +442,7 @@
               <a target="_blank" href="https://github.com/TristanMarshall/portfolio/blob/master/src/Portfolio-app/zone-validation.html">VIEW CODE ON GITHUB</a>
           </div>
         </div>
-
       </div>
-
       <paper-dialog class="sizeAndPosition" id="validationDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
         <div class="container flex-end-justified">
           <div on-tap="closeDialog">
@@ -484,5 +481,5 @@
       </paper-dialog>
   </template>
 
-  <script>Polymer({is:"zone-validation",properties:{firstName:{type:String,value:"",notify:!0,reflectToAttribute:!0},lastName:{type:String,value:"",notify:!0,reflectToAttribute:!0},nameOnCard:{type:String,value:"nameOnCard",notify:!0,reflectToAttribute:!0},goodThru:{type:String,value:"goodThru",notify:!0,reflectToAttribute:!0},numberOnCard:{type:String,value:"numberOnCard",notify:!0,reflectToAttribute:!0},cv2style:{type:String,value:"cv2style1",notify:!0,reflectToAttribute:!0},creditCardNumber:{type:String,value:"",notify:!0,reflectToAttribute:!0},cardType:{type:String,value:"placeholder",notify:!0,reflectToAttribute:!0},cv2:{type:String,value:"",notify:!0,reflectToAttribute:!0},expires:{type:String,value:"",notify:!0,reflectToAttribute:!0},makeOfCard:{type:String,value:"",notify:!0,reflectToAttribute:!0},creditCardDiv:{type:String,value:"creditCardDiv",notify:!0,reflectToAttribute:!0},pages:{type:Number,notify:!0,reflectToAttribute:!0},emptyfields:{type:Array,value:"",notify:!0,reflectToAttribute:!0}},validateCard:function(){console.log("Validate Card function fired!");var t=this.$.cc.cardType,e=this.$.validationDialog,i=(this.$.validationIronPages,[]);this.set("cardType",this.cardType),e.open(),""===this.firstName&&i.push("First Name"),""===this.lastName&&i.push("Last Name"),""===this.creditCardNumber&&i.push("Credit Card Number"),""===this.cv2&&i.push("cv2"),""===this.expires&&i.push("Expiration Date"),this.$.cc.validate()===!0&&this.cv2&&this.firstName&&this.lastName&&""!=this.expires?(this.set("pages",1),console.log("This "+t+" card is valid"),"visa"!==t&&"mastercard"!==t||(this.set(this.numberOnCard,"numberOnCardLight"),this.set(this.nameOnCard,"nameOnCardLight"),this.set(this.goodThru,"goodThruLight"),this.set(this.cv2style,"cv2Light"),"visa"===t?(this.set(this.creditCardDiv,"creditCardDivVisa"),this.set("cardType","visa")):"mastercard"===t?(this.set(this.creditCardDiv,"creditCardDivMastercard"),this.set("cardType","mastercard")):(this.set(this.creditCardDiv,"creditCardDiv"),this.set("cardType","placeholder")))):""!=this.firstName&&""!=this.lastName&&""!=this.creditCardNumber&&""!=this.cv2&&""!=this.expires&&this.$.cc.validate()===!1?this.set("pages",2):(this.set("pages",0),console.log("This card is not valid")),this.set("emptyfields",i)},closeDialog:function(){this.$.validationDialog.close()},clearForm:function(){var t=this.$.cc.cardType;"visa"!==t&&"mastercard"!==t||(console.log("CLEARING TYPE OF CARD"),console.log(t),t="none",console.log(t)),console.log("testing first name logic"),this.cardType="placeholder",this.creditCardDiv="creditCardDiv",this.numberOnCard="numberOnCard",this.nameOnCard="nameOnCard",this.goodThru="goodThru",this.cv2style="cv2style1",this.firstName=null,this.lastName=null,this.creditCardNumber="",this.creditCardNumber="",this.expires="",this.cv2=""}});</script>
+  <script>Polymer({is:"zone-validation",properties:{firstName:{type:String,value:"",notify:!0,reflectToAttribute:!0},lastName:{type:String,value:"",notify:!0,reflectToAttribute:!0},nameOnCard:{type:String,value:"nameOnCard",notify:!0,reflectToAttribute:!0},goodThru:{type:String,value:"goodThru",notify:!0,reflectToAttribute:!0},numberOnCard:{type:String,value:"numberOnCard",notify:!0,reflectToAttribute:!0},cv2style:{type:String,value:"cv2style1",notify:!0,reflectToAttribute:!0},creditCardNumber:{type:String,value:"",notify:!0,reflectToAttribute:!0},cardType:{type:String,value:"placeholder",notify:!0,reflectToAttribute:!0},cv2:{type:String,value:"",notify:!0,reflectToAttribute:!0},expires:{type:String,value:"",notify:!0,reflectToAttribute:!0},makeOfCard:{type:String,value:"",notify:!0,reflectToAttribute:!0},creditCardDiv:{type:String,value:"creditCardDiv",notify:!0,reflectToAttribute:!0},pages:{type:Number,notify:!0,reflectToAttribute:!0},emptyfields:{type:Array,value:"",notify:!0,reflectToAttribute:!0}},validateCard:function(){var t=this.$.cc.cardType,e=this.$.validationDialog,i=(this.$.validationIronPages,[]);this.set("cardType",this.cardType),e.open(),""===this.firstName&&i.push("First Name"),""===this.lastName&&i.push("Last Name"),""===this.creditCardNumber&&i.push("Credit Card Number"),""===this.cv2&&i.push("cv2"),""===this.expires&&i.push("Expiration Date"),this.$.cc.validate()===!0&&this.cv2&&this.firstName&&this.lastName&&""!=this.expires?(this.set("pages",1),console.log("This "+t+" card is valid"),"visa"!==t&&"mastercard"!==t||(this.set(this.numberOnCard,"numberOnCardLight"),this.set(this.nameOnCard,"nameOnCardLight"),this.set(this.goodThru,"goodThruLight"),this.set(this.cv2style,"cv2Light"),"visa"===t?(this.set(this.creditCardDiv,"creditCardDivVisa"),this.set("cardType","visa")):"mastercard"===t?(this.set(this.creditCardDiv,"creditCardDivMastercard"),this.set("cardType","mastercard")):(this.set(this.creditCardDiv,"creditCardDiv"),this.set("cardType","placeholder")))):""!=this.firstName&&""!=this.lastName&&""!=this.creditCardNumber&&""!=this.cv2&&""!=this.expires&&this.$.cc.validate()===!1?this.set("pages",2):(this.set("pages",0),console.log("This card is not valid")),this.set("emptyfields",i)},closeDialog:function(){this.$.validationDialog.close()},clearForm:function(){var t=this.$.cc.cardType;"visa"!==t&&"mastercard"!==t||(t="none"),console.log("testing first name logic"),this.cardType="placeholder",this.creditCardDiv="creditCardDiv",this.numberOnCard="numberOnCard",this.nameOnCard="nameOnCard",this.goodThru="goodThru",this.cv2style="cv2style1",this.firstName=null,this.lastName=null,this.creditCardNumber="",this.creditCardNumber="",this.expires="",this.cv2=""}});</script>
 </dom-module></body></html>
