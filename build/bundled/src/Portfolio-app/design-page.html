@@ -28,6 +28,24 @@
         text-align: center;
       }
 
+      .illustration-container-div-3 {
+        width: 33.3333%;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .icon-1 {
+        float: left;
+      }
+
+      .icon-2 {
+        float: none;
+      }
+
+      .icon-3 {
+        float: right;
+      }
+
       @media only screen and (max-width: 960px) {
         .icon-container-div {
           width: 16%;
@@ -43,7 +61,8 @@
           width: 19%;
         }
 
-        .illustration-container-div {
+        .illustration-container-div-3 {
+          width: 33.3333%;
         }
       }
 
@@ -54,6 +73,14 @@
 
         .illustration-container-div {
           width: 49%;
+        }
+
+        .icon-1, .icon-2, .icon-3 {
+          float: none;
+        }
+
+        .illustration-container-div-3 {
+          width: 100%;
         }
       }
 
@@ -150,6 +177,17 @@
           <hr class="captain-app-line-plain">
           <div class="line-dot dot-triple"></div>
           <br>
+          <template is="dom-repeat" items="{{bluegrey}}">
+            <div class$="illustration-container-div-3 {{item.style}}">
+              <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item.img}}">
+            </div>
+          </template>
+          <br>
+          <br>
+          <br>
+          <hr class="captain-app-line-plain">
+          <div class="line-dot dot-triple"></div>
+          <br>         
           <template is="dom-repeat" items="{{weathers}}">
             <div class="illustration-container-div">
               <img style="width: 75%; margin-top: 25px" class="icon-image" src="{{item}}">
@@ -160,6 +198,7 @@
           <br>
           <hr class="captain-app-line-plain">
           <div class="line-dot dot-triple"></div>
+          
         </div>  
       </div>
     </div>
@@ -174,5 +213,5 @@
 
   </template>
 
-  <script>Polymer({is:"design-page",properties:{},ready:function(){this.icons=["/images/icons/icon-bookmark.png","/images/icons/icon-chat-outline.png","/images/icons/icon-check-mark.png","/images/icons/icon-chevron-right.png","/images/icons/icon-chevron-left.png","/images/icons/icon-garbage.png","/images/icons/icon-hamburger-menu.png","/images/icons/icon-heart.png","/images/icons/icon-home.png","/images/icons/icon-key.png","/images/icons/icon-landmark.png","/images/icons/icon-list-items.png","/images/icons/icon-mail.png","/images/icons/icon-medical.png","/images/icons/icon-minus.png","/images/icons/icon-nav-arrow.png","/images/icons/icon-phone.png","/images/icons/icon-pin-drop.png","/images/icons/icon-plus.png","/images/icons/icon-profile.png","/images/icons/icon-settings-gear.png","/images/icons/icon-shopping-cart.png","/images/icons/icon-ticket.png","/images/icons/icon-time.png","/images/icons/icon-twitter.svg","/images/icons/icon-instagram.svg","/images/icons/icon-linkedin.svg","/images/icons/icon-github.svg","/images/icons/icon-facebook.svg"],this.avatars=["/images/avatars/avatar-1.png","/images/avatars/avatar-2.png","/images/avatars/avatar-3.png","/images/avatars/avatar-4.png"],this.weathers=["/images/weather-icons/icon-sunny.png","/images/weather-icons/icon-storm.png","/images/weather-icons/icon-rain.png","/images/weather-icons/icon-night.png"]}});</script>
+  <script>Polymer({is:"design-page",properties:{},ready:function(){this.icons=["/images/icons/icon-bookmark.png","/images/icons/icon-chat-outline.png","/images/icons/icon-check-mark.png","/images/icons/icon-chevron-right.png","/images/icons/icon-chevron-left.png","/images/icons/icon-garbage.png","/images/icons/icon-hamburger-menu.png","/images/icons/icon-heart.png","/images/icons/icon-home.png","/images/icons/icon-key.png","/images/icons/icon-landmark.png","/images/icons/icon-list-items.png","/images/icons/icon-mail.png","/images/icons/icon-medical.png","/images/icons/icon-minus.png","/images/icons/icon-nav-arrow.png","/images/icons/icon-phone.png","/images/icons/icon-pin-drop.png","/images/icons/icon-plus.png","/images/icons/icon-profile.png","/images/icons/icon-settings-gear.png","/images/icons/icon-shopping-cart.png","/images/icons/icon-ticket.png","/images/icons/icon-time.png","/images/icons/icon-twitter.svg","/images/icons/icon-instagram.svg","/images/icons/icon-linkedin.svg","/images/icons/icon-github.svg","/images/icons/icon-facebook.svg"],this.avatars=["/images/avatars/avatar-1.png","/images/avatars/avatar-2.png","/images/avatars/avatar-3.png","/images/avatars/avatar-4.png"],this.weathers=["/images/icons-weather/icon-sunny.png","/images/icons-weather/icon-storm.png","/images/icons-weather/icon-rain.png","/images/icons-weather/icon-night.png"],this.bluegrey=[{img:"/images/icons-large-grey/icon-1.png",style:"icon-1"},{img:"/images/icons-large-grey/icon-3.png",style:"icon-2"},{img:"/images/icons-large-grey/icon-2.png",style:"icon-3"}]}});</script>
 </dom-module></body></html>
