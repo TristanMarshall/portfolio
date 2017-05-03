@@ -452,6 +452,10 @@
         },
       },
 
+      testing: function() {
+        console.log(this.guests);
+      },
+
  
       like_guestbook: function() {
 
@@ -549,6 +553,8 @@
       },
 
       add_entry: function() {
+
+        console.log(this.guests);
 
         // check for message 
         if (this.$.guestbookpages.selected === 2 && this.message === "") {

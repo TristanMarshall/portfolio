@@ -97,14 +97,7 @@
             <div class="captain-header-dark-left flexchild">
               Web Projects
             </div>
-            <div class="guestbook-entry-count child3">
-              <div class="align-right cursor-pointer padding-left" on-tap="like_webproject">
-                <div class="guest-likes-count inline">
-                  {{webprojectlikes}} likes
-                </div>
-                <img style="width: 20px" src="{{webprojectheart}}">
-              </div>
-            </div>
+
           </div>
         <hr class="captain-app-line-plain">
         <div class="captain-content-dark padding-right-20px" id="guestbookscrolltarget">
@@ -114,11 +107,7 @@
         <br>
         <br>
         <br>
-        <custom-element-collapse id="guestbookid" title="Website Guestbook">
-          <content>
-            <home-zone-guestbook></home-zone-guestbook>
-          </content>
-        </custom-element-collapse>
+
         <custom-element-collapse title="Credit Card Validation">
           <content>
             <zone-validation></zone-validation>
@@ -138,14 +127,7 @@
             <div class="captain-header flexchild">
               Freelance projects
             </div>
-            <div class="guestbook-entry-count child3">
-              <div class="align-right padding-left" on-tap="like_freelanceproject">
-                <div class="guest-likes-count inline">
-                  {{freelancelikes}} likes
-                </div>
-                <img style="width: 20px" src="{{freelanceheart}}">
-              </div>
-            </div>
+
           </div>
         <hr class="captain-app-line-plain-light">
         <div class="freelance-card commander-card-light">
@@ -210,5 +192,5 @@
 
   </template>
 
-  <script>Polymer({is:"development-page",properties:{webprojectheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},freelanceheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},webprojectlikes:{type:String,notify:!0,reflectToAttribute:!0},freelancelikes:{type:String,notify:!0,reflectToAttribute:!0},guestbookelement:{type:String,value:"done",notify:!0,reflectToAttribute:!0},guestbookpass:{type:String,value:"",notify:!0,reflectToAttribute:!0}},_guestbook_scroll:function(){console.log("scroll time!");var e=document.getElementById("guestbooktop");e.scrollIntoView({behavior:"smooth"})},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},like_freelanceproject:function(){"/images/small-icon-heart-outline.png"===this.freelanceheart?(this.set("freelanceheart","/images/small-icon-heart.png"),this.set("freelancelikes",this.freelancelikes+1)):"/images/small-icon-heart.png"===this.freelanceheart&&(this.set("freelanceheart","/images/small-icon-heart-outline.png"),this.set("freelancelikes",this.freelancelikes-1))}});</script>
+  <script>Polymer({is:"development-page",properties:{webprojectheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},freelanceheart:{type:String,value:"/images/small-icon-heart-outline.png",notify:!0,reflectToAttribute:!0},webprojectlikes:{value:"10",type:String,notify:!0,reflectToAttribute:!0},freelancelikes:{type:String,notify:!0,reflectToAttribute:!0},guestbookelement:{type:String,value:"done",notify:!0,reflectToAttribute:!0},guestbookpass:{type:String,value:"",notify:!0,reflectToAttribute:!0}},_guestbook_scroll:function(){console.log("scroll time!");var e=document.getElementById("guestbooktop");e.scrollIntoView({behavior:"smooth"})},like_webproject:function(){"/images/small-icon-heart-outline.png"===this.webprojectheart?(this.set("webprojectheart","/images/small-icon-heart.png"),this.set("webprojectlikes",this.webprojectlikes+1)):"/images/small-icon-heart.png"===this.webprojectheart&&(this.set("webprojectheart","/images/small-icon-heart-outline.png"),this.set("webprojectlikes",this.webprojectlikes-1))},like_freelanceproject:function(){"/images/small-icon-heart-outline.png"===this.freelanceheart?(this.set("freelanceheart","/images/small-icon-heart.png"),this.set("freelancelikes",this.freelancelikes+1)):"/images/small-icon-heart.png"===this.freelanceheart&&(this.set("freelanceheart","/images/small-icon-heart-outline.png"),this.set("freelancelikes",this.freelancelikes-1))}});</script>
 </dom-module></body></html>
